@@ -7,7 +7,7 @@ const authorInfo: AuthorInfo = TC.aside.authorInfo;
 
 <div class="author-info-card aside-card">
   <div class="author-info">
-    <img class="author-avatar" src={authorInfo.avatar} />
+    <img class="author-avatar" src={authorInfo.avatar} alt="author-avatar" />
     <div class="author-name">{TC.site.author}</div>
     <div
       class="author-desc"
@@ -18,15 +18,15 @@ const authorInfo: AuthorInfo = TC.aside.authorInfo;
     />
   </div>
   <div class="blog-counts">
-    <a class="blog-count">
+    <div class="blog-count">
       <div class="count">87</div>
       <div class="tag">文章</div>
-    </a>
-    <a class="blog-count">
+    </div>
+    <a class="blog-count" href="/categories">
       <div class="count">9</div>
       <div class="tag">分类</div>
     </a>
-    <a class="blog-count">
+    <a class="blog-count" href="/tags">
       <div class="count">10</div>
       <div class="tag">标签</div>
     </a>
@@ -38,9 +38,15 @@ const authorInfo: AuthorInfo = TC.aside.authorInfo;
           title={media.customClass}
           class:list={["social-media", media.customClass]}
         >
-          <a href={media.link} class="social-link">
-            <GetIcon class="social-icon" Icon={media.icon} />
-          </a>
+          {media.link ? (
+            <a href={media.link} class="social-link" title={media.title || ""}>
+              <GetIcon class="social-icon" Icon={media.icon} />
+            </a>
+          ) : (
+            <div class="social-link" title={media.title || ""}>
+              <GetIcon class="social-icon" Icon={media.icon} />
+            </div>
+          )}
         </div>
       ))
     }

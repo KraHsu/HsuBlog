@@ -15,15 +15,17 @@ interface Props {
     value: string;
   }[];
   useComments?: boolean;
+  desc?: string;
 }
 
-const { toc, useComments = true } = Astro.props;
+const { toc, useComments = true, postData, desc } = Astro.props;
 ---
 
-<BaseLayout class="post-page">
+<BaseLayout class="post-page" description={postData?.description || desc}>
   <Fragment slot="head-end">
     <script
       is:inline
+      async
       src="https://cdn.staticfile.org/fancyapps-ui/5.0.20/fancybox/fancybox.umd.min.js"
     ></script>
     <link

@@ -15,23 +15,42 @@ const items: Array<MenuItem> = ThemeConfig.header.menu;
           { "has-child": item.children },
         ]}
       >
-        <a href={item.link || "javascript:void(0);"} class="menu-item-link">
-          <GetIcon Icon={item.icon} class="menu-item-icon" />
-          <span class="menu-item-name">{item.name}</span>
-        </a>
+        {item.link ? (
+          <a
+            href={item.link || ""}
+            rel={item.link ? "" : "nofollow"}
+            class="menu-item-link"
+          >
+            <GetIcon Icon={item.icon} class="menu-item-icon" />
+            <span class="menu-item-name">{item.name}</span>
+          </a>
+        ) : (
+          <div class="menu-item-link">
+            <GetIcon Icon={item.icon} class="menu-item-icon" />
+            <span class="menu-item-name">{item.name}</span>
+          </div>
+        )}
         {() => {
           if (item.children) {
             return (
               <ul class="menu-children">
                 {item.children.map((child) => (
                   <li class:list={["menu-child", child.customClass]}>
-                    <a
-                      href={child.link || "javascript:void(0);"}
-                      class="menu-child-link"
-                    >
-                      <GetIcon Icon={child.icon} class="menu-child-icon" />
-                      <span class="menu-child-name">{child.name}</span>
-                    </a>
+                    {child.link ? (
+                      <a
+                        href={child.link}
+                        rel={child.link ? "" : "nofollow"}
+                        class="menu-child-link"
+                      >
+                        <GetIcon Icon={child.icon} class="menu-child-icon" />
+                        <span class="menu-child-name">{child.name}</span>
+                      </a>
+                    ) : (
+                      <div class="menu-child-link">
+                        <GetIcon Icon={child.icon} class="menu-child-icon" />
+                        <span class="menu-child-name">{child.name}</span>
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>

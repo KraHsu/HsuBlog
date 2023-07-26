@@ -13,12 +13,19 @@ const funcs: HeaderFunc = ThemeConfig.header.functions;
   {
     buttons.map((button) => (
       <div class:list={["menu-button", button.customClass]}>
-        <a
-          href={button.link || "javascript: void(0);"}
-          class="menu-button-link"
-        >
-          <GetIcon Icon={button.icon} class="menu-button-icon" />
-        </a>
+        {button.link ? (
+          <a
+            href={button.link}
+            class="menu-button-link"
+            title={button.title || ""}
+          >
+            <GetIcon Icon={button.icon} class="menu-button-icon" />
+          </a>
+        ) : (
+          <div class="menu-button-link" title={button.title || ""}>
+            <GetIcon Icon={button.icon} class="menu-button-icon" />
+          </div>
+        )}
       </div>
     ))
   }
@@ -27,11 +34,12 @@ const funcs: HeaderFunc = ThemeConfig.header.functions;
     funcs.pagePercent && (
       <Fragment>
         <div id="menu-totop" class="menu-button percent">
-          <a
+          <div
             onclick="
             hsu.scrollToDestination(0, 500)
             "
             class="menu-button-link"
+            title="toTop"
           >
             <div id="percent" class="menu-button-icon">
               0
@@ -39,7 +47,7 @@ const funcs: HeaderFunc = ThemeConfig.header.functions;
             <div id="totop" class="menu-button-icon">
               <ToTop />
             </div>
-          </a>
+          </div>
         </div>
         <script is:inline>
           window.addEventListener("load", event =>

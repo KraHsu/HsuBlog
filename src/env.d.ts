@@ -22,6 +22,7 @@ interface ButtonItem {
   customClass?: string;
   link?: string;
   icon: Function | string;
+  title?: string;
 }
 
 interface MenuItem extends ButtonItem {

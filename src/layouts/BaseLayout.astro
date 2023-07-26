@@ -12,9 +12,10 @@ import Bubbles from "@comp/animation/bubbles.astro";
 import { SiteConfig } from "@src/site_config";
 interface Props {
   class?: string;
+  description?: string;
 }
 
-const { class: pageClass } = Astro.props;
+const { class: pageClass, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -24,20 +25,31 @@ const { class: pageClass } = Astro.props;
     <title>{ThemeConfig.site.title}</title>
     <link rel="icon" href={ThemeConfig.site.favicon} />
     <meta name="generator" content={Astro.generator} />
-    <link
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content={description === "" || !description
+        ? SiteConfig.description
+        : description}
+    />
+    <!-- <link
       rel="stylesheet"
       href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css"
-    />
+    /> -->
+    {
+      SiteConfig.markdownMath && (
+        <link
+          rel="stylesheet"
+          href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css"
+        />
+      )
+    }
     <HeadInsert />
     <slot name="head-end" />
   </head>
   <body class={pageClass} style="overflow: hidden;">
     <Loading client:only />
-    <div id="main-container">
+    <div id="main-container" style="display: none;">
       <Header />
       <slot />
       <Footer />

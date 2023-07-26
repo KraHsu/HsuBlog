@@ -1,7 +1,7 @@
 {
   "name": "hsu-blog",
   "description": "A beautiful, customized, personal blog theme for Astro",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "homepage": "https://github.com/charles-hsuz/HsuBlog#readme",
   "private": false,
   "type": "module",
@@ -11,14 +11,17 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "new": "ts-node ./hsublog-cil.ts new",
-    "abbr": "ts-node ./hsublog-cil.ts abbr",
-    "newpage": "ts-node ./hsublog-cil.ts newPage",
-    "help": "ts-node ./hsublog-cil.ts help"
+    "new": "ts-node ./hsublog-cli.ts new",
+    "abbr": "ts-node ./hsublog-cli.ts abbr",
+    "newpage": "ts-node ./hsublog-cli.ts newPage",
+    "help": "ts-node ./hsublog-cli.ts help",
+    "pu": "ts-node ./pu.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/rss": "^2.4.3",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "astro": "^2.8.3",
     "fuse.js": "^6.6.2",
     "glob": "^10.3.3",

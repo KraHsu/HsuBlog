@@ -17,6 +17,7 @@ const endLoading = async () => {
   // 显示正常页面
   loadingElement.style.opacity = "0";
   document.body.style.overflow = "";
+  mainContent.style.display = "";
 
   await sleep(1000);
   loadingElement.remove();
@@ -24,6 +25,9 @@ const endLoading = async () => {
 
 // 为完成加载时提供假进度
 onMounted(async () => {
+  if (document.readyState === "complete" && loading.value) {
+    endLoading();
+  }
   await sleep(100);
   if (loading.value) wid.value = 20;
 
@@ -39,9 +43,8 @@ onMounted(async () => {
 
 // 完成加载时一步到位
 document.onreadystatechange = async () => {
-  // 当文档完全加载完成
-  if (document.readyState === "complete") {
-    if (loading.value) endLoading();
+  if (document.readyState === "complete" && loading.value) {
+    endLoading();
   }
 };
 </script>

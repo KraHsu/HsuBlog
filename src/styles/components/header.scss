@@ -149,6 +149,8 @@
 
     .menu-item-link,
     .menu-child-link {
+      cursor: pointer;
+
       text-decoration: none;
 
       @include nav-flex();
@@ -274,10 +276,11 @@
     }
 
     .menu-button-link {
+      cursor: pointer;
+
       transition: 0.2s;
 
       text-decoration: none;
-
       .menu-button-icon {
         width: var(--header-button-icon-size);
 

@@ -1,5 +1,10 @@
 import { Icons } from "@comp/icons/icon";
 import { SiteConfig } from "./site_config";
+// import { faStar } from "@fortawesome/free-solid-svg-icons";
+// import { library, icon } from "@fortawesome/fontawesome-svg-core";
+
+// library.add(faStar);
+// const starIcon = icon({ prefix: "fas", iconName: "star" });
 
 const today = new Date();
 
@@ -24,23 +29,23 @@ export const ThemeConfig: Configs = {
         name: "主页",
         customClass: "home",
         link: "/",
-        icon: Icons.HomeIcon,
+        icon: "local:solid.house",
       },
       {
         name: "博客",
         customClass: "articles",
-        icon: Icons.PenIcon,
+        icon: "local:solid.pen-fancy",
         children: [
           {
             name: "分类",
             customClass: "categories",
-            icon: Icons.HardDriverIcon,
+            icon: "local:solid.hard-drive",
             link: "/categories",
           },
           {
             name: "标签",
             customClass: "tags",
-            icon: Icons.TagsIcon,
+            icon: "local:solid.tags",
             link: "/tags",
           },
         ],
@@ -53,7 +58,7 @@ export const ThemeConfig: Configs = {
           {
             name: "友链",
             customClass: "friends",
-            icon: Icons.LinkIcon,
+            icon: "local:solid.link",
             link: "./friends",
           },
         ],
@@ -62,14 +67,15 @@ export const ThemeConfig: Configs = {
         name: "关于",
         customClass: "about",
         link: "/about",
-        icon: Icons.PaperPlaneIcon,
+        icon: "local:solid.paper-plane",
       },
     ],
     buttons: [
       {
-        icon: Icons.HomeIcon,
+        icon: "local:solid.house",
         link: "",
         customClass: "",
+        title: "返回主页",
       },
     ],
     functions: {
@@ -80,28 +86,32 @@ export const ThemeConfig: Configs = {
   },
   aside: {
     authorInfo: {
-      avatar: "/avatar.jpg",
+      avatar: "/avatar.avif",
       description: "一个前端开发者，退役OIer，Robomaster菜鸟",
       socialMedias: [
         {
           link: "https://github.com/charles-hsuz",
           customClass: "github",
-          icon: Icons.GitHub,
+          icon: "local:brands.github",
+          title: "github",
         },
         {
           link: "mailto:charles_hus@qq.com",
           customClass: "mail-qq",
-          icon: Icons.Mail,
+          icon: "local:solid.envelope",
+          title: "QQmail",
         },
         {
           link: "https://space.bilibili.com/86698256",
           customClass: "bilibili",
-          icon: Icons.Bilibili,
+          icon: "local:brands.bilibili",
+          title: "social-bili",
         },
         {
           link: "https://blog.csdn.net/CharlesHsuu",
           customClass: "csdn",
-          icon: Icons.C,
+          icon: "local:solid.c",
+          title: "social-csdn",
         },
       ],
     },
@@ -111,13 +121,14 @@ export const ThemeConfig: Configs = {
         "新主题试验中~ 欢迎各位[找茬](https://github.com/KraHsu/HsuBlog/issues)~",
     },
     siteInfo: {
-      busuanzi: true,
+      busuanzi: false,
       totalWordCounts: true,
       totalPostCounts: true,
     },
     customCards: [
       {
-        icon: `<i class="fa-solid fa-star"></i>`,
+        // icon: `<i class="fa-solid fa-star"></i>`,
+        icon: "local:solid.star",
         title: "推荐文章",
         content: "这里是自定义内容部分<br>啥都可以放",
       },
@@ -131,10 +142,10 @@ export const ThemeConfig: Configs = {
     // copyright: `&copy; 2022-{{const today = new Date();return today.getFullYear();}} By [枢衡KraHsu](/about)`,
   },
   homePage: {
-    heroShoot: "/heroimg.webp",
+    heroShoot: "/heroimg.jpg",
     heroTitle: "KraHsu's Blog",
     heroDescription: "A beautiful, customized, personal blog theme for Astro",
-    defaultCover: "/heroimg.webp",
+    defaultCover: "/heroimg.jpg",
     paginationSize: 10,
     aside: {
       comps: ["AuthorInfo"],

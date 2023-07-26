@@ -1,5 +1,6 @@
 ---
 import { utils } from "@utils/utils";
+import icons from "./icons.json";
 
 interface Props {
   Icon: any;
@@ -8,6 +9,7 @@ interface Props {
 
 const { Icon, class: wrapClass } = Astro.props;
 const t = typeof Icon;
+let icon: any;
 var flag: number = -1;
 if (t === "function") {
   flag = 0;
@@ -20,6 +22,14 @@ if (t === "function") {
     flag = 2;
   } else if (Icon.substring(0, 2) === "fa") {
     flag = 3;
+  } else if (Icon.substring(0, 6) === "local:") {
+    flag = 4;
+    let [family, name] = Icon.slice(6).split(".");
+    icon =
+      (icons as any)[name].svg[family].raw.replaceAll(
+        "<path",
+        "<path fill='currentColor' "
+      ) || console.error(`${Icon} not found!`);
   }
 }
 ---
@@ -37,6 +47,8 @@ if (t === "function") {
             return <img src={Icon} alt="" />;
           case 3:
             return <i class={Icon} />;
+          case 4:
+            return <Fragment set:html={icon} />;
         }
       }}
       <slot />

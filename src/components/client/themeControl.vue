@@ -29,7 +29,7 @@ const toggleSvg = () => {
 
 <template>
   <div class="menu-button theme-control">
-    <a @click="toggleSvg" href="javascript:void(0);" class="menu-button-link">
+    <div @click="toggleSvg" class="menu-button-link" title="changeMode">
       <div class="menu-button-icon">
         <svg
           class="light"
@@ -54,7 +54,7 @@ const toggleSvg = () => {
           />
         </svg>
       </div>
-    </a>
+    </div>
   </div>
 </template>
 
