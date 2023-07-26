@@ -1,0 +1,17 @@
+@mixin nav-flex() {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+@mixin card-style() {
+  transition: 0.3s;
+
+  box-shadow: var(--card-shadow);
+
+  &:hover {
+    box-shadow: var(--card-tiny-shadow);
+  }
+}

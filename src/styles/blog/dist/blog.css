@@ -1,0 +1,59 @@
+.post-header {
+  width: 100%;
+  padding-top: calc(var(--header-nav-height) + 2rem);
+  font-family: var(--heading-font-family);
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--theme-color), var(--body-background-color));
+}
+.post-header .post-header-waves-area {
+  position: relative;
+  bottom: 0;
+  margin-top: 2rem;
+  margin-bottom: -10px;
+}
+.post-header .post-info .post-title {
+  font-size: 50px;
+  color: var(--font-white-black);
+}
+.post-header .post-info .post-metas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.post-header .post-info .post-metas .post-meta {
+  display: flex;
+  margin: 0.3rem 0;
+}
+.post-header .post-info .post-metas .post-meta .meta-icon {
+  font-size: 18px;
+  margin: 0 0.3rem;
+  color: var(--font-white-black);
+}
+.post-container {
+  margin-top: 2rem;
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+}
+.post-container .post-main {
+  margin: 1rem 1rem;
+  border-radius: 15px;
+  background: white;
+}
+.post-container .post-aside {
+  border-radius: 15px;
+}
+.post-container .post-main {
+  flex: 4;
+  order: 2;
+  padding: 1rem 2rem;
+  @card-style ();
+}
+.post-container .post-aside {
+  flex: 1;
+  order: 1;
+}

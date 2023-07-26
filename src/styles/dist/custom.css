@@ -1,0 +1,10 @@
+#site-header .menu-items .menu-item.mine .menu-item-icon {
+  width: 20px;
+}
+#site-header .menu-items .menu-child.equipment .menu-child-icon, #site-header .menu-items .menu-child.friends .menu-child-icon {
+  width: 22px;
+}
+
+.social-media.csdn .social-icon {
+  width: 26px !important;
+}

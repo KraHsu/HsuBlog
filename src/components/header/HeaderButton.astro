@@ -1,0 +1,51 @@
+---
+import { ThemeConfig } from "@src/theme_config";
+import GetIcon from "@comp/icons/getIcon.astro";
+
+import ThemeControl from "@comp/client/themeControl.vue";
+import ToTop from "@comp/icons/toTop.astro";
+
+const buttons: Array<ButtonItem> = ThemeConfig.header.buttons;
+const funcs: HeaderFunc = ThemeConfig.header.functions;
+---
+
+<Fragment>
+  {
+    buttons.map((button) => (
+      <div class:list={["menu-button", button.customClass]}>
+        <a
+          href={button.link || "javascript: void(0);"}
+          class="menu-button-link"
+        >
+          <GetIcon Icon={button.icon} class="menu-button-icon" />
+        </a>
+      </div>
+    ))
+  }
+  {funcs.themeControl && <ThemeControl client:only />}
+  {
+    funcs.pagePercent && (
+      <Fragment>
+        <div id="menu-totop" class="menu-button percent">
+          <a
+            onclick="
+            hsu.scrollToDestination(0, 500)
+            "
+            class="menu-button-link"
+          >
+            <div id="percent" class="menu-button-icon">
+              0
+            </div>
+            <div id="totop" class="menu-button-icon">
+              <ToTop />
+            </div>
+          </a>
+        </div>
+        <script is:inline>
+          window.addEventListener("load", event =>
+          {(window.onscroll = hsu.calculateScrollPercentage)})
+        </script>
+      </Fragment>
+    )
+  }
+</Fragment>

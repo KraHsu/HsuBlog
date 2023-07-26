@@ -1,0 +1,32 @@
+{
+  "ts-node": {
+    "esm": true
+  },
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "paths": {
+      "@comp/*": [
+        "src/components/*"
+      ],
+      "@ass/*": [
+        "src/assets/*"
+      ],
+      "@style/*": [
+        "src/styles/*"
+      ],
+      "@src/*": [
+        "src/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@layout/*": [
+        "src/layouts/*"
+      ]
+    }
+  }
+}

@@ -1,0 +1,46 @@
+---
+import HomeLayout from "@src/layouts/HomeLayout.astro";
+import PostsList from "@comp/postlist/postsList.astro";
+import Pagination from "@comp/postlist/pagination.astro";
+import { ThemeConfig } from "@src/theme_config";
+
+import { utils } from "@src/utils/utils";
+import { CollectionEntry, getCollection } from "astro:content";
+export async function getStaticPaths({ paginate }: any) {
+  const posts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
+    (a, b) => utils.compareDates(a.data.pubDate, b.data.pubDate)
+  );
+  return paginate(posts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+---
+
+<HomeLayout>
+  {
+    ThemeConfig.homePage.heroShoot && (
+      <Fragment slot="beforeContainer">
+        <div class="hero-shoot">
+          <div
+            class="hero-img"
+            style={`background: url(${ThemeConfig.homePage.heroShoot}) center/cover no-repeat;`}
+          />
+          <h1 class="hero-title">{ThemeConfig.homePage.heroTitle}</h1>
+          <p class="hero-desc">{ThemeConfig.homePage.heroDescription}</p>
+        </div>
+      </Fragment>
+    )
+  }
+  <Fragment slot="inContainer">
+    <PostsList posts={page.data} />
+    {
+      page.lastPage > 1 && (
+        <Pagination
+          baseurl="/"
+          pageSize={page.lastPage}
+          activePage={page.currentPage}
+        />
+      )
+    }
+  </Fragment>
+</HomeLayout>

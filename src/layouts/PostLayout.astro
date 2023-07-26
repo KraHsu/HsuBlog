@@ -1,0 +1,58 @@
+---
+import "@style/blog/index.scss";
+import BaseLayout from "@layout/BaseLayout.astro";
+import BlogToc from "@comp/aside/blogToc.astro";
+import Aside from "@comp/aside/aside.astro";
+import PostComment from "@comp/postComment.astro";
+import type { CollectionEntry } from "astro:content";
+import { ThemeConfig } from "@src/theme_config";
+
+interface Props {
+  postData?: CollectionEntry<"blog">["data"];
+  toc?: {
+    level: string;
+    id: string;
+    value: string;
+  }[];
+  useComments?: boolean;
+}
+
+const { toc, useComments = true } = Astro.props;
+---
+
+<BaseLayout class="post-page">
+  <Fragment slot="head-end">
+    <script
+      is:inline
+      src="https://cdn.staticfile.org/fancyapps-ui/5.0.20/fancybox/fancybox.umd.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/fancyapps-ui/5.0.20/fancybox/fancybox.min.css"
+    />
+  </Fragment>
+  <slot name="post-hero" />
+  <article class="post-container">
+    <main class="post-main">
+      <slot />
+      {useComments && <PostComment />}
+    </main>
+    <Aside
+      comps={ThemeConfig.postPage.aside.comps}
+      stickyComps={ThemeConfig.postPage.aside.stickyComps}
+      class="post-aside"
+    >
+      {toc && <BlogToc toc={toc} />}
+    </Aside>
+  </article>
+  <Fragment slot="body-end">
+    <script is:inline>
+      Fancybox.bind("[data-fancybox]", {
+        closeButton: true,
+        Thumbs: {
+          type: "modern",
+        },
+      });
+    </script>
+  </Fragment>
+</BaseLayout>

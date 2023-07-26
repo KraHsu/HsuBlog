@@ -1,0 +1,26 @@
+---
+import Announcement from "./announcement.astro";
+import AuthorInfo from "./authorInfo.astro";
+import BlogToc from "./blogToc.astro";
+import SiteInfo from "./siteInfo.astro";
+
+interface Props {
+  comps?: AsideComponents[];
+}
+
+const { comps } = Astro.props;
+
+const compMap = new Map<AsideComponents, any>([
+  ["Announcement", Announcement],
+  ["AuthorInfo", AuthorInfo],
+  ["BlogToc", BlogToc],
+  ["SiteInfo", SiteInfo],
+]);
+---
+
+{
+  comps?.map((comp) => {
+    const Item: any = compMap.get(comp as AsideComponents);
+    return <Item />;
+  })
+}

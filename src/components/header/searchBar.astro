@@ -1,0 +1,21 @@
+---
+import GetIcon from "@comp/icons/getIcon.astro";
+import Searchicon from "@comp/icons/searchicon.astro";
+---
+
+<div id="search-bar" onclick="hsu.opensearch()">
+  <div class="search-box">
+    <GetIcon Icon={Searchicon} class="search-icon" />
+    <div class="search-hotkey">
+      搜索
+      <kbd>Alt K</kbd>
+    </div>
+  </div>
+</div>
+<script is:inline>
+window.addEventListener("keydown", function (event) {
+  if (event.altKey && event.key === "k") {
+    hsu.opensearch();
+  }
+});
+</script>

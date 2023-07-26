@@ -1,0 +1,111 @@
+[data-theme="dark"]:root {
+  --astro-code-color-background: #1f2430;
+
+  --astro-code-color-text: #cccac2;
+
+  --astro-code-token-constant: #dfbfff;
+
+  --astro-code-token-string: #d5ff80;
+
+  --astro-code-token-comment: #b8cfe6;
+
+  --astro-code-token-keyword: #ffad66;
+
+  --astro-code-token-parameter: #695380;
+
+  --astro-code-token-function: #ffcb6f;
+
+  --astro-code-token-string-expression: #5ccfe6;
+
+  --astro-code-token-punctuation: #cccac2;
+
+  --astro-code-token-link: #87d96c;
+
+  --astro-code-color-ansi-black: #000000;
+
+  --astro-code-color-ansi-black-dim: #00000080;
+
+  --astro-code-color-ansi-red: #bb0000;
+
+  --astro-code-color-ansi-red-dim: #bb000080;
+
+  --astro-code-color-ansi-green: #00bb00;
+
+  --astro-code-color-ansi-green-dim: #00bb0080;
+
+  --astro-code-color-ansi-yellow: #bbbb00;
+
+  --astro-code-color-ansi-yellow-dim: #bbbb0080;
+
+  --astro-code-color-ansi-blue: #0000bb;
+
+  --astro-code-color-ansi-blue-dim: #0000bb80;
+
+  --astro-code-color-ansi-magenta: #ff00ff;
+
+  --astro-code-color-ansi-magenta-dim: #ff00ff80;
+
+  --astro-code-color-ansi-cyan: #00bbbb;
+
+  --astro-code-color-ansi-cyan-dim: #00bbbb80;
+
+  --astro-code-color-ansi-white: #eeeeee;
+
+  --astro-code-color-ansi-white-dim: #eeeeee80;
+
+  --astro-code-color-ansi-bright-black: #555555;
+
+  --astro-code-color-ansi-bright-black-dim: #55555580;
+
+  --astro-code-color-ansi-bright-red: #ff5555;
+
+  --astro-code-color-ansi-bright-red-dim: #ff555580;
+
+  --astro-code-color-ansi-bright-green: #00ff00;
+
+  --astro-code-color-ansi-bright-green-dim: #00ff0080;
+
+  --astro-code-color-ansi-bright-yellow: #ffff55;
+
+  --astro-code-color-ansi-bright-yellow-dim: #ffff5580;
+
+  --astro-code-color-ansi-bright-blue: #5555ff;
+
+  --astro-code-color-ansi-bright-blue-dim: #5555ff80;
+
+  --astro-code-color-ansi-bright-magenta: #ff55ff;
+
+  --astro-code-color-ansi-bright-magenta-dim: #ff55ff80;
+
+  --astro-code-color-ansi-bright-cyan: #55ffff;
+
+  --astro-code-color-ansi-bright-cyan-dim: #55ffff80;
+
+  --astro-code-color-ansi-bright-white: #ffffff;
+
+  --astro-code-color-ansi-bright-white-dim: #ffffff80;
+}
+
+[data-theme="light"]:root {
+  --astro-code-color-background: #fdfdfd;
+
+  --astro-code-color-text: #8a9199;
+
+  --astro-code-token-constant: #a37acc;
+
+  --astro-code-token-string: #86b300;
+
+  --astro-code-token-comment: #787b8099;
+
+  --astro-code-token-keyword: #fa8d3e;
+
+  --astro-code-token-parameter: #9f40ffcc;
+
+  --astro-code-token-function: #f2ae49;
+
+  --astro-code-token-string-expression: #55b4d4;
+
+  --astro-code-token-punctuation: #5c6166;
+
+  --astro-code-token-link: #6cbf43;
+}

@@ -1,0 +1,25 @@
+---
+import "@style/components/main.scss";
+import BaseLayout from "./BaseLayout.astro";
+import Aside from "@comp/aside/aside.astro";
+import { ThemeConfig } from "@src/theme_config";
+interface Props {
+  asideDir?: "left" | "right" | false;
+}
+
+const { asideDir } = Astro.props;
+---
+
+<BaseLayout class="home">
+  <slot name="beforeContainer" />
+  <article id="inner-container">
+    <Aside
+      direct={asideDir !== false ? ThemeConfig.homePage.aside.direct : false}
+      comps={ThemeConfig.homePage.aside.comps}
+      stickyComps={ThemeConfig.homePage.aside.stickyComps}
+    />
+    <main class="main-content">
+      <slot name="inContainer" />
+    </main>
+  </article>
+</BaseLayout>

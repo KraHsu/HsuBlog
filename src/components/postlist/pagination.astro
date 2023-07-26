@@ -1,0 +1,40 @@
+---
+import "@style/components/pagination.scss";
+interface Props {
+  pageSize: number;
+  activePage: number;
+  baseurl: string;
+}
+
+const { pageSize, activePage, baseurl } = Astro.props;
+---
+
+<nav class="pagination">
+  <div class:list={["pagination-pre", { "disable": activePage === 1 }]}>
+    <a
+      class="pagination-link"
+      href={`${baseurl}${activePage === 2 ? "" : activePage - 1}`}
+    >
+      <span>上一页</span>
+    </a>
+  </div>
+  <div class:list={["pagination-next", { "disable": activePage === pageSize }]}>
+    <a class="pagination-link" href={`${baseurl}${activePage + 1}`}>
+      <span>下一页</span>
+    </a>
+  </div>
+  <ul class="pagination-list">
+    {
+      Array.from({ length: pageSize }, (_, i) => i + 1).map((num) => (
+        <li>
+          <a
+            href={`${baseurl}${num === 1 ? "" : num}`}
+            class:list={[{ "active": num === activePage }, "pagination-number"]}
+          >
+            <span>{num}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

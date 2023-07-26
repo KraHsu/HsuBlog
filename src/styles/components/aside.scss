@@ -1,0 +1,174 @@
+@import "../mixin.scss";
+.aside-content {
+  user-select: none;
+
+  color: var(--font-black-white);
+
+  font-family: var(--heading-font-family-zh);
+
+  .sticky-container {
+    position: sticky;
+
+    top: calc(var(--header-nav-height) + 1rem);
+  }
+
+  .aside-card {
+    width: 100%;
+
+    height: fit-content;
+
+    margin-bottom: 1rem;
+
+    border-radius: 15px;
+
+    background: var(--card-background);
+
+    @include card-style();
+
+    .aside-card-link {
+      color: var(--aside-link-color);
+      text-decoration: none;
+      margin-left: 2px;
+      margin-right: 2px;
+    }
+  }
+}
+
+.author-info-card {
+  padding: 1rem 0.5rem;
+
+  .author-info {
+    display: flex;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    margin: 0 auto 1rem;
+
+    .author-avatar {
+      width: 128px;
+
+      height: 128px;
+
+      margin-bottom: 1rem;
+
+      border-radius: 50%;
+    }
+
+    .author-name {
+      margin: 0 auto 1rem;
+
+      font-size: 22px;
+    }
+
+    .author-desc {
+      width: 100%;
+
+      text-align: center;
+
+      font-size: 16px;
+    }
+  }
+
+  .blog-counts {
+    display: flex;
+
+    align-items: center;
+
+    width: 85%;
+
+    margin: 0 auto 1rem;
+
+    .blog-count {
+      display: block;
+
+      flex: 1;
+
+      cursor: pointer;
+
+      .count {
+        text-align: center;
+      }
+
+      .tag {
+        text-align: center;
+      }
+    }
+  }
+
+  .social-medias {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    height: 36px;
+
+    .social-media {
+      margin: 0 0.3rem;
+
+      .social-link {
+        .social-icon {
+          width: 34px;
+
+          height: 34px;
+
+          padding: 4px;
+
+          transition: 0.3s;
+
+          color: var(--button-background-black);
+
+          border-radius: 5px;
+        }
+
+        &:hover .social-icon {
+          animation: var(--shak-hard-animation);
+        }
+      }
+    }
+  }
+}
+
+.aside-card {
+  padding: 0.5rem 1rem;
+
+  .aside-card-headline {
+    display: flex;
+
+    margin-bottom: 0.2rem;
+
+    font-size: var(--header-button-icon-size);
+
+    .aside-card-title {
+      margin-left: 5px;
+
+      font-weight: 600;
+    }
+
+    .aside-card-icon {
+      width: var(--header-button-icon-size);
+
+      height: var(--header-button-icon-size);
+    }
+  }
+  .aside-card-content {
+    margin-top: 5px;
+  }
+}
+
+.announcement-headline {
+  &:hover .announcement-icon {
+    animation: var(--shak-hard-animation);
+  }
+}
+
+.siteinfo-card {
+  .siteinfo-item {
+    display: flex;
+
+    justify-content: space-between;
+  }
+}

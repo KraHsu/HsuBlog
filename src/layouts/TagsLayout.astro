@@ -1,0 +1,43 @@
+---
+import PostsList from "@comp/postlist/postsList.astro";
+import Pagination from "@comp/postlist/pagination.astro";
+import HomeLayout from "@layout/HomeLayout.astro";
+import HeroWave from "@comp/header/heroWave.astro";
+import { ThemeConfig } from "@src/theme_config";
+interface Props {
+  page?: any;
+  baseurl: string;
+  tags: string[];
+  activeTag?: string;
+}
+
+const { tags, baseurl, activeTag, page } = Astro.props;
+---
+
+<HomeLayout asideDir={page ? "right" : false}>
+  <HeroWave slot="beforeContainer">
+    <div class="tags-wrap">
+      <div class:list={["tags", { "floating": ThemeConfig.tagsPage.floating }]}>
+        {
+          tags.map((tag) => (
+            <a class="tag" href={`${baseurl}${tag}`}>
+              <span class="tag-text">{tag}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </HeroWave>
+  <Fragment slot="inContainer">
+    {page && <PostsList posts={page.data} />}
+    {
+      page && page.lastPage > 1 && (
+        <Pagination
+          baseurl="/"
+          pageSize={page.lastPage}
+          activePage={page.currentPage}
+        />
+      )
+    }
+  </Fragment>
+</HomeLayout>

@@ -1,0 +1,94 @@
+@use "sass:math";
+
+@keyframes blink {
+  0%,
+  100% {
+    background: transparent;
+  }
+  50% {
+    background: yellow;
+  }
+}
+
+$keyframes-count: 20; // 创建20个关键帧
+
+@keyframes shake-hard {
+  @for $i from 1 through $keyframes-count {
+    #{percentage(math.div($i, $keyframes-count))} {
+      transform: translateX(#{random(8) - 4}px)
+        translateY(#{random(8) - 4}px)
+        rotate(#{random(20) - 10}deg);
+    }
+  }
+}
+
+@keyframes darken {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(0.8);
+  }
+}
+
+@keyframes appear_blur {
+  0% {
+    opacity: 0;
+
+    backdrop-filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes appear_rise {
+  0% {
+    transform: translateY(60px);
+
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+
+    opacity: 1;
+  }
+}
+
+@keyframes disappear_blur {
+  0% {
+    opacity: 1;
+
+    backdrop-filter: blur(10px);
+  }
+  100% {
+    opacity: 0;
+
+    backdrop-filter: blur(0);
+  }
+}
+
+@keyframes disappear_fall {
+  0% {
+    transform: translateY(0);
+
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(60px);
+
+    opacity: 0;
+  }
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}

@@ -1,0 +1,20 @@
+---
+import "@style/tags/tags.scss";
+import TagsLayout from "@src/layouts/TagsLayout.astro";
+import { getCollection, CollectionEntry } from "astro:content";
+import { utils } from "@src/utils/utils";
+
+const allPosts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
+  (a, b) => utils.compareDates(a.data.pubDate, b.data.pubDate)
+);
+
+const categories: string[] = [
+  ...new Set(
+    allPosts
+      .flatMap((post) => [post.data.category || ""])
+      .filter((category) => typeof category === "string" && category !== "")
+  ),
+];
+---
+
+<TagsLayout tags={categories} baseurl="/categories/" />

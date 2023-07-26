@@ -1,0 +1,60 @@
+#main-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+#main-container .hero-shoot {
+  position: relative;
+  top: var(--header-nav-height);
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100vh - var(--header-nav-height));
+  margin-bottom: 1rem;
+  font-family: var(--heading-font-family);
+}
+#main-container .hero-shoot .hero-img {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+}
+#main-container .hero-shoot .hero-img::after {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  content: " ";
+  opacity: 0.2;
+  background: var(--light-grey);
+  inset: 0;
+}
+#main-container .hero-shoot .hero-title {
+  position: relative;
+  z-index: 3;
+  display: block;
+  margin: calc(50vh - 80px - var(--header-nav-height) - 2rem) auto 2rem;
+  background: linear-gradient(315deg, #ff94d6 25%, #ffa238);
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-size: 80px;
+  -webkit-text-fill-color: transparent;
+}
+#main-container .hero-shoot .hero-desc {
+  z-index: 3;
+  margin: 0 auto;
+  color: var(--font-white);
+  font-size: 40px;
+}
+
+#inner-container {
+  display: flex;
+  max-width: 1350px;
+  padding: 4.2rem 1.5rem 0;
+}
+#inner-container .main-content {
+  width: 930px;
+  margin: 0 0.5rem;
+}
+#inner-container .aside-content {
+  width: 300px;
+  margin: 0 0.5rem;
+}

@@ -1,0 +1,58 @@
+---
+import { ThemeConfig } from "@src/theme_config";
+import { utils } from "@utils/utils";
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  posts: CollectionEntry<"blog">[];
+}
+const { posts } = Astro.props;
+---
+
+<div class="posts-list">
+  {
+    posts.map((post) => (
+      <div
+        class="main-card post-card"
+        onclick={`hsu.goToUrl("/blog/${post.data.abbrlink || post.slug}/")`}
+      >
+        <div class="post-card-cover">
+          <img
+            src={post.data.cover || ThemeConfig.homePage.defaultCover}
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="post-card-info">
+          <header class="post-card-header">
+            <a
+              class="post-card-category"
+              href={`/categories/${post.data.category}`}
+            >
+              {post.data.category}
+            </a>
+          </header>
+          <div class="post-card-title">{post.data.title}</div>
+          <div class="post-card-desc">{post.data.description}</div>
+          <footer class="post-card-footer">
+            <ul class="post-card-tags">
+              {() => {
+                if (post.data.tags) {
+                  return post.data.tags.map((tag) => (
+                    <li class="post-card-tag">
+                      <a href={`/tags/${tag}`}>{tag}</a>
+                    </li>
+                  ));
+                }
+              }}
+            </ul>
+            <div class="post-card-update">
+              <a href="/timeline">
+                {post.data.updatedDate || post.data.pubDate}
+              </a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    ))
+  }
+</div>

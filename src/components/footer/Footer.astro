@@ -1,0 +1,29 @@
+---
+import "@style/components/footer.scss";
+import { ThemeConfig } from "@src/theme_config";
+import { utils } from "@utils/utils";
+
+const copyright = utils.replaceLink(
+  utils.executeEmbeddedScripts(ThemeConfig.footer.copyright),
+  "footer-link"
+);
+const footerText = utils.replaceLink(
+  utils.executeEmbeddedScripts(ThemeConfig.footer.text),
+  "footer-link"
+);
+---
+
+<footer id="site-footer">
+  <div class="footer-container">
+    <div class="copyright">
+      <Fragment set:html={copyright} />
+    </div>
+    <div class="astro-build">
+      由 <a class="footer-link" href="https://astro.build">{Astro.generator}</a>
+      构建
+    </div>
+    <div class="footer-info">
+      <Fragment set:html={footerText} />
+    </div>
+  </div>
+</footer>

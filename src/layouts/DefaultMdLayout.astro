@@ -1,0 +1,40 @@
+---
+import HeroWave from "@comp/header/heroWave.astro";
+import BlogPost from "@src/layouts/PostLayout.astro";
+interface FrontMatter {
+  title: string;
+  description?: string;
+  heroColor?: string;
+  useComments?: boolean;
+  useToc?: boolean;
+  toc?: {
+    level: string;
+    id: string;
+    value: string;
+  }[];
+  file: string;
+  url: string;
+}
+
+interface Props {
+  frontmatter: FrontMatter;
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<BlogPost
+  useComments={frontmatter.useComments}
+  toc={frontmatter.useToc ? frontmatter.toc : undefined}
+>
+  <HeroWave
+    class="post-header"
+    slot="post-hero"
+    heroColor={frontmatter.heroColor}
+  >
+    <div class="post-info">
+      <h1 class="post-title">{frontmatter.title}</h1>
+    </div>
+  </HeroWave>
+  <slot />
+</BlogPost>

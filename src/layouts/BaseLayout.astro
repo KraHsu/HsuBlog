@@ -1,0 +1,54 @@
+---
+import "@style/global.scss";
+import "@style/components/page-content.scss";
+import HeadInsert from "@comp/HeadInject.astro";
+import BodyInsert from "@comp/BodyInject.astro";
+import { ThemeConfig } from "@src/theme_config";
+import Header from "@comp/header/Header.astro";
+import Footer from "@comp/footer/Footer.astro";
+import Loading from "@comp/loading/loading.vue";
+import Search from "@comp/Search.astro";
+import Bubbles from "@comp/animation/bubbles.astro";
+import { SiteConfig } from "@src/site_config";
+interface Props {
+  class?: string;
+}
+
+const { class: pageClass } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{ThemeConfig.site.title}</title>
+    <link rel="icon" href={ThemeConfig.site.favicon} />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css"
+    />
+    <HeadInsert />
+    <slot name="head-end" />
+  </head>
+  <body class={pageClass} style="overflow: hidden;">
+    <Loading client:only />
+    <div id="main-container">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
+    <BodyInsert />
+    {SiteConfig.localSearch && <Search />}
+    {
+      ThemeConfig.site.backgroundBubbles !== false && (
+        <Bubbles bubbles={ThemeConfig.site.backgroundBubbles} />
+      )
+    }
+    <slot name="body-end" />
+  </body>
+</html>

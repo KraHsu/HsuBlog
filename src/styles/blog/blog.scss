@@ -1,0 +1,102 @@
+.post-header {
+  user-select: none;
+
+  font-family: var(--heading-font-family-zh);
+
+  .post-info {
+    .post-title {
+      transition: 0.3s ease;
+
+      color: var(--font-white-black);
+
+      font-size: 50px;
+    }
+
+    .post-metas {
+      display: flex;
+
+      align-items: center;
+
+      flex-direction: column;
+
+      .post-meta {
+        display: flex;
+
+        margin: 0.3rem 0;
+
+        .meta-icon {
+          margin: 0 0.3rem;
+
+          transition: 0.3s ease;
+
+          color: var(--font-white-black);
+
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+.post-container {
+  display: flex;
+
+  flex-grow: 1;
+
+  justify-content: center;
+
+  width: 100%;
+
+  margin-top: 2rem;
+
+  .post-main {
+    order: 2;
+
+    max-width: 1100px;
+
+    margin: 1rem 1rem;
+
+    padding: 1rem 2rem;
+
+    border-radius: 15px;
+
+    background: var(--card-background);
+
+    @include card-style();
+  }
+
+  .post-aside {
+    order: 1;
+  }
+}
+
+.post-comment {
+  margin-top: 1rem;
+  .comment-head {
+    display: flex;
+
+    align-items: center;
+
+    font-family: var(--heading-font-family-zh);
+
+    font-size: 30px;
+
+    .comment-icon {
+      margin-top: 4px;
+
+      margin-right: 5px;
+    }
+  }
+
+  .comment-wrap {
+    margin-top: 1rem;
+  }
+}
+
+[data-theme="dark"] {
+  .post-header {
+    animation: darken 0.3s linear;
+
+    filter: brightness(0.8);
+  }
+}

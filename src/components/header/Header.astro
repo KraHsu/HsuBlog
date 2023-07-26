@@ -1,0 +1,40 @@
+---
+import "@style/components/header.scss";
+import { ThemeConfig } from "@src/theme_config";
+import HeaderItem from "./HeaderItem.astro";
+import HeaderButton from "./HeaderButton.astro";
+import GetIcon from "@comp/icons/getIcon.astro";
+import SearchBar from "@comp/header/searchBar.astro";
+import { SiteConfig } from "@src/site_config";
+---
+
+<header id="site-header">
+  <nav class="header-menu">
+    <div class="nav-left header-nav">
+      {
+        ThemeConfig.header.functions.headerLogo && (
+          <GetIcon class="site-logo" Icon={ThemeConfig.site.logo} />
+        )
+      }
+      <h1
+        class="site-name"
+        style={`order: ${
+          ThemeConfig.header.functions.headerLogo === "left" ? 2 : 0
+        };`}
+      >
+        {ThemeConfig.site.title}
+      </h1>
+    </div>
+    <div class="nav-center header-nav">
+      <div class="menu-items">
+        <HeaderItem />
+      </div>
+    </div>
+    <div class="nav-right header-nav">
+      <div class="menu-buttons">
+        {SiteConfig.localSearch && <SearchBar />}
+        <HeaderButton />
+      </div>
+    </div>
+  </nav>
+</header>

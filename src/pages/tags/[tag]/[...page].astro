@@ -1,0 +1,36 @@
+---
+import "@style/tags/tags.scss";
+import TagsLayout from "@src/layouts/TagsLayout.astro";
+import { getCollection, CollectionEntry } from "astro:content";
+import { utils } from "@src/utils/utils";
+
+export async function getStaticPaths({ paginate }: any) {
+  const allPosts: CollectionEntry<"blog">[] = (
+    await getCollection("blog")
+  ).sort((a, b) => utils.compareDates(a.data.pubDate, b.data.pubDate));
+
+  const uniqueTags: string[] = [
+    ...new Set(
+      allPosts
+        .flatMap((post) => post.data.tags || [])
+        .filter((tag) => typeof tag === "string" && tag !== "")
+    ),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags?.includes(tag)
+    );
+    return paginate(filteredPosts, {
+      params: { tag: tag },
+      props: { posts: filteredPosts, tags: uniqueTags },
+      pageSize: 10,
+    });
+  });
+}
+
+const { tag } = Astro.params;
+const { page, tags } = Astro.props;
+---
+
+<TagsLayout page={page} tags={tags} activeTag={tag} baseurl="/tags/" />

@@ -1,0 +1,26 @@
+---
+interface Props {
+  toc: Array<{
+    level: string;
+    id: string;
+    value: string;
+  }>;
+}
+
+const { toc } = Astro.props;
+---
+
+<div class="card-toc aside-card">
+  <header class="card-toc-header">文章内容</header>
+  <ol class="toc">
+    {
+      toc.map((item) => (
+        <li class:list={["toc-item", `toc-level-${item.level}`]}>
+          <a href={`#${item.id}`} class="toc-link">
+            <span class="toc-text">{item.value}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</div>

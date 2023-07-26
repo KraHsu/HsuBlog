@@ -1,0 +1,16 @@
+---
+import { ThemeConfig as TC } from "@src/theme_config";
+---
+
+<Fragment>
+  <script src="/scripts/utils.js" type="text/javascript"></script>
+  {TC.head.map((item) => <Fragment set:html={item} />)}
+  {
+    TC.aside.siteInfo.busuanzi && (
+      <script
+        async
+        src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+      />
+    )
+  }
+</Fragment>

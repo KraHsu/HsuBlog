@@ -1,0 +1,25 @@
+---
+import { ThemeConfig } from "@src/theme_config";
+import { utils } from "@src/utils/utils";
+import GetIcon from "@comp/icons/getIcon.astro";
+const announcement: Announcement = ThemeConfig.aside.announcement;
+---
+
+<div class="announcement-card aside-card">
+  <div class="announcement-headline aside-card-headline">
+    <GetIcon
+      Icon="fa-solid fa-bullhorn"
+      class="announcement-icon aside-card-icon"
+    />
+    <div class="announcement-title aside-card-title">
+      {announcement.headline}
+    </div>
+  </div>
+  <div
+    class="announcement-content aside-card-content"
+    set:html={utils.replaceLink(
+      utils.executeEmbeddedScripts(announcement.content),
+      "aside-card-link"
+    )}
+  />
+</div>

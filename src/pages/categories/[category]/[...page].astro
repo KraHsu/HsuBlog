@@ -1,0 +1,41 @@
+---
+import "@style/tags/tags.scss";
+import TagsLayout from "@src/layouts/TagsLayout.astro";
+import { getCollection, CollectionEntry } from "astro:content";
+import { utils } from "@src/utils/utils";
+
+export async function getStaticPaths({ paginate }: any) {
+  const allPosts: CollectionEntry<"blog">[] = (
+    await getCollection("blog")
+  ).sort((a, b) => utils.compareDates(a.data.pubDate, b.data.pubDate));
+
+  const categories: string[] = [
+    ...new Set(
+      allPosts
+        .flatMap((post) => [post.data.category || ""])
+        .filter((category) => typeof category === "string" && category !== "")
+    ),
+  ];
+
+  return categories.map((category) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.category?.includes(category)
+    );
+    return paginate(filteredPosts, {
+      params: { category: category },
+      props: { posts: filteredPosts, categories: categories },
+      pageSize: 10,
+    });
+  });
+}
+
+const { category } = Astro.params;
+const { page, categories } = Astro.props;
+---
+
+<TagsLayout
+  page={page}
+  tags={categories}
+  activeTag={category}
+  baseurl="/categories/"
+/>

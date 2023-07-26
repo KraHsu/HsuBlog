@@ -1,0 +1,23 @@
+---
+import GetIcon from "@comp/icons/getIcon.astro";
+import { utils } from "@src/utils/utils";
+
+interface Props {
+  card: CustomCard;
+}
+const { card } = Astro.props;
+---
+
+<div class={`aside-card ${card.customClass}`}>
+  <div class={`aside-card-headline ${card.customClass}`}>
+    <GetIcon Icon={card.icon} class={`aside-card-icon ${card.customClass}`} />
+    <div class={`aside-card-title ${card.customClass}`}>{card.title}</div>
+  </div>
+  <div
+    class={`aside-card-content ${card.customClass}`}
+    set:html={utils.replaceLink(
+      utils.executeEmbeddedScripts(card.content),
+      ` ${card.customClass} aside-card-link`
+    )}
+  />
+</div>

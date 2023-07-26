@@ -1,0 +1,216 @@
+@import "../mixin.scss";
+.main-content {
+  user-select: none;
+
+  color: var(--font-black-white);
+
+  font-family: var(--heading-font-family-zh);
+
+  .main-card {
+    width: 100%;
+
+    height: fit-content;
+
+    margin-bottom: 1rem;
+
+    border-radius: 15px;
+
+    background: var(--card-background);
+
+    @include card-style();
+  }
+}
+
+.posts-list {
+  .post-card {
+    display: flex;
+
+    height: 214px;
+
+    cursor: pointer;
+
+    a {
+      text-decoration: none;
+    }
+
+    .post-card-cover {
+      display: flex;
+
+      overflow: hidden;
+
+      justify-content: center;
+
+      width: 420px;
+
+      height: 100%;
+
+      margin-right: 1rem;
+
+      transition: 0.3s ease-in-out;
+
+      border-radius: 15px 0 0 15px;
+
+      background: white;
+
+      img {
+        height: 100%;
+
+        transition: 0.3s ease-in-out;
+      }
+    }
+
+    &:hover {
+      .post-card-cover {
+        filter: brightness(0.8);
+
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .post-card-info {
+      display: flex;
+
+      flex: 6;
+
+      flex-direction: column;
+
+      margin: 2rem 0;
+
+      .post-card-header {
+        display: flex;
+
+        align-items: center;
+
+        flex: 1;
+
+        .post-card-category {
+          display: flex;
+
+          align-items: center;
+
+          transition: 0.3s;
+
+          color: var(--font-black-white);
+
+          &:hover {
+            color: var(--theme-color);
+          }
+
+          &::before {
+            margin-top: 2px;
+
+            margin-right: 2px;
+
+            content: "&";
+
+            opacity: 0.4;
+
+            color: var(--font-light-grey);
+
+            font-weight: 900;
+          }
+        }
+      }
+
+      .post-card-title {
+        flex: 1;
+
+        padding-right: 1rem;
+
+        padding-bottom: 0.2rem;
+
+        transition: 0.3s;
+
+        color: var(--font-black-white);
+
+        font-size: 24px;
+
+        font-weight: 600;
+
+        &:hover {
+          color: var(--theme-color);
+        }
+      }
+
+      .post-card-desc {
+        overflow: hidden;
+
+        flex: 2;
+
+        padding-right: 2rem;
+
+        word-break: break-all;
+
+        color: var(--font-black-white);
+
+        font-size: 18px;
+      }
+
+      .post-card-footer {
+        display: flex;
+
+        align-items: center;
+
+        flex: 1;
+
+        justify-content: space-between;
+
+        padding-right: 2.5rem;
+
+        .post-card-tags {
+          display: flex;
+
+          padding: 0;
+
+          .post-card-tag {
+            margin: 0 0.2rem;
+
+            a {
+              transition: 0.3s;
+
+              color: var(--font-black-white);
+
+              &::before {
+                margin-right: 2px;
+
+                content: "#";
+
+                opacity: 0.4;
+
+                color: var(--font-light-grey);
+
+                font-weight: 900;
+              }
+            }
+
+            &:hover a {
+              color: var(--theme-color);
+            }
+          }
+        }
+
+        .post-card-update {
+          a {
+            transition: 0.3s;
+
+            color: var(--font-black-white);
+          }
+
+          &:hover a {
+            color: var(--theme-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+[data-theme="dark"] .posts-list {
+  .post-card {
+    .post-card-cover {
+      filter: brightness(0.8);
+    }
+  }
+}

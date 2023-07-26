@@ -1,0 +1,62 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import BlogPost from "@src/layouts/PostLayout.astro";
+import HeroWave from "@comp/header/heroWave.astro";
+import GetIcon from "@comp/icons/getIcon.astro";
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.data.abbrlink || post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content, remarkPluginFrontmatter } = await post.render();
+---
+
+<BlogPost postData={post.data} toc={remarkPluginFrontmatter.toc}>
+  <HeroWave
+    class="post-header"
+    slot="post-hero"
+    heroColor={post.data.heroColor}
+  >
+    <div class="post-info">
+      <h1 class="post-title">{post.data.title}</h1>
+      <div class="post-metas">
+        <div class="post-meta post-meta-time">
+          <GetIcon
+            Icon="fa-solid fa-calendar-days"
+            class="publish-time meta-icon"
+          >
+            <span>发表于{post.data.pubDate}</span>
+          </GetIcon>
+          <GetIcon Icon="fa-solid fa-repeat" class="update-time meta-icon">
+            <span>
+              更新于{post.data.updatedDate || post.data.pubDate}
+            </span>
+          </GetIcon>
+          <GetIcon Icon="fa-solid fa-tags" class="category meta-icon">
+            <span>{post.data.category}</span>
+          </GetIcon>
+        </div>
+        <div class="post-meta post-meta-content">
+          <GetIcon Icon="fa-regular fa-clock" class="read-time meta-icon">
+            <span
+              >{
+                remarkPluginFrontmatter.minutesRead
+                  .replace("min", "分钟")
+                  .replace("read", "")
+              }</span
+            >
+          </GetIcon>
+          <GetIcon Icon="fa-solid fa-file-word" class="read-time meta-icon">
+            <span>{remarkPluginFrontmatter.numberOfWords} 字</span>
+          </GetIcon>
+        </div>
+      </div>
+    </div>
+  </HeroWave>
+  <Content />
+</BlogPost>

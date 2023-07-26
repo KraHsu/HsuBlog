@@ -1,0 +1,83 @@
+@import "../mixin.scss";
+.tags-wrap {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 300px;
+  .tags {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    width: 100%;
+
+    max-width: 800px;
+    .tag {
+      margin: 0.5rem;
+
+      padding: 5px 8px;
+
+      text-decoration: none;
+
+      color: var(--font-black-white);
+
+      border-radius: 10px;
+
+      background-color: var(--card-background);
+
+      font-size: 20px;
+
+      @include card-style();
+      &:hover {
+        transform: scale(1.2);
+
+        color: white;
+
+        background: var(--theme-color);
+        .tag-text {
+          &::before {
+            color: white;
+          }
+        }
+      }
+      .tag-text {
+        &::before {
+          margin-right: 3px;
+
+          content: "#";
+
+          transition: 0.3s ease;
+
+          color: var(--font-light-grey);
+        }
+      }
+    }
+
+    &.floating {
+      .tag {
+        animation: floating 7s ease-in-out infinite alternate;
+
+        &:nth-child(3n + 1) {
+          animation-delay: 0s;
+        }
+        &:nth-child(3n + 2) {
+          animation-delay: 2.334s;
+        }
+        &:nth-child(3n + 3) {
+          animation-delay: 4.667s;
+        }
+      }
+    }
+  }
+}
+#inner-container {
+  .main-content {
+  }
+}

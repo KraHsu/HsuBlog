@@ -1,0 +1,24 @@
+#hero-wave {
+  display: flex;
+
+  align-items: center;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  width: 100%;
+
+  padding-top: calc(var(--header-nav-height) + 2rem);
+
+  background: linear-gradient(#007aff, var(--body-background-color));
+  .hero-waves-area {
+    position: relative;
+
+    bottom: 0;
+
+    margin-top: 2rem;
+
+    margin-bottom: -10px;
+  }
+}

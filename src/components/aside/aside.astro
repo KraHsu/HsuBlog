@@ -1,0 +1,32 @@
+---
+import "@style/components/aside.scss";
+import AsideComps from "./asideComps.astro";
+import CustomCard from "./customCard.astro";
+import { ThemeConfig } from "@src/theme_config";
+interface Props {
+  class?: string;
+  comps?: AsideComponents[];
+  stickyComps?: AsideComponents[];
+  direct?: "left" | "right" | false;
+}
+
+const { class: className, comps, stickyComps, direct } = Astro.props;
+---
+
+{
+  direct !== false && (
+    <aside
+      class:list={["aside-content", className]}
+      style={`order: ${direct === "right" ? "2" : ""};`}
+    >
+      <AsideComps comps={comps} />
+      {ThemeConfig.aside.customCards.map((card) => (
+        <CustomCard card={card} />
+      ))}
+      <div class="sticky-container">
+        <AsideComps comps={stickyComps} />
+        <slot />
+      </div>
+    </aside>
+  )
+}

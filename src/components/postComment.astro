@@ -1,0 +1,61 @@
+---
+import GetIcon from "./icons/getIcon.astro";
+import { ThemeConfig } from "@src/theme_config";
+
+const { type, options } = ThemeConfig.comments;
+
+const script = () => {
+  let result = "";
+
+  switch (type) {
+    case "twikoo":
+      result = `twikoo.init({envId: "${options.envId}",el: "#tcomment",lang: "${options.lang}",});`;
+      break;
+    case "waline":
+      result = `import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';init({el: '#tcomment',serverURL: '${options.serverURL}',dark: 'html[data-theme="dark"]'});`;
+      break;
+    case "valine":
+      result = `new Valine({el: "#tcomment",appId: "${options.appId}",appKey: "${options.appKey}"});`;
+      break;
+  }
+  return result;
+};
+---
+
+<div class="post-comment">
+  <div class="comment-head">
+    <GetIcon Icon="fa-solid fa-comment" class="comment-icon" />
+    <span>评论</span>
+  </div>
+  <div class="comment-wrap">
+    <div id="tcomment"></div>
+  </div>
+</div>
+{
+  type === "twikoo" && (
+    <script
+      is:inline
+      src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"
+    />
+  )
+}
+{
+  type === "waline" && (
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@waline/client@v2/dist/waline.css"
+    />
+  )
+}
+{
+  type === "valine" && (
+    <Fragment>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/@waline/client@v2/dist/waline.css"
+      />
+      <script is:inline src="//unpkg.com/valine/dist/Valine.min.js" />
+    </Fragment>
+  )
+}
+{type !== false && <script type="module" is:raw set:html={script()} />}

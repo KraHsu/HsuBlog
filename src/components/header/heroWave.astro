@@ -1,0 +1,19 @@
+---
+import "@style/components/heroWave.scss";
+import Wave from "@comp/animation/wave.astro";
+interface Props {
+  heroColor?: string;
+  class?: string;
+}
+const { heroColor, class: customClass } = Astro.props;
+---
+
+<div
+  class:list={[customClass]}
+  id="hero-wave"
+  style={heroColor &&
+    `background: linear-gradient(${heroColor}, var(--body-background-color));`}
+>
+  <slot />
+  <Wave />
+</div>

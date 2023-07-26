@@ -1,0 +1,18 @@
+---
+---
+
+<script is:inline>
+hsu
+  .getJson("/scripts/mdata.json")
+  .then((mdata) => {
+    const wordCounts = document.querySelector("#word-counts");
+    const postCounts = document.querySelector("#post-counts");
+    if (wordCounts)
+      wordCounts.innerText = hsu.formatNumber(mdata.totalWordCounts);
+    if (postCounts)
+      postCounts.innerText = hsu.formatNumber(mdata.totalPostCounts);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+</script>

@@ -1,0 +1,82 @@
+---
+interface Props {
+  bubbles: number;
+}
+
+const { bubbles } = Astro.props;
+---
+
+<div class="area">
+  <ul class="circles">
+    {
+      () => {
+        let li = "";
+        for (let i = 0; i < bubbles; i++) {
+          li += "<li></li>";
+        }
+        return <Fragment set:html={li} />;
+      }
+    }
+  </ul>
+</div>
+
+<style lang="scss">
+  .area {
+    pointer-events: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 200;
+  }
+
+  .circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .circles :global(li) {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+  }
+
+  @for $i from 1 through 50 {
+    .circles :global(li:nth-child(#{$i})) {
+      left: random(110) - 5vw;
+      $size: random(150) + 10px;
+      width: $size;
+      height: $size;
+      animation-delay: random(20) + s;
+      animation-duration: random(10) + 5s;
+    }
+  }
+
+  :global([data-theme="light"]) .circles :global(li) {
+    background-color: rgba(146, 172, 233, 0.1);
+  }
+
+  @keyframes animate {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 10%;
+    }
+
+    100% {
+      transform: translateY(-120vh) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+    }
+  }
+</style>
