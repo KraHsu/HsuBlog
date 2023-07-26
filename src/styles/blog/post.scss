@@ -40,6 +40,8 @@
   }
 
   p {
+    display: inline-table;
+
     margin-bottom: 0;
   }
   .image {
@@ -84,7 +86,7 @@
     }
   }
 
-  p > code {
+  code {
     margin: 0 3px;
 
     padding: 0px 5px 2px 5px;
@@ -94,6 +96,8 @@
     border-radius: 4px;
 
     background: var(--font-code-background);
+
+    font-family: var(--code-font-family);
 
     font-size: 16px;
   }
@@ -139,7 +143,7 @@
   .table-wrap {
     overflow: hidden;
 
-    margin: 0 auto;
+    margin: 1rem auto;
 
     user-select: none;
 
@@ -206,6 +210,9 @@
   }
 
   .link {
+    margin-right: 2px;
+
+    margin-left: 2px;
     i {
       height: 100%;
 

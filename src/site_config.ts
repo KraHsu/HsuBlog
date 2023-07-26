@@ -1,6 +1,6 @@
 export const SiteConfig: SiteConfig = {
-  site: "",
-  title: "枢衡の巢",
+  site: "https://foo.com/",
+  title: "Hsu's Blog!",
   description: "",
   localSearch: true,
   markdownMath: "Katex",

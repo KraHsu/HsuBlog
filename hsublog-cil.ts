@@ -1,9 +1,17 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 import { promisify } from "util";
 import { glob } from "glob";
 import { utils } from "./src/utils/utils.js";
+
+interface Argv {
+  _: string[];
+  filename?: string;
+  $0: string;
+}
 
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
@@ -39,22 +47,45 @@ const getHexTimestamp = () => {
   return hexTimestamp;
 };
 
-const createMdFile = async (filename: string) => {
-  const dateStr = getDateString();
-  const hexTimestamp = getHexTimestamp();
-  const filePath = path.resolve(
-    `./src/content/blog/${utils.generateIdFromHeading(filename)}.md`
-  );
+const createFile = async (
+  filePath: string,
+  dirPath: string,
+  content: string
+) => {
+  // Get all directories from dirPath
+  const directories = dirPath.split(path.sep);
+
+  // Make sure all directories exist, create them if necessary
+  for (let i = 1; i <= directories.length; i++) {
+    const segment = directories.slice(0, i).join(path.sep);
+    if (!fs.existsSync(segment)) {
+      await mkdirAsync(segment);
+    }
+  }
 
   if (fs.existsSync(filePath)) {
-    console.error(`${filePath} 已存在`);
+    console.error(`File ${filePath} already exists.`);
     process.exit(1);
   }
 
-  console.log(`已创建：${filePath}`);
+  await writeFileAsync(filePath, content);
+  console.log(`File created: ${filePath}`);
+};
+
+const createMdFile = async (filename: string) => {
+  const dateStr = getDateString();
+  const hexTimestamp = getHexTimestamp();
+
+  // split filename into path and actual filename
+  const filenameParts = filename.split("/");
+  const actualFilename = filenameParts.pop();
+
+  // create the full directory path
+  const dirPath = path.resolve(`./src/content/blog/`, ...filenameParts);
+  const filePath = path.resolve(dirPath, `${actualFilename}.md`);
 
   const content = `---
-title: ${filename}
+title: ${actualFilename}
 description: ''
 pubDate: ${dateStr}
 updatedDate: ${dateStr}
@@ -65,23 +96,12 @@ tags:
 category: ''
 ---`;
 
-  await writeFileAsync(filePath, content);
+  await createFile(filePath, dirPath, content);
 };
 
 const createMdPage = async (filename: string) => {
   const dirPath = path.resolve(`./src/pages/${filename}`);
   const filePath = path.resolve(dirPath, "index.md");
-
-  if (!fs.existsSync(dirPath)) {
-    await mkdirAsync(dirPath);
-  }
-
-  if (fs.existsSync(filePath)) {
-    console.error(`${filePath} 已存在`);
-    process.exit(1);
-  }
-
-  console.log(`已创建：${filePath}`);
 
   const content = `---
 layout: "../../layouts/DefaultMdLayout.astro"
@@ -94,7 +114,7 @@ useToc: true
 
 ## ${filename}`;
 
-  await writeFileAsync(filePath, content);
+  await createFile(filePath, dirPath, content);
 };
 
 const addAbbrlinkToFile = async (filepath: string) => {
@@ -111,10 +131,10 @@ const addAbbrlinkToFile = async (filepath: string) => {
 
       const fileContent = matter.stringify(content, parsedMatter.data);
       await writeFileAsync(filepath, fileContent);
-      console.log(`已添加永久链接：${filepath}`);
+      console.log(`Permalink added: ${filepath}`);
     }
   } catch (error) {
-    console.error(`无法添加链接：${filepath}`);
+    console.error(`Unable to add link: ${filepath}`);
     console.error(error);
   }
 };
@@ -130,22 +150,25 @@ const addAbbrlinkToFiles = async () => {
   }
 };
 
-const args = process.argv.slice(2);
-if (args.length < 1) {
-  console.log("请提供具体命令");
-  process.exit(1);
-}
+const argv = yargs(hideBin(process.argv))
+  .command("new <filename>", "Create a new markdown file")
+  .command("abbr", "Add a permalink to markdown files")
+  .command("newPage <filename>", "Create a new markdown page")
+  .help()
+  .alias("help", "h").argv as Argv;
 
-const command = args[0];
-const arg1 = args[1];
-
-if (command === "new") {
-  createMdFile(arg1);
-} else if (command === "abbr") {
+if (argv._[0] === "new") {
+  if (argv.filename) {
+    createMdFile(argv.filename);
+  } else {
+    console.error('Filename is required for the "new" command');
+  }
+} else if (argv._[0] === "abbr") {
   addAbbrlinkToFiles();
-} else if (command === "newPage") {
-  createMdPage(arg1);
-} else {
-  console.log(`未知命令: ${command}`);
-  process.exit(1);
+} else if (argv._[0] === "newPage") {
+  if (argv.filename) {
+    createMdPage(argv.filename);
+  } else {
+    console.error('Filename is required for the "newPage" command');
+  }
 }

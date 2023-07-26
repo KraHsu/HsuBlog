@@ -16,7 +16,7 @@ if (t === "function") {
     flag = -1;
   } else if (Icon.substring(0, 4) === "<svg" || Icon.substring(0, 2) === "<i") {
     flag = 1;
-  } else if (utils.checkURL(Icon)) {
+  } else if (utils.checkURL(Icon) || Icon[0] === "/") {
     flag = 2;
   } else if (Icon.substring(0, 2) === "fa") {
     flag = 3;

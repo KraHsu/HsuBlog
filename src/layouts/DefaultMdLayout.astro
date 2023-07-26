@@ -1,6 +1,7 @@
 ---
 import HeroWave from "@comp/header/heroWave.astro";
-import BlogPost from "@src/layouts/PostLayout.astro";
+import PostLayout from "@src/layouts/PostLayout.astro";
+import { ThemeConfig } from "@src/theme_config";
 interface FrontMatter {
   title: string;
   description?: string;
@@ -23,8 +24,8 @@ interface Props {
 const { frontmatter } = Astro.props;
 ---
 
-<BlogPost
-  useComments={frontmatter.useComments}
+<PostLayout
+  useComments={frontmatter.useComments && ThemeConfig.comments.type !== false}
   toc={frontmatter.useToc ? frontmatter.toc : undefined}
 >
   <HeroWave
@@ -37,4 +38,4 @@ const { frontmatter } = Astro.props;
     </div>
   </HeroWave>
   <slot />
-</BlogPost>
+</PostLayout>

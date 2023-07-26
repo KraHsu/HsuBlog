@@ -9,7 +9,11 @@ export const ThemeConfig: Configs = {
     favicon: "/favicon.png",
     logo: "/favicon.png",
     author: "枢衡KraHsu",
-    localSearch: true,
+    localSearch: {
+      enable: true,
+      comment: "你可以使用类似 unix 的格式：[扩展搜索](/blog/lkk0v40t/)",
+      hits: ["[扩展搜索](/blog/lkk0v40t/)", "[HelloWorld](/blog/lkk0fjvf/)"],
+    },
     backgroundBubbles: 20,
   },
   head: [``],
@@ -103,7 +107,8 @@ export const ThemeConfig: Configs = {
     },
     announcement: {
       headline: "看公告啦！",
-      content: "新主题试验中~ 欢迎各位(找茬)[]~",
+      content:
+        "新主题试验中~ 欢迎各位[找茬](https://github.com/KraHsu/HsuBlog/issues)~",
     },
     siteInfo: {
       busuanzi: true,
@@ -119,16 +124,16 @@ export const ThemeConfig: Configs = {
     ],
   },
   footer: {
-    text: "Design & Build with ❤ by (枢衡KraHsu)[/about]",
-    copyright: `&copy; 2022-${today.getFullYear()} By (枢衡KraHsu)[/about]`,
+    text: "Design & Build with ❤ by [枢衡KraHsu](/about)",
+    copyright: `&copy; 2022-${today.getFullYear()} By [枢衡KraHsu](/about)`,
     // 也可以使用 {{}} 包裹函数体，并返回替换值
     // You can also use {{}} to wrap the function body and return the replacement value.
-    // copyright: `&copy; 2022-{{const today = new Date();return today.getFullYear();}} By (枢衡KraHsu)[/about]`,
+    // copyright: `&copy; 2022-{{const today = new Date();return today.getFullYear();}} By [枢衡KraHsu](/about)`,
   },
   homePage: {
     heroShoot: "/heroimg.webp",
-    heroTitle: "枢衡の学习日志",
-    heroDescription: "一只小乌鸦的学习日志",
+    heroTitle: "KraHsu's Blog",
+    heroDescription: "A beautiful, customized, personal blog theme for Astro",
     defaultCover: "/heroimg.webp",
     paginationSize: 10,
     aside: {
@@ -152,9 +157,11 @@ export const ThemeConfig: Configs = {
     //   envId: "",
     //   lang: "zh-CN",
     // },
-    type: "waline",
-    options: {
-      serverURL: "",
-    },
+    // type: "waline",
+    // options: {
+    //   serverURL: "",
+    // },
+    type: false,
+    options: null,
   },
 };

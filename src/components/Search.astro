@@ -1,6 +1,15 @@
 ---
 import "@style/components/search.scss";
 import SearchCore from "./client/searchCore.vue";
+import { ThemeConfig } from "@src/theme_config";
+import { utils } from "@src/utils/utils";
+
+const hits = ThemeConfig.site.localSearch.hits.map((hit) =>
+  utils.replaceLink(hit, "search-hit")
+);
+const comment = utils.replaceLink(
+  utils.executeEmbeddedScripts(ThemeConfig.site.localSearch.comment)
+);
 ---
 
 <div id="search" class="hide">
@@ -13,14 +22,9 @@ import SearchCore from "./client/searchCore.vue";
     </div>
     <SearchCore client:only />
     <div class="search-hits">
-      <a class="search-hit" href="/3">热门</a>
-      <a class="search-hit">今天</a>
-      <a class="search-hit">明天</a>
-      <a class="search-hit">昨天</a>
+      {hits.map((hit) => <Fragment set:html={hit} />)}
     </div>
-    <div class="search-comment">
-      你可以使用类似 unix 的格式进行搜索：<a href="/"> 示例</a>
-    </div>
+    <div class="search-comment" set:html={comment} />
   </div>
   <div class="search-mask" onclick={"hsu.closesearch()"}></div>
 </div>

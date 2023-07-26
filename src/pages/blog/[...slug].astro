@@ -1,8 +1,10 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
-import BlogPost from "@src/layouts/PostLayout.astro";
+import PostLayout from "@src/layouts/PostLayout.astro";
 import HeroWave from "@comp/header/heroWave.astro";
 import GetIcon from "@comp/icons/getIcon.astro";
+import ThemeControl from "@comp/client/themeControl.vue";
+import { ThemeConfig } from "@src/theme_config";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
@@ -16,7 +18,11 @@ const post = Astro.props;
 const { Content, remarkPluginFrontmatter } = await post.render();
 ---
 
-<BlogPost postData={post.data} toc={remarkPluginFrontmatter.toc}>
+<PostLayout
+  postData={post.data}
+  toc={remarkPluginFrontmatter.toc}
+  useComments={ThemeConfig.comments.type !== false}
+>
   <HeroWave
     class="post-header"
     slot="post-hero"
@@ -59,4 +65,4 @@ const { Content, remarkPluginFrontmatter } = await post.render();
     </div>
   </HeroWave>
   <Content />
-</BlogPost>
+</PostLayout>

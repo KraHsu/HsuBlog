@@ -91,7 +91,11 @@ interface Site {
   favicon: string;
   logo: string;
   author: string;
-  localSearch: boolean;
+  localSearch: {
+    enable: boolean;
+    comment: string;
+    hits: string[];
+  };
   backgroundBubbles: number | false;
 }
 

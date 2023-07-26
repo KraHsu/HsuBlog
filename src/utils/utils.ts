@@ -5,7 +5,7 @@ export const utils = {
     return regex.test(URL);
   },
   replaceLink: function (str: string, customClass?: string): string {
-    let regex = /\((.*?)\)\[(.*?)\]/g;
+    let regex = /\[(.*?)\]\((.*?)\)/g;
     return str.replace(regex, function (_, text, link) {
       return `<a href="${link}" class="${customClass}">${text}</a>`;
     });
