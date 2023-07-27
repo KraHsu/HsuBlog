@@ -11,8 +11,8 @@ const today = new Date();
 export const ThemeConfig: Configs = {
   site: {
     title: SiteConfig.title,
-    favicon: "https://cdn.krahsu.top/pic/vuepress_blog/202307202237416.png",
-    logo: "https://cdn.krahsu.top/blogpic/bloglogoblack.png",
+    favicon: "/favicon.png",
+    logo: "/favicon.png",
     author: "枢衡KraHsu",
     localSearch: {
       enable: true,
@@ -142,10 +142,10 @@ export const ThemeConfig: Configs = {
     // copyright: `&copy; 2022-{{const today = new Date();return today.getFullYear();}} By [枢衡KraHsu](/about)`,
   },
   homePage: {
-    heroShoot: "https://cdn.krahsu.top/blogpic/large/82104637_large.webp",
+    heroShoot: "/heroimg.webp",
     heroTitle: "KraHsu's Blog",
     heroDescription: "A beautiful, customized, personal blog theme for Astro",
-    defaultCover: "https://cdn.krahsu.top/blogpic/mini/82104637_p0_mini.webp",
+    defaultCover: "/decover.jpg",
     paginationSize: 10,
     aside: {
       comps: ["AuthorInfo"],

@@ -1,5 +1,5 @@
 export const SiteConfig: SiteConfig = {
-  site: "https://demo.krahsu.top",
+  site: "https://hsublog.pages.dev",
   title: "HsuBlog",
   description: "HsuBlog Demo 页面",
   localSearch: true,
