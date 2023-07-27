@@ -178,7 +178,22 @@ const hsu = {
 
         document.body.style.overflow = "";
     },
-    sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+    sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
+    waitForGlobal: function (name, maxAttempts = 500) {
+        return new Promise((resolve, reject) => {
+            let attempts = 0;
+            const interval = setInterval(() => {
+                attempts++;
+                if (window[name] !== undefined) {
+                    clearInterval(interval);
+                    resolve(window[name]);
+                } else if (attempts === maxAttempts) {
+                    clearInterval(interval);
+                    reject(new Error(`${name} is not defined after ${maxAttempts} attempts`));
+                }
+            }, 100);
+        });
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {

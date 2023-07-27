@@ -9,13 +9,13 @@ const script = () => {
 
   switch (type) {
     case "twikoo":
-      result = `twikoo.init({envId: "${options.envId}",el: "#tcomment",lang: "${options.lang}",});`;
+      result = `hsu.waitForGlobal('twikoo').then((twikoo) => {twikoo.init({envId: "${options.envId}",el: "#tcomment",lang: "${options.lang}",});}).catch((err) => console.error(err));`;
       break;
     case "waline":
       result = `import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';init({el: '#tcomment',serverURL: '${options.serverURL}',dark: 'html[data-theme="dark"]'});`;
       break;
     case "valine":
-      result = `new Valine({el: "#tcomment",appId: "${options.appId}",appKey: "${options.appKey}"});`;
+      result = `hsu.waitForGlobal('Valine').then((Valine) => {new Valine({el: '#tcomment',appId: ${options.appId},appKey: ${options.appKey}});}).catch((error) => {console.error(error);});`;
       break;
   }
   return result;
@@ -55,7 +55,7 @@ const script = () => {
         rel="stylesheet"
         href="https://unpkg.com/@waline/client@v2/dist/waline.css"
       />
-      <script is:inline src="//unpkg.com/valine/dist/Valine.min.js" />
+      <script is:inline async src="//unpkg.com/valine/dist/Valine.min.js" />
     </Fragment>
   )
 }

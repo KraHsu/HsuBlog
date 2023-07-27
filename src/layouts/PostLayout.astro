@@ -49,12 +49,17 @@ const { toc, useComments = true, postData, desc } = Astro.props;
   </article>
   <Fragment slot="body-end">
     <script is:inline>
-      Fancybox.bind("[data-fancybox]", {
-        closeButton: true,
-        Thumbs: {
-          type: "modern",
-        },
-      });
+      hsu
+        .waitForGlobal("Fancybox")
+        .then((Fancybox) => {
+          Fancybox.bind("[data-fancybox]", {
+            closeButton: true,
+            Thumbs: {
+              type: "modern",
+            },
+          });
+        })
+        .catch((err) => console.err(err));
     </script>
   </Fragment>
 </BaseLayout>
