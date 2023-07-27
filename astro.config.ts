@@ -44,7 +44,7 @@ export default defineConfig({
   integrations: [sitemap(), vue()],
   output: "static",
   build: {
-    format: "file",
+    format: "directory",
   },
   markdown: {
     syntaxHighlight: "shiki",
@@ -56,4 +56,5 @@ export default defineConfig({
     remarkPlugins: remarkPlugins,
     rehypePlugins: rehypePlugins,
   },
+  trailingSlash: "ignore",
 });
