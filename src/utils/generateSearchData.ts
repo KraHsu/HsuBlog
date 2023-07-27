@@ -2,6 +2,9 @@ import fs from "fs";
 import { utils } from "./utils";
 // import { SiteConfig } from "../site_config";
 
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
 interface SearchData {
   title: string;
   content: string;
@@ -20,11 +23,17 @@ export function generateSearchData() {
         content: content,
         url: `/blog/${file.data.astro.frontmatter.abbrlink}`,
       });
-
-      fs.writeFileSync(
-        "./public/scripts/searchData.json",
-        JSON.stringify(searchDatas, null, 2)
-      );
+      const __filename = fileURLToPath(import.meta.url);
+      const __dirname = dirname(__filename);
+      console.log(__dirname);
+      try {
+        fs.writeFileSync(
+          "./public/scripts/searchData.json",
+          JSON.stringify(searchDatas, null, 2)
+        );
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
     }
   };
 }
