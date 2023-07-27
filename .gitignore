@@ -4,5 +4,6 @@ node_modules
 /src/content/blog/*.md
 /public/scripts/searchData.json
 /pages/rss.xml.js
-dist
 *.log
+copy.js
+dist
