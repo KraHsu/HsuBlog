@@ -1,7 +1,6 @@
 /.vscode
 node_modules
 /.astro
-/src/content/blog/*.md
 /public/scripts/searchData.json
 /pages/rss.xml.js
 *.log

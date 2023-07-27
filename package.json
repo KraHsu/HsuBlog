@@ -14,8 +14,7 @@
     "new": "ts-node ./hsublog-cli.ts new",
     "abbr": "ts-node ./hsublog-cli.ts abbr",
     "newpage": "ts-node ./hsublog-cli.ts newPage",
-    "help": "ts-node ./hsublog-cli.ts help",
-    "pu": "ts-node ./pu.ts"
+    "help": "ts-node ./hsublog-cli.ts help"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",
