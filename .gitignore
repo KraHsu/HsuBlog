@@ -3,6 +3,7 @@ node_modules
 /.astro
 /src/content/blog/*.md
 /public/scripts/searchData.json
+/public/scripts/mdata.json
 /pages/rss.xml.js
 dist
 *.log
