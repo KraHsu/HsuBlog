@@ -41,8 +41,6 @@
   .header-menu {
     width: 100%;
 
-    min-width: 780px;
-
     max-width: 1400px;
 
     margin: 0;
@@ -375,6 +373,48 @@
       .menu-item-name,
       .menu-item-icon {
         color: var(--font-black-white);
+      }
+    }
+  }
+}
+
+@media screen and (width <= 900px) {
+  #site-header {
+    .header-menu {
+      .header-nav {
+        &.nav-left {
+          .site-name {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (width <= 700px) {
+  #site-header {
+    .header-menu {
+      .header-nav {
+        &.nav-left {
+          display: none;
+        }
+        &.nav-center {
+          position: absolute;
+          left: 0;
+          .menu-items {
+            .menu-item {
+              &:hover {
+                padding: 8px;
+              }
+              .menu-item-link {
+                .menu-item-name {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

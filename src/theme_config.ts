@@ -73,7 +73,7 @@ export const ThemeConfig: Configs = {
     buttons: [
       {
         icon: "local:solid.house",
-        link: "",
+        link: "/",
         customClass: "",
         title: "返回主页",
       },
