@@ -19,25 +19,26 @@ const mkdirAsync = promisify(fs.mkdir);
 
 const getDateString = () => {
   const date = new Date();
-  const monthNames = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const month = monthNames[date.getMonth()];
-  const day = date.getDate().toString().padStart(2, "0");
-  const year = date.getFullYear();
+  // const monthNames = [
+  //   "Jan",
+  //   "Feb",
+  //   "Mar",
+  //   "Apr",
+  //   "May",
+  //   "Jun",
+  //   "Jul",
+  //   "Aug",
+  //   "Sep",
+  //   "Oct",
+  //   "Nov",
+  //   "Dec",
+  // ];
+  // const month = monthNames[date.getMonth()];
+  // const day = date.getDate().toString().padStart(2, "0");
+  // const year = date.getFullYear();
 
-  return `${month} ${day} ${year}`;
+  // return `${month} ${day} ${year}`;
+  return date.toISOString();
 };
 
 const getHexTimestamp = () => {

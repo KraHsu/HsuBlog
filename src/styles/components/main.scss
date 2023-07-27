@@ -146,6 +146,8 @@
         color: var(--font-black-white);
 
         font-size: 18px;
+
+        max-height: 50px;
       }
 
       .post-card-footer {
@@ -163,6 +165,8 @@
           display: flex;
 
           padding: 0;
+
+          margin: 0.5rem 0;
 
           .post-card-tag {
             margin: 0 0.2rem;
