@@ -4,7 +4,7 @@
 ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![GitHub](https://img.shields.io/github/license/satnaing/astro-paper?color=%232F3741&style=for-the-badge)
 
-[README_ZH](/README_ZH.md)
+[中文文档](/README_ZH.md)
 
 HsuBlog is a beautiful, customized, personal blog theme for Astro 🌟🖥️. This theme actually borrows a lot from [hexo-butterfly](https://github.com/jerryc127/hexo-theme-butterfly) and [HeoBlog](https://blog.zhheo.com/update/)
 
