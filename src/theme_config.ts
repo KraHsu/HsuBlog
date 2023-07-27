@@ -11,8 +11,8 @@ const today = new Date();
 export const ThemeConfig: Configs = {
   site: {
     title: SiteConfig.title,
-    favicon: "/favicon.png",
-    logo: "/favicon.png",
+    favicon: "https://cdn.krahsu.top/pic/vuepress_blog/202307202237416.png",
+    logo: "https://cdn.krahsu.top/blogpic/bloglogoblack.png",
     author: "枢衡KraHsu",
     localSearch: {
       enable: true,
@@ -142,10 +142,10 @@ export const ThemeConfig: Configs = {
     // copyright: `&copy; 2022-{{const today = new Date();return today.getFullYear();}} By [枢衡KraHsu](/about)`,
   },
   homePage: {
-    heroShoot: "/heroimg.jpg",
+    heroShoot: "https://cdn.krahsu.top/blogpic/large/82104637_large.webp",
     heroTitle: "KraHsu's Blog",
     heroDescription: "A beautiful, customized, personal blog theme for Astro",
-    defaultCover: "/heroimg.jpg",
+    defaultCover: "https://cdn.krahsu.top/blogpic/mini/82104637_p0_mini.webp",
     paginationSize: 10,
     aside: {
       comps: ["AuthorInfo"],
@@ -163,16 +163,9 @@ export const ThemeConfig: Configs = {
     floating: true,
   },
   comments: {
-    // type: "twikoo",
-    // options: {
-    //   envId: "",
-    //   lang: "zh-CN",
-    // },
-    // type: "waline",
-    // options: {
-    //   serverURL: "",
-    // },
-    type: false,
-    options: null,
+    type: "waline",
+    options: {
+      serverURL: "https://waline-test-3uqb6z2s7-krahsu.vercel.app/",
+    },
   },
 };

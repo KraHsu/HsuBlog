@@ -1,9 +1,9 @@
 export const SiteConfig: SiteConfig = {
-  site: "https://foo.com/",
-  title: "Hsu's Blog!",
-  description: "这是一个个人博客",
+  site: "https://demo.krahsu.top",
+  title: "HsuBlog",
+  description: "HsuBlog Demo 页面",
   localSearch: true,
-  markdownMath: false,
+  markdownMath: "Katex",
 };
 
 interface SiteConfig {
