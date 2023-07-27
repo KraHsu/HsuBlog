@@ -334,3 +334,16 @@
     backdrop-filter: blur(10px);
   }
 }
+
+@media screen and (width <= 700px) {
+  #search-bar {
+    &:hover {
+      width: 28px;
+    }
+  }
+  #search {
+    .search-wrap {
+      width: 90%;
+    }
+  }
+}

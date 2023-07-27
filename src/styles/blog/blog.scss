@@ -104,3 +104,21 @@
     filter: brightness(0.8);
   }
 }
+
+@media screen and (width <= 1400px) {
+  .post-container {
+    .post-main {
+      margin: 0.5rem;
+    }
+    .post-aside {
+      margin: 0.5rem;
+    }
+  }
+}
+@media screen and (width <= 900px) {
+  .post-container {
+    .post-aside {
+      display: none;
+    }
+  }
+}
