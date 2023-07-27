@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Extended Search",
+    "content": "Extended Search This site uses to provide local search services, allowing you to use extended search a search format that can fine tune search results, similar to:color[unix]{color=\"green\"} Space represents logical , pipe symbol | represents logical , and to escape spaces, use double quotes . | Token | Match type | Description | | | | | | | fuzzy match | Items that fuzzy match | | | exact match | Items that are | | | include match | Items that include | | | inverse exact match | Items that do not include | | | prefix exact match | Items that start with | | | inverse prefix exact match | Items that do not start with | | | suffix exact match | Items that end with | | | inverse suffix exact match | Items that do not end with | 扩展搜索 本站使用提供本地搜索服务，允许您使用扩展搜索——一种可以微调搜索结果的搜索格式，类似于:color[unix]{color=\"green\"} 空格代表逻辑与，管道符|代表逻辑或，如要转义空格请使用双引号 | 令牌 | 匹配类型 | 描述 | | | | | | | 模糊匹配 | 与 模糊匹配的项目 | | | 精确匹配 | 是 的项目 | | | 包含匹配 | 包含 的项目 | | | 反向精确匹配 | 不包含 的项目 | | | 前缀精确匹配 | 以 开头的项目 | | | 反向前缀精确匹配 | 不以 开头的项目 | | | 后缀精确匹配 | 以 结尾的项目 | | | 反向后缀精确匹配 | 不以 结尾的项目 |",
+    "url": "/blog/lkk0v40t"
+  },
+  {
+    "title": "helloworld",
+    "content": "Hello World Welcome to HsuBlog!",
+    "url": "/blog/lkk0fjvf"
+  },
+  {
+    "title": "快速开始",
+    "content": "快速开始 安装这部分可以直接参照这里只给出简化步骤：现在，打开就能看到运行在本地的网站了 升级理论上这样操作没有问题，但如果你在使用过程中对主题本身有做修改，那么请记得备份下一篇：",
+    "url": "/blog/lkkee4o9"
+  },
+  {
+    "title": "创建内容",
+    "content": "新建文章在终端中输入，其中的就是你的文章标题，如果有空格请使用引号包裹标题：然后你就可以在文件夹下找到你刚刚新建的如果你使用的是或者其他ide，可以直接使用单击终端输出的链接打开对应文件 FrontmatterFrontmatter 是 markdown 文件最上方以 分隔的区域，以 格式存储使用命令创建的文章会默认生成 Frontmatter，顾不建议手动创建文件对于文章类的文件，Frontmatter 类型定义如下：| 值 | 描述 || | || title | 页面标题，可以更改 || description | 文章描述，可选，建议填写 || pubDate | 符合IETF compliant RFC 2822 timestamps 和 version of ISO8601 的字符串 || updatedDate | 符合IETF compliant RFC 2822 timestamps 和 version of ISO8601 的字符串 || heroColor | 页面顶部颜色，可选，格式为符合css颜色格式的字符串 || cover | 文章封面，目前仅会显示在列表中，文章页是看不到的 || abbrlink | 永久链接，实际就是文章创建日期的36进制时间戳 || tags | 标签，可选，只能为字符串列表 || category | 分类，可选，只能为字符串 |PS: 其中的日期需要用于文章排序所以建议越精确越好，发表日期()会自动生成，更新日期()可以在终端中直接执行复制结果使用 markdownMarkdown 是一种轻量级的「标记语言」，它的设计目标是易读、易写。接下来，让我们一起看看 Markdown 的基础语法。 标题在 Markdown 中，你可以使用 符号来标记标题，一个 是一级标题，两个 是二级标题，依此类推，最多支持六级标题。例如： 段落与换行在 Markdown 中，段落的换行是使用两个以上空格加上回车。当然，也可以在段落后面使用一个空行来表示重新开始一个段落。这是一个段落，这是段落的第一行。 这是段落的第二行。这是新的一个段落。 强调你可以使用 或 包围文本来生成斜体或粗体的效果，例如： 这是斜体 这是粗体 列表在 Markdown 中，你可以使用 、、 来创建无序列表，使用数字和点来创建有序列表，例如： 第一项 第二项 第三项1. 第一项2. 第二项3. 第三项 链接与图片在 Markdown 中，你可以使用 来创建链接，使用 来创建图片，例如：! 代码如果你想要标记一小段代码，你可以使用反引号 \\` 。如果你想要插入一个代码块，你可以使用三个反引号，并且可以指定语言，例如：javascriptconsole.log('hello world')` 分割线你可以使用三个或者三个以上的 或者 来创建分割线，例如： 到此为止，你已经可以使用HsuBlog发表一些简单的文章了，但是HsuBlog能做的远不止这些，不过这些内容我们后面再聊",
+    "url": "/blog/lkkeyusn"
+  }
+]
