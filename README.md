@@ -12,7 +12,7 @@ This theme inherently followes best practices and assures accessibility as a fun
 
 ## Live Demo 😎🌐
 
-### [https://demo.krahsu.top](https://demo.krahsu.top)
+### [https://hsublog.pages.dev](https://hsublog.pages.dev)
 
 ## Why HsuBlog 🤪❓
 
