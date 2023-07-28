@@ -1,8 +1,8 @@
 ---
 title: Extended Search
-description: '关于HsuBlog所使用的fusejs的扩展搜索语法'
-pubDate: Jul 27 2023
-updatedDate: Jul 27 2023
+description: "HsuBlog's Extended Search Syntax Using Fuse.js"
+pubDate: 2023-07-23T00:45:44.455Z
+updatedDate: 2023-07-23T00:45:44.455Z
 heroColor: ''
 abbrlink: lkk0v40t
 tags: 
