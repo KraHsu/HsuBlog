@@ -3,7 +3,7 @@ import getReadingTime from "reading-time";
 import { toString } from "mdast-util-to-string";
 import { utils } from "./utils";
 import { writeFileSync } from "fs";
-import { processRemark, processRehype, processDir } from "./processMd";
+import { processRehype, processRemark, processDir } from "./processMd";
 
 import mdata from "../../public/scripts/mdata.json";
 
@@ -78,20 +78,24 @@ export function rehypeRestyling() {
     visit(tree, (node, index, parent) => {
       switch (node.tagName) {
         case "blockquote":
-          processRemark.processBlockquote(node);
+          processRehype.processBlockquote(node);
           break;
         case "table":
-          processRemark.processTable(node, parent, index);
+          processRehype.processTable(node, parent, index);
           break;
         case "img":
           if (!node.properties.className) {
-            processRemark.processImg(node, parent, index);
+            processRehype.processImg(node, parent, index);
           }
           break;
         case "a":
-          processRemark.processA(node);
+          processRehype.processA(node);
           break;
       }
+      // switch (node.type) {
+      //   case "raw":
+      //     if (node.value.slice(0, 4) === "<pre") console.log(node);
+      // }
     });
   };
 }
@@ -102,11 +106,11 @@ export function remarkRestyling() {
       switch (node.type) {
         case "code":
           if (!node.meta?.lang) {
-            processRehype.processCode(node, parent, index);
+            processRemark.processCode(node, parent, index);
           }
           break;
         case "link":
-          processRehype.processLink(node);
+          processRemark.processLink(node);
           break;
       }
     });

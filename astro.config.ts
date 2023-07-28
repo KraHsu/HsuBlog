@@ -48,11 +48,6 @@ export default defineConfig({
   },
   markdown: {
     syntaxHighlight: "shiki",
-    shikiConfig: {
-      theme: "css-variables",
-      langs: [],
-      wrap: false,
-    },
     remarkPlugins: remarkPlugins,
     rehypePlugins: rehypePlugins,
   },

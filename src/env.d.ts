@@ -98,6 +98,7 @@ interface Site {
     hits: string[];
   };
   backgroundBubbles: number | false;
+  themeColor: string;
 }
 
 interface AsideConfig {

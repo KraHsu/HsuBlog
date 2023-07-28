@@ -3,6 +3,7 @@ import "@style/components/search.scss";
 import SearchCore from "./client/searchCore.vue";
 import { ThemeConfig } from "@src/theme_config";
 import { utils } from "@src/utils/utils";
+import GetIcon from "./icons/getIcon.astro";
 
 const hits = ThemeConfig.site.localSearch.hits.map((hit) =>
   utils.replaceLink(hit, "search-hit")
@@ -16,9 +17,11 @@ const comment = utils.replaceLink(
   <div class="search-wrap">
     <div class="search-header">
       <div class="search-title">搜索</div>
-      <div class="search-close" onclick={"hsu.closesearch()"}>
-        <i class="fa-solid fa-xmark"></i>
-      </div>
+      <GetIcon
+        Icon="local:solid.xmark"
+        class="search-close"
+        onclick={"hsu.closesearch()"}
+      />
     </div>
     <SearchCore client:only />
     <div class="search-hits">

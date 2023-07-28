@@ -84,7 +84,7 @@ I will complete the documentation as soon as possible
 
 ## Tech Stack🏗️🛠️
 
-**Framework** : [Astro](https://astro.build/) & [Vue](https://vuejs.org/)
+**Framework** : [Astro](https://astro.build/) & [Vue](https://vuejs.org/)  
 **Type** : [TypeScript](https://www.typescriptlang.org/)  
 **Styling** : [Scss](https://www.sass.hk/)  
 **Search** : [FuseJS](https://fusejs.io/)  

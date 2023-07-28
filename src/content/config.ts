@@ -20,6 +20,7 @@ const blogCollection = defineCollection({
         return date.toISOString();
       }),
     heroColor: z.string().optional(),
+    themeColor: z.string().optional(),
     cover: z.string().optional(),
     abbrlink: z.string().optional(),
     tags: z.string().array().optional(),

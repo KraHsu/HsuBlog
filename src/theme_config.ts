@@ -20,6 +20,7 @@ export const ThemeConfig: Configs = {
       hits: ["[扩展搜索](/blog/lkk0v40t/)", "[HelloWorld](/blog/lkk0fjvf/)"],
     },
     backgroundBubbles: 20,
+    themeColor: "#a57ad4",
   },
   head: [``],
   body: [``],

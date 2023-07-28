@@ -23,12 +23,16 @@ const { posts } = Astro.props;
         </div>
         <div class="post-card-info">
           <header class="post-card-header">
-            <a
-              class="post-card-category"
-              href={`/categories/${post.data.category}`}
-            >
-              {post.data.category}
-            </a>
+            {post.data?.category ? (
+              <a
+                class="post-card-category"
+                href={`/categories/${post.data.category}`}
+              >
+                {post.data.category}
+              </a>
+            ) : (
+              <div class="post-card-category">{post.data.category}</div>
+            )}
           </header>
           <div class="post-card-title">{post.data.title}</div>
           <div class="post-card-desc">{post.data.description}</div>
@@ -38,7 +42,9 @@ const { posts } = Astro.props;
                 if (post.data.tags) {
                   return post.data.tags.map((tag) => (
                     <li class="post-card-tag">
-                      <a href={`/tags/${tag}`}>{tag}</a>
+                      {tag && tag != "" ? (
+                        <a href={`/tags/${tag}`}>{tag}</a>
+                      ) : null}
                     </li>
                   ));
                 }

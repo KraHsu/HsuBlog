@@ -20,7 +20,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
 
 <PostLayout
   postData={post.data}
-  toc={remarkPluginFrontmatter.toc}
+  frontmatter={remarkPluginFrontmatter}
   useComments={ThemeConfig.comments.type !== false}
 >
   <HeroWave
@@ -50,7 +50,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
           </GetIcon>
         </div>
         <div class="post-meta post-meta-content">
-          <GetIcon Icon="fa-regular fa-clock" class="read-time meta-icon">
+          <GetIcon Icon="local:solid.clock" class="read-time meta-icon">
             <span
               >{
                 remarkPluginFrontmatter.minutesRead
@@ -59,7 +59,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
               }</span
             >
           </GetIcon>
-          <GetIcon Icon="fa-solid fa-file-word" class="read-time meta-icon">
+          <GetIcon Icon="local:solid.file-word" class="read-time meta-icon">
             <span>{remarkPluginFrontmatter.numberOfWords} 字</span>
           </GetIcon>
         </div>

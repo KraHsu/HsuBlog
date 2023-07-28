@@ -105,22 +105,29 @@
 
     justify-content: center;
 
-    margin: 0;
-
     margin: 0.5rem 0;
 
-    padding: 0.5rem 2rem;
+    height: 40px;
 
-    i {
+    align-items: center;
+
+    .quote-left,
+    .quote-right {
       margin: 0 1rem;
 
       color: var(--font-light-grey);
 
-      font-size: 24px;
+      width: 24px;
+
+      height: 24px;
     }
 
-    i.fa-quote-right {
-      align-self: end;
+    .quote-right {
+      align-self: flex-end;
+    }
+
+    .quote-left {
+      align-self: flex-start;
     }
 
     p {
@@ -203,20 +210,39 @@
 
   a {
     text-decoration: none;
-
-    color: var(--link-color);
   }
 
   .link {
     margin-right: 2px;
 
     margin-left: 2px;
-    i {
-      height: 100%;
+
+    color: var(--link-color);
+
+    border-bottom: 2px solid var(--link-color);
+
+    transition: 0.3s ease;
+
+    &:hover {
+      background-color: var(--link-color);
+
+      color: white;
+
+      border-bottom-color: white;
+
+      padding: 0 4px;
+
+      border-radius: 6px;
+    }
+
+    svg {
+      height: 16px;
+
+      width: 16px;
 
       margin-left: 4px;
 
-      font-size: 16px;
+      margin-bottom: -2px;
     }
   }
 
@@ -316,121 +342,96 @@
 
   margin: 1rem 3rem;
 
-  user-select: none;
-
   border-radius: 10px;
 
-  @include card-style();
+  .code-head {
+    display: flex;
 
-  .code-lang {
+    align-items: center;
+
     height: var(--code-lang-height);
 
-    padding: calc((var(--code-lang-height) - 22px) / 2) 1rem;
+    padding: calc((var(--code-lang-height) - 22px) / 2) 10px;
+
+    user-select: none;
 
     color: var(--font-dark-grey);
 
     background: var(--codeblock-background-grey);
 
-    font-size: 18px;
+    .code-expand {
+      width: 18px;
 
-    font-weight: 600;
+      height: 18px;
+
+      margin-right: 5px;
+
+      cursor: pointer;
+    }
+
+    .code-lang {
+      font-size: 18px;
+
+      font-weight: 600;
+
+      margin-bottom: 2px;
+    }
   }
 
   .code-wrap {
-    padding: 0 0 0 2.4rem;
-
+    // padding: 0 0 0 2.4rem;
     transition: 0.3s ease;
+
+    transform: translateZ(0);
 
     background: var(--astro-code-color-background);
 
     font-size: var(--font-code-size);
 
-    .astro-code {
+    .hsu-code {
       margin: 0;
 
       padding: 1rem;
 
+      padding-left: 3.4rem;
+
       transition: 0.3s ease;
 
-      code {
-        background: transparent;
+      ::selection {
+        background-color: #274669;
+      }
+
+      .block-code {
         margin: 0;
+
         padding: 0;
+
+        background: transparent;
       }
     }
-  }
-
-  .code-wrap {
-    font-size: 18px;
     .line {
       display: inline-block;
 
       height: 24px;
 
+      counter-increment: line;
+
       font-family: var(--code-font-family);
-    }
-    &::after {
-      position: absolute;
 
-      z-index: 2;
+      &::before {
+        position: absolute;
 
-      top: 0;
+        left: 0.5rem;
 
-      left: 0;
-
-      width: 2.4rem;
-
-      height: calc(100% - var(--code-lang-height));
-
-      margin-top: var(--code-lang-height);
-
-      content: "";
-
-      border-right: 1px solid var(--font-light-grey);
-
-      border-radius: 6px 0 0 6px;
-    }
-    .line-numbers {
-      position: absolute;
-
-      top: 0;
-
-      left: 0;
-
-      width: 2.4rem;
-
-      padding: 1rem 0;
-
-      counter-reset: line-number;
-
-      transform: translateY(var(--code-lang-height));
-
-      text-align: center;
-
-      color: var(--font-light-grey);
-
-      line-height: 24px;
-
-      .line-number {
-        position: relative;
-
-        z-index: 4;
+        width: 2.4rem;
 
         height: 24px;
 
-        -webkit-user-select: none;
+        content: counter(line);
 
-        -moz-user-select: none;
+        text-align: center;
 
-        user-select: none;
-
-        &::before {
-          content: counter(line-number);
-
-          counter-increment: line-number;
-
-          font-size: 0.85em;
-        }
+        color: var(--font-light-grey);
       }
     }
   }
@@ -452,7 +453,7 @@
 
     opacity: 0;
 
-    color: var(--codeblock-copybutton-grey);
+    color: #274669;
 
     i {
       font-size: 24px;
@@ -468,9 +469,18 @@
 }
 
 [data-theme="dark"] {
+  .code-wrap.light {
+    display: none;
+  }
   .post-main {
     img {
       filter: brightness(0.7);
     }
+  }
+}
+
+[data-theme="light"] {
+  .code-wrap.dark {
+    display: none;
   }
 }

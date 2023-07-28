@@ -86,13 +86,14 @@
 
 #inner-container {
   justify-content: center;
+
   flex-grow: 1;
 
   display: flex;
 
   max-width: 1300px;
 
-  padding: 4.2rem 1.5rem 0;
+  padding: calc(var(--header-nav-height) + 1rem) 1.5rem 0;
 
   color: var(--font-black-white);
 

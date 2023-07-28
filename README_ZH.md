@@ -82,7 +82,7 @@ Astro将`src/pages/`目录中的`.astro`或`.md`文件转换为网站路由，�
 
 ## 技术栈 🏗️🛠️
 
-**框架** : [Astro](https://astro.build/) & [Vue](https://vuejs.org/)
+**框架** : [Astro](https://astro.build/) & [Vue](https://vuejs.org/)  
 **类型** : [TypeScript](https://www.typescriptlang.org/)  
 **样式** : [Scss](https://www.sass.hk/)  
 **搜索** : [FuseJS](https://fusejs.io/)  
