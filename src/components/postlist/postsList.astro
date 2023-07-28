@@ -46,7 +46,7 @@ const { posts } = Astro.props;
             </ul>
             <div class="post-card-update">
               <a href="/timeline">
-                {post.data.updatedDate || post.data.pubDate}
+                {utils.formatDate(post.data.updatedDate || post.data.pubDate)}
               </a>
             </div>
           </footer>

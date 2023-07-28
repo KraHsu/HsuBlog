@@ -13,17 +13,11 @@ const blogCollection = defineCollection({
         return date.toISOString();
       }),
     updatedDate: z
-      .union([z.string(), z.date()])
-      .optional()
-      .transform((value) => {
-        if (!value) {
-          return undefined;
-        } else if (value instanceof Date) {
-          return utils.formatDate(value);
-        } else {
-          const date = new Date(value);
-          return utils.formatDate(date);
-        }
+      .string()
+      .or(z.date())
+      .transform((val) => {
+        const date = new Date(val);
+        return date.toISOString();
       }),
     heroColor: z.string().optional(),
     cover: z.string().optional(),

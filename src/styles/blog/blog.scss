@@ -34,6 +34,16 @@
           color: var(--font-white-black);
 
           font-size: 18px;
+
+          display: flex;
+
+          align-items: center;
+
+          svg {
+            width: 18px;
+            height: 18px;
+            margin: 0 2px;
+          }
         }
       }
     }

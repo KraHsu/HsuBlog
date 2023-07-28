@@ -26,12 +26,11 @@ export const utils = {
 
     return result;
   },
-  formatDate: (date: Date) => {
-    var formattedDate = date.toLocaleDateString("zh-CN", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
+  formatDate: (date: Date | string) => {
+    if (typeof date === "string") {
+      date = new Date(date);
+    }
+    var formattedDate = date.toLocaleDateString();
 
     // 返回格式化后的日期
     return formattedDate;
