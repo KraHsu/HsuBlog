@@ -53,9 +53,11 @@
       background: white;
 
       img {
-        height: 100%;
+        width: 100%;
 
         transition: 0.3s ease-in-out;
+
+        object-fit: cover;
       }
     }
 
@@ -139,6 +141,8 @@
 
         flex: 2;
 
+        max-height: 50px;
+
         padding-right: 2rem;
 
         word-break: break-all;
@@ -146,8 +150,6 @@
         color: var(--font-black-white);
 
         font-size: 18px;
-
-        max-height: 50px;
       }
 
       .post-card-footer {
@@ -164,9 +166,9 @@
         .post-card-tags {
           display: flex;
 
-          padding: 0;
-
           margin: 0.5rem 0;
+
+          padding: 0;
 
           .post-card-tag {
             margin: 0 0.2rem;
@@ -234,13 +236,17 @@
   .posts-list {
     .post-card {
       flex-direction: column;
+
       height: fit-content;
       .post-card-cover {
-        height: fit-content;
         width: 100%;
+
+        height: fit-content;
+
         border-radius: 15px 15px 0 0;
         img {
           width: 100%;
+
           height: auto;
         }
       }

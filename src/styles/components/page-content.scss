@@ -110,11 +110,6 @@
 }
 
 @media screen and (width <= 1400px) {
-  #main-container {
-    .hero-shoot {
-      display: none;
-    }
-  }
   #inner-container {
     padding-top: calc(var(--header-nav-height) + 1rem);
     width: 100%;
@@ -129,6 +124,14 @@
       width: 30%;
 
       margin: 0 0.5rem;
+    }
+  }
+}
+
+@media screen and (width <= 1100px) {
+  #main-container {
+    .hero-shoot {
+      display: none;
     }
   }
 }

@@ -2,7 +2,7 @@
 node_modules
 /.astro
 /src/content/blog/*.md
-/public/scripts/*.json
+public/scripts/*.json
 /pages/rss.xml.js
 dist
 *.log

@@ -10,7 +10,7 @@ const blogCollection = defineCollection({
       .or(z.date())
       .transform((val) => {
         const date = new Date(val);
-        return utils.formatDate(date);
+        return date.toISOString();
       }),
     updatedDate: z
       .union([z.string(), z.date()])

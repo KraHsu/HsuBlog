@@ -3,7 +3,6 @@ import { CollectionEntry, getCollection } from "astro:content";
 import PostLayout from "@src/layouts/PostLayout.astro";
 import HeroWave from "@comp/header/heroWave.astro";
 import GetIcon from "@comp/icons/getIcon.astro";
-import ThemeControl from "@comp/client/themeControl.vue";
 import { ThemeConfig } from "@src/theme_config";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
