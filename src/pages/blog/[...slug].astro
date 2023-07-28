@@ -3,8 +3,8 @@ import { CollectionEntry, getCollection } from "astro:content";
 import PostLayout from "@src/layouts/PostLayout.astro";
 import HeroWave from "@comp/header/heroWave.astro";
 import GetIcon from "@comp/icons/getIcon.astro";
-import ThemeControl from "@comp/client/themeControl.vue";
 import { ThemeConfig } from "@src/theme_config";
+import { utils } from "@src/utils/utils";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
@@ -20,7 +20,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
 
 <PostLayout
   postData={post.data}
-  toc={remarkPluginFrontmatter.toc}
+  frontmatter={remarkPluginFrontmatter}
   useComments={ThemeConfig.comments.type !== false}
 >
   <HeroWave
@@ -33,22 +33,24 @@ const { Content, remarkPluginFrontmatter } = await post.render();
       <div class="post-metas">
         <div class="post-meta post-meta-time">
           <GetIcon
-            Icon="fa-solid fa-calendar-days"
+            Icon="local:solid.calendar-days"
             class="publish-time meta-icon"
           >
-            <span>发表于{post.data.pubDate}</span>
+            <span>发表于{utils.formatDate(post.data.pubDate)}</span>
           </GetIcon>
-          <GetIcon Icon="fa-solid fa-repeat" class="update-time meta-icon">
+          <GetIcon Icon="local:solid.repeat" class="update-time meta-icon">
             <span>
-              更新于{post.data.updatedDate || post.data.pubDate}
+              更新于{
+                utils.formatDate(post.data.updatedDate || post.data.pubDate)
+              }
             </span>
           </GetIcon>
-          <GetIcon Icon="fa-solid fa-tags" class="category meta-icon">
+          <GetIcon Icon="local:solid.tags" class="category meta-icon">
             <span>{post.data.category}</span>
           </GetIcon>
         </div>
         <div class="post-meta post-meta-content">
-          <GetIcon Icon="fa-regular fa-clock" class="read-time meta-icon">
+          <GetIcon Icon="local:solid.clock" class="read-time meta-icon">
             <span
               >{
                 remarkPluginFrontmatter.minutesRead
@@ -57,7 +59,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
               }</span
             >
           </GetIcon>
-          <GetIcon Icon="fa-solid fa-file-word" class="read-time meta-icon">
+          <GetIcon Icon="local:solid.file-word" class="read-time meta-icon">
             <span>{remarkPluginFrontmatter.numberOfWords} 字</span>
           </GetIcon>
         </div>

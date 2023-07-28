@@ -1,7 +1,7 @@
 {
   "name": "hsu-blog",
   "description": "A beautiful, customized, personal blog theme for Astro",
-  "version": "0.1.1",
+  "version": "0.3.1",
   "homepage": "https://github.com/charles-hsuz/HsuBlog#readme",
   "private": false,
   "type": "module",
@@ -41,6 +41,7 @@
     "@types/yargs": "^17.0.24",
     "sass": "^1.64.1",
     "scss": "^0.2.4",
+    "shiki": "^0.14.3",
     "ts-node": "^10.9.1"
   },
   "keywords": [

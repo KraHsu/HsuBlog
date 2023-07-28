@@ -9,19 +9,19 @@ import { ThemeConfig } from "@src/theme_config";
 
 interface Props {
   postData?: CollectionEntry<"blog">["data"];
-  toc?: {
-    level: string;
-    id: string;
-    value: string;
-  }[];
+  frontmatter: any;
   useComments?: boolean;
   desc?: string;
 }
 
-const { toc, useComments = true, postData, desc } = Astro.props;
+const { frontmatter, useComments = true, postData, desc } = Astro.props;
 ---
 
-<BaseLayout class="post-page" description={postData?.description || desc}>
+<BaseLayout
+  class="post-page"
+  description={postData?.description || desc}
+  themeColor={frontmatter?.themeColor}
+>
   <Fragment slot="head-end">
     <script
       is:inline
@@ -44,17 +44,22 @@ const { toc, useComments = true, postData, desc } = Astro.props;
       stickyComps={ThemeConfig.postPage.aside.stickyComps}
       class="post-aside"
     >
-      {toc && <BlogToc toc={toc} />}
+      {frontmatter?.toc && <BlogToc toc={frontmatter.toc} />}
     </Aside>
   </article>
   <Fragment slot="body-end">
     <script is:inline>
-      Fancybox.bind("[data-fancybox]", {
-        closeButton: true,
-        Thumbs: {
-          type: "modern",
-        },
-      });
+      hsu
+        .waitForGlobal("Fancybox")
+        .then((Fancybox) => {
+          Fancybox.bind("[data-fancybox]", {
+            closeButton: true,
+            Thumbs: {
+              type: "modern",
+            },
+          });
+        })
+        .catch((err) => console.err(err));
     </script>
   </Fragment>
 </BaseLayout>

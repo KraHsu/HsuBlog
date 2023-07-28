@@ -10,7 +10,8 @@ HsuBlog遵循最佳实践，📜✅并确保开箱可用。它原生支持浅色
 
 ## 在线演示 😎🌐
 
-### [https://demo.krahsu.top](https://demo.krahsu.top)
+[![preview](https://hsublog.pages.dev/preview.png)](https://hsublog.pages.dev)
+### [https://hsublog.pages.dev](https://hsublog.pages.dev)
 
 ## 为什么选择 HsuBlog 🤪❓
 
@@ -82,7 +83,7 @@ Astro将`src/pages/`目录中的`.astro`或`.md`文件转换为网站路由，�
 
 ## 技术栈 🏗️🛠️
 
-**框架** : [Astro](https://astro.build/) & [Vue](https://vuejs.org/)
+**框架** : [Astro](https://astro.build/) & [Vue](https://vuejs.org/)  
 **类型** : [TypeScript](https://www.typescriptlang.org/)  
 **样式** : [Scss](https://www.sass.hk/)  
 **搜索** : [FuseJS](https://fusejs.io/)  

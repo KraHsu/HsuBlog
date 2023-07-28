@@ -12,7 +12,9 @@ This theme inherently followes best practices and assures accessibility as a fun
 
 ## Live Demo 😎🌐
 
-### [https://demo.krahsu.top](https://demo.krahsu.top)
+[![preview](https://hsublog.pages.dev/preview.png)](https://hsublog.pages.dev)
+
+### [https://hsublog.pages.dev](https://hsublog.pages.dev)
 
 ## Why HsuBlog 🤪❓
 
@@ -84,7 +86,7 @@ I will complete the documentation as soon as possible
 
 ## Tech Stack🏗️🛠️
 
-**Framework** : [Astro](https://astro.build/) & [Vue](https://vuejs.org/)
+**Framework** : [Astro](https://astro.build/) & [Vue](https://vuejs.org/)  
 **Type** : [TypeScript](https://www.typescriptlang.org/)  
 **Styling** : [Scss](https://www.sass.hk/)  
 **Search** : [FuseJS](https://fusejs.io/)  

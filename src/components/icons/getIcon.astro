@@ -5,9 +5,10 @@ import icons from "./icons.json";
 interface Props {
   Icon: any;
   class?: string;
+  onclick?: string;
 }
 
-const { Icon, class: wrapClass } = Astro.props;
+const { Icon, class: wrapClass, onclick } = Astro.props;
 const t = typeof Icon;
 let icon: any;
 var flag: number = -1;
@@ -36,7 +37,7 @@ if (t === "function") {
 
 {
   flag !== -1 && (
-    <div class={wrapClass || ""}>
+    <div class={wrapClass || ""} onclick={onclick || ""}>
       {() => {
         switch (flag) {
           case 0:

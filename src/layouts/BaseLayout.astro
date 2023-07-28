@@ -10,12 +10,18 @@ import Loading from "@comp/loading/loading.vue";
 import Search from "@comp/Search.astro";
 import Bubbles from "@comp/animation/bubbles.astro";
 import { SiteConfig } from "@src/site_config";
+import { string } from "yargs";
 interface Props {
   class?: string;
   description?: string;
+  themeColor?: string;
 }
 
-const { class: pageClass, description } = Astro.props;
+const { class: pageClass, description, themeColor } = Astro.props;
+
+const globalStyle = `:root{--theme-color:${
+  themeColor || ThemeConfig.site.themeColor
+};}`;
 ---
 
 <!DOCTYPE html>
@@ -36,6 +42,7 @@ const { class: pageClass, description } = Astro.props;
       rel="stylesheet"
       href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css"
     /> -->
+    <style set:html={globalStyle}></style>
     {
       SiteConfig.markdownMath && (
         <link

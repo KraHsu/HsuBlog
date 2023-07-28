@@ -34,6 +34,16 @@
           color: var(--font-white-black);
 
           font-size: 18px;
+
+          display: flex;
+
+          align-items: center;
+
+          svg {
+            width: 18px;
+            height: 18px;
+            margin: 0 2px;
+          }
         }
       }
     }
@@ -101,7 +111,7 @@
   .post-header {
     animation: darken 0.3s linear;
 
-    filter: brightness(0.8);
+    opacity: 0.8;
   }
 }
 

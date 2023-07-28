@@ -86,13 +86,14 @@
 
 #inner-container {
   justify-content: center;
+
   flex-grow: 1;
 
   display: flex;
 
   max-width: 1300px;
 
-  padding: 4.2rem 1.5rem 0;
+  padding: calc(var(--header-nav-height) + 1rem) 1.5rem 0;
 
   color: var(--font-black-white);
 
@@ -110,11 +111,6 @@
 }
 
 @media screen and (width <= 1400px) {
-  #main-container {
-    .hero-shoot {
-      display: none;
-    }
-  }
   #inner-container {
     padding-top: calc(var(--header-nav-height) + 1rem);
     width: 100%;
@@ -129,6 +125,14 @@
       width: 30%;
 
       margin: 0 0.5rem;
+    }
+  }
+}
+
+@media screen and (width <= 1100px) {
+  #main-container {
+    .hero-shoot {
+      display: none;
     }
   }
 }
