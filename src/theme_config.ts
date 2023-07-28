@@ -16,8 +16,12 @@ export const ThemeConfig: Configs = {
     author: "枢衡KraHsu",
     localSearch: {
       enable: true,
-      comment: "你可以使用类似 unix 的格式：[扩展搜索](/blog/lkk0v40t/)",
-      hits: ["[扩展搜索](/blog/lkk0v40t/)", "[HelloWorld](/blog/lkk0fjvf/)"],
+      comment:
+        "You can use a Unix-like format：[Extended search](/blog/lkk0v40t/)",
+      hits: [
+        "[Extended search](/blog/lkk0v40t/)",
+        "[HelloWorld](/blog/lkk0fjvf/)",
+      ],
     },
     backgroundBubbles: 20,
     themeColor: "#a57ad4",
@@ -117,12 +121,12 @@ export const ThemeConfig: Configs = {
       ],
     },
     announcement: {
-      headline: "看公告啦！",
+      headline: "Annoucement！",
       content:
-        "新主题试验中~ 欢迎各位[找茬](https://github.com/KraHsu/HsuBlog/issues)~",
+        "The theme is constantly being refined and is open to [suggestions](https://github.com/KraHsu/HsuBlog/issues) from anyone~",
     },
     siteInfo: {
-      busuanzi: false,
+      busuanzi: true,
       totalWordCounts: true,
       totalPostCounts: true,
     },
@@ -130,8 +134,8 @@ export const ThemeConfig: Configs = {
       {
         // icon: `<i class="fa-solid fa-star"></i>`,
         icon: "local:solid.star",
-        title: "推荐文章",
-        content: "这里是自定义内容部分<br>啥都可以放",
+        title: "Custom part",
+        content: "This is the space reserved for you to play freely",
       },
     ],
   },
