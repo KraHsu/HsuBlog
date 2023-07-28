@@ -6,3 +6,4 @@ public/scripts/*.json
 *.log
 copy.js
 dist
+yarn.lock
