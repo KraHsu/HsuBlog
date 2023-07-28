@@ -1,9 +1,12 @@
 import fs from "fs";
-import { utils } from "./utils";
-// import { SiteConfig } from "../site_config";
-
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import path from "path";
+import { utils } from "../utils/utils";
+// import { SiteConfig } from "../site_config";
+// 获取当前文件目录
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 interface SearchData {
   title: string;
@@ -23,16 +26,20 @@ export function generateSearchData() {
         content: content,
         url: `/blog/${file.data.astro.frontmatter.abbrlink}`,
       });
-      const __filename = fileURLToPath(import.meta.url);
-      const __dirname = dirname(__filename);
-      console.log(__dirname);
-      try {
-        fs.writeFileSync(
-          "./public/scripts/searchData.json",
-          JSON.stringify(searchDatas, null, 2)
+
+      const filePath = path.resolve(
+        __dirname,
+        "../../public/scripts/searchData.json"
+      );
+
+      if (!fs.existsSync(filePath)) {
+        fs.writeFileSync(filePath, JSON.stringify(searchDatas, null, 2));
+      } else {
+        const currentData = JSON.parse(
+          fs.readFileSync(filePath, { encoding: "utf-8" })
         );
-      } catch (error) {
-        console.error("An error occurred:", error);
+        const newData = [...currentData, ...searchDatas];
+        fs.writeFileSync(filePath, JSON.stringify(newData, null, 2));
       }
     }
   };
