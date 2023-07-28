@@ -3,8 +3,8 @@ import type { Element } from "hastscript/lib/core";
 import { h } from "hastscript";
 import type * as shiki from "shiki";
 import { renderToHtml, getHighlighter } from "shiki";
-import darkThemeData from "./darkTheme.json";
-import lightThemeData from "./lightTheme.json";
+import darkThemeData from "./markdownThemes/darkTheme.json";
+import lightThemeData from "./markdownThemes/lightTheme.json";
 
 const darkTheme = await getHighlighter({
   theme: darkThemeData as any,
@@ -14,26 +14,60 @@ const lightTheme = await getHighlighter({
 });
 const _darkTheme = darkTheme.getTheme();
 const _lightTheme = lightTheme.getTheme();
+const options = {
+  dark: {
+    themeName: _darkTheme.name,
+    fg: _darkTheme.fg,
+    bg: _darkTheme.bg,
+  },
+  light: {
+    themeName: _lightTheme.name,
+    fg: _lightTheme.fg,
+    bg: _lightTheme.bg,
+  },
+};
+const highlightBackgroundColor = {
+  dark: darkThemeData.colors["editor.lineHighlightBackground"] || "",
+  light: lightThemeData.colors["editor.lineHighlightBackground"] || "",
+};
 
 export const processRehype = {
   processBlockquote: function (node: any) {
     const iLeft = {
       type: "raw",
       value:
-        '<svg xmlns="http://www.w3.org/2000/svg" class="quote-left" viewBox="0 0 448 512"><path fill="currentColor" d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"/></svg>',
+        '<svg xmlns="http://www.w3.org/2000/svg" class="quote-left" viewBox="0 0 448 512"><path fill="currentColor" d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"/></svg><div class="quote-content">',
     };
     const iRight = {
       type: "raw",
       value:
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="quote-right"><path fill="currentColor" d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H320c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72zm-256 0c0 66.3-53.7 120-120 120H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72z"/></svg>',
+        '</div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="quote-right"><path fill="currentColor" d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H320c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72zm-256 0c0 66.3-53.7 120-120 120H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72z"/></svg>',
     };
-
-    for (let i = 0; i < node.children.length; i++) {
-      if (node.children[i].tagName !== "p") continue;
-      node.children.splice(i + 1, 0, iRight);
-      node.children.splice(i, 0, iLeft);
-      i += 2;
+    const children = node.children;
+    const length = node.children.length;
+    const secondLastChild = children[length - 2];
+    if (
+      secondLastChild.tagName === "p" &&
+      secondLastChild.children[0].type === "text" &&
+      secondLastChild.children[0].value.slice(0, 2) === "::"
+    ) {
+      const textValue = secondLastChild.children[0].value;
+      secondLastChild.children[0].value = textValue.slice(2);
+      secondLastChild.properties = {
+        class: "attribution",
+      };
+      children.splice(length - 2, 0, iRight);
+    } else {
+      children.push(iRight);
     }
+    children.unshift(iLeft);
+
+    // for (let i = 0; i < node.children.length; i++) {
+    //   if (node.children[i].tagName !== "p") continue;
+    //   node.children.splice(i + 1, 0, iRight);
+    //   node.children.splice(i, 0, iLeft);
+    //   i += 2;
+    // }
   },
 
   processTable: function (node: any, parent: any, index: any) {
@@ -45,15 +79,28 @@ export const processRehype = {
     parent.tagName = "div";
     parent.properties.className = "image";
 
-    const fancybox = h(
-      "a.img-wrap",
-      {
-        "data-fancybox": "",
-        "data-caption": node.properties.alt,
-        href: node.properties.src,
-      },
-      node
-    );
+    let fancybox: Element;
+
+    if (parent?.properties?.href) {
+      fancybox = h(
+        "a.img-wrap",
+        {
+          href: parent.properties.href,
+        },
+        node
+      );
+      delete parent.properties.href;
+    } else {
+      fancybox = h(
+        "a.img-wrap",
+        {
+          "data-fancybox": "",
+          "data-caption": node.properties.alt,
+          href: node.properties.src,
+        },
+        node
+      );
+    }
 
     parent.children.splice(index, 1, fancybox);
 
@@ -74,19 +121,14 @@ export const processRehype = {
 
 export const processRemark = {
   processCode: function (node: any, parent: any, index: any) {
+    const match = node.lang.match(/([-\w#文言]+)(?:\[(.*?)\])?/);
+    const lang = match[1] || "plaintext";
+    const highlightLines = match[2] || [];
     const newNode = {
       type: "html",
-      value: `<div class='code-block'><div class='code-head'><div class="code-expand"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill="currentColor" d=\"M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z\"/></svg></div><div class='code-lang'>${
-        node.lang || "code"
-      }</div></div>${getHighlightHtml(
-        node.value,
-        node.lang || "code",
-        "dark"
-      )}${getHighlightHtml(
-        node.value,
-        node.lang || "code",
-        "light"
-      )}<div class='code-copy' title='copy code' onclick='hsu.copyCode(event)'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path fill="currentColor" d=\"M272 0H396.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H272c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128H192v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z\"/></svg></div></div>`,
+      value: `<div class='code-block'><div class='code-head'><div class="code-expand" onclick="hsu.toggleCollapse(this)"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill="currentColor" d=\"M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z\"/></svg></div><div class='code-lang'>${lang}</div></div>
+      ${getHighlightHtml(node.value, lang, "dark", highlightLines)}
+      ${getHighlightHtml(node.value, lang, "light", highlightLines)}</div>`,
     };
     parent.children.splice(index, 1, newNode);
   },
@@ -293,27 +335,16 @@ function hh(
 function getHighlightHtml(
   code: string,
   lang: shiki.Lang,
-  theme: "dark" | "light"
+  theme: "dark" | "light",
+  highlightLines: number[] = []
 ) {
+  const background = highlightBackgroundColor[theme];
   const tokens =
     theme === "dark"
       ? darkTheme.codeToThemedTokens(code, lang)
       : lightTheme.codeToThemedTokens(code, lang);
-  const options =
-    theme === "dark"
-      ? {
-          themeName: _darkTheme.name,
-          fg: _darkTheme.fg,
-          bg: _darkTheme.bg,
-        }
-      : {
-          themeName: _lightTheme.name,
-          fg: _lightTheme.fg,
-          bg: _lightTheme.bg,
-        };
-
   const html = renderToHtml(tokens, {
-    ...options,
+    ...options[theme],
     elements: {
       pre({ className, style, children }) {
         className = className.replace(/shiki/g, "hsu-code");
@@ -321,12 +352,41 @@ function getHighlightHtml(
         style +=
           '; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"';
 
-        return `<div class='code-wrap ${theme}'><pre class="${className}" style="${style}" tabindex="0">${children}</pre></div>`;
+        return `<div class='code-wrap ${theme}'><pre class="${className}" style="${style}" tabindex="0">${children}</pre><div class='code-copy' style='color: ${options[theme].fg};' title='copy code' onclick='hsu.copyCode(this)'><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path fill="currentColor" d=\"M272 0H396.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H272c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128H192v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z\"/></svg></div></div>`;
       },
       code({ children }) {
-        return `<code class='block-code'>${children}</code>`;
+        return `<code class='block-code'>${children
+          .split("\n")
+          .map((line, index) =>
+            highlightLines.includes(index + 1)
+              ? line.replace(
+                  '<span class="line">',
+                  `<span class="line highlight" style="background: ${background};">`
+                )
+              : line
+          )
+          .join("\n")}</code>`;
       },
     },
   });
   return html;
+}
+
+function getHighlightLines(str: string) {
+  let items = str.slice(1, -1).split(",");
+
+  let output: number[] = [];
+  items.forEach((item) => {
+    item = item.trim();
+    if (item.includes("-")) {
+      let range = item.split("-").map(Number);
+      for (let i = range[0]; i <= range[1]; i++) {
+        output.push(i);
+      }
+    } else {
+      output.push(Number(item));
+    }
+  });
+
+  return [...new Set(output)].sort((a, b) => a - b);
 }

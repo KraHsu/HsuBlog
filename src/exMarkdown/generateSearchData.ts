@@ -2,7 +2,7 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import path from "path";
-import { utils } from "./utils";
+import { utils } from "../utils/utils";
 // import { SiteConfig } from "../site_config";
 // 获取当前文件目录
 const __filename = fileURLToPath(import.meta.url);

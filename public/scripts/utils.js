@@ -96,12 +96,12 @@ const hsu = {
     goToUrl: (url) => {
         window.location.href = url;
     },
-    copyCode: function (event) {
+    copyCode: function (element) {
         // 使用事件对象找到被点击的code-copy元素的父code-block
-        const codeBlock = event.target.closest('.code-block');
+        const codeBlock = element.closest('.code-wrap');
 
         // 获取该code-block内的code标签的文本内容
-        const codeContent = codeBlock.querySelector(".astro-code").textContent;
+        const codeContent = codeBlock.querySelector(".block-code").textContent;
 
         // 复制到剪贴板
         navigator.clipboard.writeText(codeContent).then(function () {
@@ -111,6 +111,10 @@ const hsu = {
             // 如果出现错误，例如用户没有授予剪贴板权限
             console.error("无法复制代码:", err);
         });
+    },
+    toggleCollapse: function (element) {
+        const codeBlock = element.closest('.code-block');
+        codeBlock.classList.toggle('collapsed');
     },
     anchorScroll: function (event) {
         // 获取目标元素

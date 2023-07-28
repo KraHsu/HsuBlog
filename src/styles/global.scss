@@ -25,11 +25,6 @@
   background: rgba(0, 0, 0, 0.06);
 }
 
-ul,
-ol {
-  list-style-type: none;
-}
-
 body {
   overflow-x: hidden;
 
@@ -41,6 +36,10 @@ body {
 }
 
 :root {
+  --highlight-index-color: #888;
+
+  --footnote-color: #f09205;
+
   --font-black-white: #363636;
 
   --font-white-black: white;
@@ -53,7 +52,7 @@ body {
 
   --body-background-color: #f7f9fe;
 
-  --codeblock-background-grey: var(--background-grey);
+  --codeblock-background-grey: #f5f5f5;
 
   --codeblock-copybutton-grey: var(--font-light-grey);
 
@@ -73,9 +72,9 @@ body {
 
   --font-white: white;
 
-  --font-code-color: rgb(255 136 0);
+  --font-code-color: rgb(0, 81, 255);
 
-  --font-code-background: #eee;
+  --font-code-background: #f7f7f7;
 
   --background-white: white;
 
@@ -88,7 +87,7 @@ body {
   --aside-link-color: #822eda;
 
   &[data-theme="dark"] {
-    --theme-color: #d4af7a;
+    --highlight-index-color: #666;
 
     --font-black-white: white;
 
@@ -106,7 +105,7 @@ body {
 
     --codeblock-copybutton-grey: #ddd;
 
-    --font-code-background: #666;
+    --font-code-background: #999;
 
     --card-background: #1b1c20;
 
@@ -114,7 +113,7 @@ body {
 
     --background-white: #0a0a0c;
 
-    --font-code-color: rgb(235, 125, 0);
+    --font-code-color: rgb(0, 33, 104);
 
     --font-mid-grey: #ddd;
 

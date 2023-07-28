@@ -1,7 +1,7 @@
 import { visit } from "unist-util-visit";
 import getReadingTime from "reading-time";
 import { toString } from "mdast-util-to-string";
-import { utils } from "./utils";
+import { utils } from "../utils/utils";
 import { writeFileSync } from "fs";
 import { processRehype, processRemark, processDir } from "./processMd";
 
@@ -91,6 +91,8 @@ export function rehypeRestyling() {
         case "a":
           processRehype.processA(node);
           break;
+        // default:
+        //   console.log(node);
       }
       // switch (node.type) {
       //   case "raw":
@@ -110,8 +112,11 @@ export function remarkRestyling() {
           }
           break;
         case "link":
+          if (node.children[0]?.type === "image") break;
           processRemark.processLink(node);
           break;
+        // default:
+        //   console.log(node);
       }
     });
   };

@@ -7,7 +7,7 @@ import {
   rehypeFrontmatter,
   remarkRestyling,
   rehypeRestyling,
-} from "./src/utils/md";
+} from "./src/exMarkdown/md";
 
 import remarkGfm from "remark-gfm";
 
@@ -20,7 +20,7 @@ import remarkDirective from "remark-directive";
 import vue from "@astrojs/vue";
 
 import { SiteConfig } from "./src/site_config";
-import { generateSearchData } from "./src/utils/generateSearchData";
+import { generateSearchData } from "./src/exMarkdown/generateSearchData.js";
 
 const remarkPlugins: any = [
   remarkFrontmatter,

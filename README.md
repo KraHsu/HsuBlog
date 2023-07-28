@@ -12,6 +12,8 @@ This theme inherently followes best practices and assures accessibility as a fun
 
 ## Live Demo 😎🌐
 
+[![preview](https://hsublog.pages.dev/preview.png)](https://hsublog.pages.dev)
+
 ### [https://hsublog.pages.dev](https://hsublog.pages.dev)
 
 ## Why HsuBlog 🤪❓

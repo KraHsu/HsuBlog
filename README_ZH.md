@@ -10,6 +10,7 @@ HsuBlog遵循最佳实践，📜✅并确保开箱可用。它原生支持浅色
 
 ## 在线演示 😎🌐
 
+[![preview](https://hsublog.pages.dev/preview.png)](https://hsublog.pages.dev)
 ### [https://hsublog.pages.dev](https://hsublog.pages.dev)
 
 ## 为什么选择 HsuBlog 🤪❓
