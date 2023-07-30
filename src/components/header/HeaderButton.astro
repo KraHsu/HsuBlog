@@ -1,4 +1,5 @@
 ---
+import { localizePath } from "astro-i18next";
 import { ThemeConfig } from "@src/theme_config";
 import GetIcon from "@comp/icons/getIcon.astro";
 
@@ -15,7 +16,7 @@ const funcs: HeaderFunc = ThemeConfig.header.functions;
       <div class:list={["menu-button", button.customClass]}>
         {button.link ? (
           <a
-            href={button.link}
+            href={localizePath(button.link)}
             class="menu-button-link"
             title={button.title || ""}
           >

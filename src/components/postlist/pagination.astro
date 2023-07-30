@@ -14,7 +14,9 @@ const { pageSize, activePage, baseurl } = Astro.props;
   <div class:list={["pagination-pre", { "disable": activePage === 1 }]}>
     <a
       class="pagination-link"
-      href={`${baseurl}${activePage === 2 ? "" : activePage - 1}`}
+      href={`${baseurl[baseurl.length - 1] === "/" ? baseurl : baseurl + "/"}${
+        activePage === 2 ? "" : activePage - 1
+      }`}
     >
       <span>{t("words.prePage", { returnNull: true })}</span>
     </a>
@@ -29,7 +31,9 @@ const { pageSize, activePage, baseurl } = Astro.props;
       Array.from({ length: pageSize }, (_, i) => i + 1).map((num) => (
         <li>
           <a
-            href={`${baseurl}${num === 1 ? "" : num}`}
+            href={`${
+              baseurl[baseurl.length - 1] === "/" ? baseurl : baseurl + "/"
+            }${num === 1 ? "" : num}`}
             class:list={[{ "active": num === activePage }, "pagination-number"]}
           >
             <span>{num}</span>
