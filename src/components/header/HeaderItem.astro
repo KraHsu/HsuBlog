@@ -1,5 +1,6 @@
 ---
 import { t } from "i18next";
+import { localizePath } from "astro-i18next";
 import { ThemeConfig } from "@src/theme_config";
 import GetIcon from "@comp/icons/getIcon.astro";
 
@@ -21,7 +22,7 @@ const items_t: Record<string, string> = t("header.menu", {
       >
         {item.link ? (
           <a
-            href={item.link || ""}
+            href={localizePath(item.link || "")}
             rel={item.link ? "" : "nofollow"}
             class="menu-item-link"
           >
@@ -46,7 +47,7 @@ const items_t: Record<string, string> = t("header.menu", {
                   <li class:list={["menu-child", child.customClass]}>
                     {child.link ? (
                       <a
-                        href={child.link}
+                        href={localizePath(child.link)}
                         rel={child.link ? "" : "nofollow"}
                         class="menu-child-link"
                       >
