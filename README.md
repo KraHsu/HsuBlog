@@ -29,6 +29,7 @@ This theme inherently followes best practices and assures accessibility as a fun
 - [x] SEO-friendly 🕷️🔗
 - [x] followed best practices ✅🥇
 - [x] markdown gfm, KaTex/Mathjax and some other unique extension syntax (in progress) 📝🔧
+- [x] i18n supported
 
 PS: About the performance, It depends on how you use it. In my tests, lighthouses' performance scores averaged over 85. It can even reach 97 points without using large size pictures. Why not give it a try 😁.
 
@@ -67,6 +68,7 @@ root
     │  │  └─dist
     │  ├─dist
     │  └─tags
+    ├─exMarkdown
     └─utils
 ```
 
@@ -91,6 +93,7 @@ I will complete the documentation as soon as possible
 **Styling** : [Scss](https://www.sass.hk/)  
 **Search** : [FuseJS](https://fusejs.io/)  
 **Icons** : [FontAwesome](https://fontawesome.com/) & [IconPark](https://iconpark.oceanengine.com/home)
+**I18n** : [astro-i18next](https://github.com/yassinedoghri/astro-i18next)
 
 ## Getting Started🚀🏁
 
@@ -161,7 +164,6 @@ use `yarn run -h` for help
 ## To Do
 
 - [ ] responsive (mobile ~ desktops)
-- [ ] i18n
 
 ## Contribution 💡💬
 
