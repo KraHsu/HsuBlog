@@ -1,29 +1,36 @@
 ---
 import "@style/components/search.scss";
+import i18next, { t } from "i18next";
 import SearchCore from "./client/searchCore.vue";
 import { ThemeConfig } from "@src/theme_config";
 import { utils } from "@src/utils/utils";
 import GetIcon from "./icons/getIcon.astro";
 
-const hits = ThemeConfig.site.localSearch.hits.map((hit) =>
-  utils.replaceLink(hit, "search-hit")
-);
+const rawHits =
+  (t("site.localSearch.hits", { returnObjects: true }) as string[]) ||
+  ThemeConfig.site.localSearch.hits;
+
+const hits = rawHits.map((hit) => utils.replaceLink(hit, "search-hit"));
 const comment = utils.replaceLink(
-  utils.executeEmbeddedScripts(ThemeConfig.site.localSearch.comment)
+  utils.executeEmbeddedScripts(
+    t("site.localSearch.comment") || ThemeConfig.site.localSearch.comment
+  )
 );
 ---
 
 <div id="search" class="hide">
   <div class="search-wrap">
     <div class="search-header">
-      <div class="search-title">搜索</div>
+      <div class="search-title">
+        {t("words.search")}
+      </div>
       <GetIcon
         Icon="local:solid.xmark"
         class="search-close"
-        onclick={"hsu.closesearch()"}
+        onclick={`hsu.closesearch()`}
       />
     </div>
-    <SearchCore client:only />
+    <SearchCore client:only lang={i18next.language} />
     <div class="search-hits">
       {hits.map((hit) => <Fragment set:html={hit} />)}
     </div>

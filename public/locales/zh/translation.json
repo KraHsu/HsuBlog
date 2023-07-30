@@ -1,0 +1,69 @@
+{
+  "site": {
+    "author": "枢衡Krahsu",
+    "title": "Hsu's Blog!",
+    "description": "这是一个个人博客",
+    "localSearch": {
+      "comment": "你可以使用类似 unix 的格式：[扩展搜索](/blog/lkk0v40t/)",
+      "hits": [
+        "[扩展搜索](/blog/lkk0v40t/)",
+        "[HelloWorld](/blog/lkk0fjvf/)"
+      ]
+    }
+  },
+  "header": {
+    "menu": {
+      "主页": "主页",
+      "博客": "博客",
+      "关于": "关于",
+      "标签": "标签",
+      "我的": "我的",
+      "友链": "友链",
+      "分类": "分类"
+    }
+  },
+  "aside": {
+    "authorInfo": {
+      "description": ""
+    },
+    "announcement": {
+      "headline": "看公告啦！",
+      "content": "新主题试验中~ 欢迎各位[找茬](https://github.com/KraHsu/HsuBlog/issues)~"
+    },
+    "customCards": {
+      "推荐文章": {
+        "title": "推荐文章",
+        "content": "这里是自定义内容部分<br>啥都可以放"
+      }
+    }
+  },
+  "footer": {
+    "text": "Design & Build with ❤ by [枢衡KraHsu](/about)",
+    "copyright": "&copy; 2022-{{const today = new Date();return today.getFullYear();}} By [枢衡KraHsu](/about)"
+  },
+  "homePage": {
+    "heroTitle": "枢衡の学习日志",
+    "heroDescription": "一个漂亮且客制化的Astro个人博客主题"
+  },
+  "postPage": {
+    "pubDate": "发表于 {{- pubDate}}",
+    "updatedDate": "更新于 {{- updatedDate}}",
+    "minutesRead": "预计阅读 {{minutesRead}} 分钟",
+    "numberOfWords": "{{numberOfWords}} 字"
+  },
+  "words": {
+    "comments": "评论",
+    "search": "搜索",
+    "prePage": "上一页",
+    "nextPage": "下一页",
+    "articles": "文章",
+    "categories": "分类",
+    "tags": "标签",
+    "TOC": "文章内容",
+    "siteInfo": "网站信息",
+    "uniqueVisitor": "网站访客量",
+    "pageView": "网站浏览量",
+    "articlCount": "文章数",
+    "wordCount": "字数"
+  }
+}

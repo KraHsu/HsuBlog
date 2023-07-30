@@ -15,7 +15,7 @@
   &:hover {
     width: 130px;
     .search-box {
-      background: rgba(0 0 0 / 5%);
+      background: var(--translucent-background);
       .search-hotkey {
         transition-delay: 0.2s;
 
@@ -93,11 +93,6 @@
   #search-bar {
     .search-icon {
       color: white;
-    }
-    &:hover {
-      .search-box {
-        background: rgba(255 255 255 / 10%);
-      }
     }
     .search-hotkey {
       color: white;

@@ -1,5 +1,6 @@
 ---
 import "@style/components/pagination.scss";
+import { t } from "i18next";
 interface Props {
   pageSize: number;
   activePage: number;
@@ -15,12 +16,12 @@ const { pageSize, activePage, baseurl } = Astro.props;
       class="pagination-link"
       href={`${baseurl}${activePage === 2 ? "" : activePage - 1}`}
     >
-      <span>上一页</span>
+      <span>{t("words.prePage")}</span>
     </a>
   </div>
   <div class:list={["pagination-next", { "disable": activePage === pageSize }]}>
     <a class="pagination-link" href={`${baseurl}${activePage + 1}`}>
-      <span>下一页</span>
+      <span>{t("words.nextPage")}</span>
     </a>
   </div>
   <ul class="pagination-list">

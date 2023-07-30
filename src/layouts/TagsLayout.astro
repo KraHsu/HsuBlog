@@ -1,6 +1,6 @@
 ---
+import { localizePath } from "astro-i18next";
 import PostsList from "@comp/postlist/postsList.astro";
-import Pagination from "@comp/postlist/pagination.astro";
 import HomeLayout from "@layout/HomeLayout.astro";
 import HeroWave from "@comp/header/heroWave.astro";
 import { ThemeConfig } from "@src/theme_config";
@@ -20,7 +20,7 @@ const { tags, baseurl, activeTag, page } = Astro.props;
       <div class:list={["tags", { "floating": ThemeConfig.tagsPage.floating }]}>
         {
           tags.map((tag) => (
-            <a class="tag" href={`${baseurl}${tag}`}>
+            <a class="tag" href={localizePath(baseurl + tag)}>
               <span class="tag-text">{tag}</span>
             </a>
           ))
@@ -29,15 +29,6 @@ const { tags, baseurl, activeTag, page } = Astro.props;
     </div>
   </HeroWave>
   <Fragment slot="inContainer">
-    {page && <PostsList posts={page.data} />}
-    {
-      page && page.lastPage > 1 && (
-        <Pagination
-          baseurl="/"
-          pageSize={page.lastPage}
-          activePage={page.currentPage}
-        />
-      )
-    }
+    {page && <PostsList page={page} baseurl={localizePath(baseurl)} />}
   </Fragment>
 </HomeLayout>

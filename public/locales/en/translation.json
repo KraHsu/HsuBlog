@@ -1,0 +1,69 @@
+{
+  "site": {
+    "author": "KraHsu",
+    "title": "Hsu's Blog!",
+    "description": "This is a personal blog",
+    "localSearch": {
+      "comment": "You can use a unix-like format: [Extended Search](/blog/lkk0v40t/)",
+      "hits": [
+        "[Extended Search](/blog/lkk0v40t/)",
+        "[HelloWorld](/blog/lkk0fjvf/)"
+      ]
+    }
+  },
+  "header": {
+    "menu": {
+      "主页": "Home",
+      "博客": "Blog",
+      "关于": "About",
+      "标签": "Tags",
+      "我的": "Mine",
+      "友链": "Friends",
+      "分类": "Cats."
+    }
+  },
+  "aside": {
+    "authorInfo": {
+      "description": "A front-end developer."
+    },
+    "announcement": {
+      "headline": "Announcement!",
+      "content": "New theme testing~ Everyone is welcome to [find bugs](https://github.com/KraHsu/HsuBlog/issues)~"
+    },
+    "customCards": {
+      "推荐文章": {
+        "title": "Customed",
+        "content": "This is the custom content section<br>Anything can be placed here"
+      }
+    }
+  },
+  "footer": {
+    "text": "Design & Build with ❤ by [KraHsu](/about)",
+    "copyright": "&copy; 2022-{{const today = new Date();return today.getFullYear();}} By [KraHsu](/about)"
+  },
+  "homePage": {
+    "heroTitle": "KraHsu's Blog",
+    "heroDescription": "A beautiful, customized, personal blog theme for Astro"
+  },
+  "postPage": {
+    "pubDate": "Published on {{- pubDate}}",
+    "updatedDate": "Updated on {{- updatedDate}}",
+    "minutesRead": "Estimated reading {{minutesRead}} minutes",
+    "numberOfWords": "{{numberOfWords}} words"
+  },
+  "words": {
+    "comments": "Comments",
+    "search": "Search",
+    "prePage": "Prev",
+    "nextPage": "Next",
+    "articles": "Arts.",
+    "categories": "Cats.",
+    "tags": "Tags",
+    "TOC": "Table of Contents",
+    "siteInfo": "SiteInfo",
+    "uniqueVisitor": "Unique Visitors",
+    "pageView": "Page Views",
+    "articlCount": "Article Count",
+    "wordCount": "Word Count"
+  }
+}

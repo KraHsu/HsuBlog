@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { utils } from "@utils/utils";
+import { SiteConfig } from "@src/site_config";
 
 const blogCollection = defineCollection({
   schema: z.object({
@@ -25,9 +25,16 @@ const blogCollection = defineCollection({
     abbrlink: z.string().optional(),
     tags: z.string().array().optional(),
     category: z.string().optional(),
+    lang: z
+      .string()
+      .optional()
+      .transform((val) => {
+        if (!val) return SiteConfig.i18n.default;
+        else return val;
+      }),
   }),
 });
 
 export const collections = {
-  blog: blogCollection,
+  "blog": blogCollection,
 };

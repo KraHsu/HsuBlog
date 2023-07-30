@@ -26,7 +26,7 @@ const { frontmatter } = Astro.props;
 
 <PostLayout
   useComments={frontmatter.useComments && ThemeConfig.comments.type !== false}
-  toc={frontmatter.useToc ? frontmatter.toc : undefined}
+  frontmatter={frontmatter}
   desc={frontmatter.description}
 >
   <HeroWave

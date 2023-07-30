@@ -1,4 +1,5 @@
 ---
+import { t } from "i18next";
 import { ThemeConfig } from "@src/theme_config";
 import { utils } from "@src/utils/utils";
 import GetIcon from "@comp/icons/getIcon.astro";
@@ -12,13 +13,15 @@ const announcement: Announcement = ThemeConfig.aside.announcement;
       class="announcement-icon aside-card-icon"
     />
     <div class="announcement-title aside-card-title">
-      {announcement.headline}
+      {t("aside.announcement.headline") || announcement.headline}
     </div>
   </div>
   <div
     class="announcement-content aside-card-content"
     set:html={utils.replaceLink(
-      utils.executeEmbeddedScripts(announcement.content),
+      utils.executeEmbeddedScripts(
+        t("aside.announcement.content") || announcement.content
+      ),
       "aside-card-link"
     )}
   />

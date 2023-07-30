@@ -1,5 +1,6 @@
 ---
 import "@style/components/aside.scss";
+import { t } from "i18next";
 import AsideComps from "./asideComps.astro";
 import CustomCard from "./customCard.astro";
 import { ThemeConfig } from "@src/theme_config";
@@ -21,7 +22,12 @@ const { class: className, comps, stickyComps, direct } = Astro.props;
     >
       <AsideComps comps={comps} />
       {ThemeConfig.aside.customCards.map((card) => (
-        <CustomCard card={card} />
+        <CustomCard
+          card={
+            t(`aside.customCards.${card.title}`, { returnObjects: true }) ||
+            card
+          }
+        />
       ))}
       <div class="sticky-container">
         <AsideComps comps={stickyComps} />

@@ -14,15 +14,23 @@
     "new": "ts-node ./hsublog-cli.ts new",
     "abbr": "ts-node ./hsublog-cli.ts abbr",
     "newpage": "ts-node ./hsublog-cli.ts newPage",
+<<<<<<< HEAD
     "help": "ts-node ./hsublog-cli.ts help"
+=======
+    "help": "ts-node ./hsublog-cli.ts help",
+    "i18n": "astro-i18next generate"
+>>>>>>> c3563005a6e3cbfdeaccea36c95a8510a537aaac
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",
+    "@astrojs/vue": "^2.2.1",
+    "vue": "^3.2.30",
     "@astrojs/rss": "^2.4.3",
     "@astrojs/vue": "^2.2.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "astro": "^2.8.3",
+    "astro-i18next": "^1.0.0-beta.21",
     "fuse.js": "^6.6.2",
     "glob": "^10.3.3",
     "hastscript": "^7.2.0",

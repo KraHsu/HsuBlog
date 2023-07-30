@@ -8,6 +8,8 @@ interface Result {
   url: string;
 }
 
+const { lang: language } = defineProps(["lang"]);
+
 const fuseOptions = {
   isCaseSensitive: false,
   includeScore: true,
@@ -30,7 +32,7 @@ const result: Ref<Fuse.FuseResult<Result>[][]> = ref([]);
 const pageNumber: Ref<number> = ref(1);
 const pageSize: Ref<number> = ref(0);
 
-const list = await hsu.getJson("/scripts/searchData.json");
+const list = await hsu.getJson(`/scripts/searchData-${language}.json`);
 const fuse = new Fuse(list, fuseOptions);
 const search = () => {
   let tmp: Fuse.FuseResult<Result>[] = fuse.search(keywords.value);

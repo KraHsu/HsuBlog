@@ -1,4 +1,5 @@
 ---
+import { t } from "i18next";
 import GetIcon from "./icons/getIcon.astro";
 import { ThemeConfig } from "@src/theme_config";
 
@@ -25,7 +26,7 @@ const script = () => {
 <div class="post-comment">
   <div class="comment-head">
     <GetIcon Icon="local:solid.comment" class="comment-icon" />
-    <span>评论</span>
+    <span>{t("words.comments")}</span>
   </div>
   <div class="comment-wrap">
     <div id="tcomment"></div>

@@ -86,6 +86,8 @@ body {
 
   --aside-link-color: #822eda;
 
+  --translucent-background: rgba(0, 0, 0, 0.05);
+
   &[data-theme="dark"] {
     --highlight-index-color: #666;
 
@@ -118,6 +120,8 @@ body {
     --font-mid-grey: #ddd;
 
     --border-light-grey: #696969;
+
+    --translucent-background: rgba(255, 255, 255, 0.1);
   }
 }
 
