@@ -1,10 +1,12 @@
 import type { Child } from "hastscript";
 import type { Element } from "hastscript/lib/core";
 import { h } from "hastscript";
+import { raw } from "hast-util-raw";
 import type * as shiki from "shiki";
 import { renderToHtml, getHighlighter } from "shiki";
 import darkThemeData from "./markdownThemes/darkTheme.json";
 import lightThemeData from "./markdownThemes/lightTheme.json";
+import { getLocalIcons } from "../components/icons/localIcon";
 
 const darkTheme = await getHighlighter({
   theme: darkThemeData as any,
@@ -168,7 +170,6 @@ export const processDir = {
     );
     Object.assign(node, wrap);
   },
-
   dirLinks: function (node: any) {
     const { children } = node;
     let i, child;
@@ -200,6 +201,17 @@ export const processDir = {
       `background:${node.attributes.bg || ""};`;
   },
   dirNoteL: function (node: any, index: number | null, parent: any) {
+    const className = node.attributes.class as string;
+    const icons: Record<string, string> = {
+      info: "local:solid.circle-info",
+      warn: "local:solid.circle-exclamation",
+      error: "local:solid.circle-xmark",
+      tips: "local:solid.circle-plus",
+      success: "local:solid.circle-check",
+    };
+    if (className in icons) {
+      node.attributes.icon = icons[className];
+    }
     parent.children.splice(
       index,
       1,
@@ -212,23 +224,28 @@ export const processDir = {
           class: node.attributes.class,
           id: node.attributes.id,
         },
-        h("i.dir-note-icon", {
-          class: node.attributes.icon,
-        }),
+        h(
+          "div.dir-note-icon",
+          raw({
+            type: "raw",
+            value: getLocalIcons(node.attributes.icon || ""),
+          })
+        ),
         Object.assign(node, hh("span.dir-note", node.children))
       )
     );
   },
   dirTimeline: function (node: any, index: number | null, parent: any) {
     const { title, content } = getTitleAndContent(node);
+    const linecolor = node.attributes.linecolor || "";
     const color = node.attributes.color || "";
     const times = h(
       "div.dir-timeline-time",
       {
-        style: `color: ${color};`,
+        style: `color: ${linecolor};`,
       },
       h("div.dir-timeline-line", {
-        style: `border-color: ${color};`,
+        style: `border-color: ${linecolor};`,
       }),
       ...content
     );
@@ -241,6 +258,7 @@ export const processDir = {
       title,
       hh(
         "div.dir-timeline-title",
+        { style: `color: ${color};` },
         title?.children ? title.children[0]?.value : ""
       )
     );
@@ -276,6 +294,22 @@ export const processDir = {
         ),
         h("div.dir-time-circle", {
           style: `border-color: ${bg};`,
+        })
+      )
+    );
+  },
+  dirIcon: function (node: any, index: number, parent: any) {
+    parent.children.splice(
+      index,
+      1,
+      hh(
+        "span.dir-icon",
+        {
+          style: `color: ${node.attributes.color};`,
+        },
+        raw({
+          type: "raw",
+          value: getLocalIcons(node.attributes.i || ""),
         })
       )
     );

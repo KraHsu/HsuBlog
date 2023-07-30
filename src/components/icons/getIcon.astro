@@ -1,6 +1,6 @@
 ---
 import { utils } from "@utils/utils";
-import { localIcons } from "./localIcon";
+import { getLocalIcons } from "./localIcon";
 
 interface Props {
   Icon: any;
@@ -25,12 +25,7 @@ if (t === "function") {
     flag = 3;
   } else if (Icon.substring(0, 6) === "local:") {
     flag = 4;
-    let [family, name] = Icon.slice(6).split(".");
-    icon =
-      (localIcons as any)[name].svg[family].raw.replaceAll(
-        "<path",
-        "<path fill='currentColor' "
-      ) || console.error(`${Icon} not found!`);
+    icon = getLocalIcons(Icon);
   }
 }
 ---

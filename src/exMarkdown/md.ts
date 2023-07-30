@@ -15,6 +15,8 @@ export function markdownDirectives() {
     visit(tree, (node, index, parent) => {
       switch (node.type) {
         case "textDirective":
+          if (node.name === "i")
+            processDir.dirIcon(node, index as number, parent);
           if (node.name === "color") processDir.dirColor(node);
           break;
         case "leafDirective":
