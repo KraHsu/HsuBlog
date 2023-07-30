@@ -1,6 +1,6 @@
 ---
 import { utils } from "@utils/utils";
-import icons from "./icons.json";
+import { localIcons } from "./localIcon";
 
 interface Props {
   Icon: any;
@@ -27,7 +27,7 @@ if (t === "function") {
     flag = 4;
     let [family, name] = Icon.slice(6).split(".");
     icon =
-      (icons as any)[name].svg[family].raw.replaceAll(
+      (localIcons as any)[name].svg[family].raw.replaceAll(
         "<path",
         "<path fill='currentColor' "
       ) || console.error(`${Icon} not found!`);

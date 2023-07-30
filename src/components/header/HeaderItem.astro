@@ -1,8 +1,12 @@
 ---
+import { t } from "i18next";
 import { ThemeConfig } from "@src/theme_config";
 import GetIcon from "@comp/icons/getIcon.astro";
 
 const items: Array<MenuItem> = ThemeConfig.header.menu;
+const items_t: Record<string, string> = t("header.menu", {
+  returnObjects: true,
+});
 ---
 
 <Fragment>
@@ -22,12 +26,16 @@ const items: Array<MenuItem> = ThemeConfig.header.menu;
             class="menu-item-link"
           >
             <GetIcon Icon={item.icon} class="menu-item-icon" />
-            <span class="menu-item-name">{item.name}</span>
+            <span class="menu-item-name">
+              {items_t[item.name] || item.name}
+            </span>
           </a>
         ) : (
           <div class="menu-item-link">
             <GetIcon Icon={item.icon} class="menu-item-icon" />
-            <span class="menu-item-name">{item.name}</span>
+            <span class="menu-item-name">
+              {items_t[item.name] || item.name}
+            </span>
           </div>
         )}
         {() => {
@@ -43,12 +51,16 @@ const items: Array<MenuItem> = ThemeConfig.header.menu;
                         class="menu-child-link"
                       >
                         <GetIcon Icon={child.icon} class="menu-child-icon" />
-                        <span class="menu-child-name">{child.name}</span>
+                        <span class="menu-child-name">
+                          {items_t[child.name] || child.name}
+                        </span>
                       </a>
                     ) : (
                       <div class="menu-child-link">
                         <GetIcon Icon={child.icon} class="menu-child-icon" />
-                        <span class="menu-child-name">{child.name}</span>
+                        <span class="menu-child-name">
+                          {items_t[child.name] || child.name}
+                        </span>
                       </div>
                     )}
                   </li>

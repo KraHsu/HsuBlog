@@ -1,14 +1,17 @@
 ---
 import "@style/components/footer.scss";
+import { t } from "i18next";
 import { ThemeConfig } from "@src/theme_config";
 import { utils } from "@utils/utils";
 
 const copyright = utils.replaceLink(
-  utils.executeEmbeddedScripts(ThemeConfig.footer.copyright),
+  utils.executeEmbeddedScripts(
+    t("footer.copyright") || ThemeConfig.footer.copyright
+  ),
   "footer-link"
 );
 const footerText = utils.replaceLink(
-  utils.executeEmbeddedScripts(ThemeConfig.footer.text),
+  utils.executeEmbeddedScripts(t("footer.text") || ThemeConfig.footer.text),
   "footer-link"
 );
 ---

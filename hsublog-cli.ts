@@ -5,6 +5,7 @@ import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { promisify } from "util";
 import { glob } from "glob";
+import { SiteConfig } from "./src/site_config.js";
 import { utils } from "./src/utils/utils.js";
 
 interface Argv {
@@ -19,25 +20,6 @@ const mkdirAsync = promisify(fs.mkdir);
 
 const getDateString = () => {
   const date = new Date();
-  // const monthNames = [
-  //   "Jan",
-  //   "Feb",
-  //   "Mar",
-  //   "Apr",
-  //   "May",
-  //   "Jun",
-  //   "Jul",
-  //   "Aug",
-  //   "Sep",
-  //   "Oct",
-  //   "Nov",
-  //   "Dec",
-  // ];
-  // const month = monthNames[date.getMonth()];
-  // const day = date.getDate().toString().padStart(2, "0");
-  // const year = date.getFullYear();
-
-  // return `${month} ${day} ${year}`;
   return date.toISOString();
 };
 
@@ -82,22 +64,31 @@ const createMdFile = async (filename: string) => {
   const actualFilename = filenameParts.pop();
 
   // create the full directory path
-  const dirPath = path.resolve(`./src/content/blog/`, ...filenameParts);
-  const filePath = path.resolve(dirPath, `${actualFilename}.md`);
+  const defaultLanguage = SiteConfig.i18n.default;
+  for (const language of SiteConfig.i18n.languages) {
+    const dirPath = path.resolve(
+      `./src/content/blog/${language === defaultLanguage ? "" : language}`,
+      ...filenameParts
+    );
+    const filePath = path.resolve(dirPath, `${actualFilename}.md`);
 
-  const content = `---
+    const content = `---
 title: ${actualFilename}
 description: ''
 pubDate: ${dateStr}
 updatedDate: ${dateStr}
 heroColor: ''
+themeColor: ''
+cover: ''
 abbrlink: ${hexTimestamp}
 tags: 
     - ''
 category: ''
+lang: '${language}'
 ---`;
 
-  await createFile(filePath, dirPath, content);
+    await createFile(filePath, dirPath, content);
+  }
 };
 
 const createMdPage = async (filename: string) => {
@@ -109,8 +100,9 @@ layout: "../../layouts/DefaultMdLayout.astro"
 title: ${filename}
 description: ""
 heroColor: "#007aff"
+themeColor: ''
 useComments: true
-useToc: true
+useToc: false
 ---
 
 ## ${filename}`;

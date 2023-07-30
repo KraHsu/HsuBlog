@@ -5,7 +5,7 @@ import TagsLayout from "@src/layouts/TagsLayout.astro";
 import { getCollection, CollectionEntry } from "astro:content";
 import { utils } from "@src/utils/utils";
 
-changeLanguage("en");
+changeLanguage("zh");
 
 const allPosts: CollectionEntry<"blog">[] = (await getCollection("blog"))
     .filter((post) => post.data.lang === i18next.language)

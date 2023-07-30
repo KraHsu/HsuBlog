@@ -1,4 +1,5 @@
 ---
+import { t } from "i18next";
 import GetIcon from "@comp/icons/getIcon.astro";
 import Searchicon from "@comp/icons/searchicon.astro";
 ---
@@ -7,7 +8,7 @@ import Searchicon from "@comp/icons/searchicon.astro";
   <div class="search-box">
     <GetIcon Icon={Searchicon} class="search-icon" />
     <div class="search-hotkey">
-      搜索
+      {t("words.search")}
       <kbd>Alt K</kbd>
     </div>
   </div>

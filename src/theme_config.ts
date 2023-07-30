@@ -1,4 +1,4 @@
-import { Icons } from "@comp/icons/icon";
+import Person from "@comp/icons/person.astro";
 import { SiteConfig } from "./site_config";
 // import { faStar } from "@fortawesome/free-solid-svg-icons";
 // import { library, icon } from "@fortawesome/fontawesome-svg-core";
@@ -54,7 +54,7 @@ export const ThemeConfig: Configs = {
       {
         name: "我的",
         customClass: "mine",
-        icon: Icons.IDcardIcon,
+        icon: Person,
         children: [
           {
             name: "友链",

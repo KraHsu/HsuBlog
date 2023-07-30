@@ -5,7 +5,7 @@ import TagsLayout from "@src/layouts/TagsLayout.astro";
 import { getCollection, CollectionEntry } from "astro:content";
 import { utils } from "@src/utils/utils";
 
-changeLanguage("en");
+changeLanguage("zh");
 
 export async function getStaticPaths({ paginate }: any) {
     const allPosts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort((a, b) => utils.compareDates(a.data.pubDate, b.data.pubDate));

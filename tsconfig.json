@@ -4,6 +4,7 @@
   },
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
     "strictNullChecks": true,

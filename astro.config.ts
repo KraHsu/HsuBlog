@@ -10,17 +10,17 @@ import {
 } from "./src/exMarkdown/md";
 
 import remarkGfm from "remark-gfm";
-
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeMathjax from "rehype-mathjax";
-
 import remarkDirective from "remark-directive";
 
 import vue from "@astrojs/vue";
 
 import { SiteConfig } from "./src/site_config";
 import { generateSearchData } from "./src/exMarkdown/generateSearchData.js";
+
+import astroI18next from "astro-i18next";
 
 const remarkPlugins: any = [
   remarkFrontmatter,
@@ -41,7 +41,7 @@ const rehypePlugins: any = [
 
 export default defineConfig({
   site: SiteConfig.site,
-  integrations: [sitemap(), vue()],
+  integrations: [astroI18next(), sitemap(), vue()],
   output: "static",
   build: {
     format: "directory",

@@ -37,7 +37,7 @@ export function remarkFrontmatter() {
     const textOnPage = toString(tree);
     const readingTime = getReadingTime(textOnPage);
     data.astro.frontmatter.numberOfWords = textOnPage.length;
-    data.astro.frontmatter.minutesRead = readingTime.text;
+    data.astro.frontmatter.minutesRead = readingTime.minutes;
     mdata.totalWordCounts += textOnPage.length;
     mdata.totalPostCounts += 1;
     writeFileSync(

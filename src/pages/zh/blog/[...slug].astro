@@ -7,7 +7,7 @@ import GetIcon from "@comp/icons/getIcon.astro";
 import { ThemeConfig } from "@src/theme_config";
 import { utils } from "@src/utils/utils";
 
-changeLanguage("en");
+changeLanguage("zh");
 
 export async function getStaticPaths() {
     const posts = (await getCollection("blog")).filter((post) => post.data.lang === i18next.language);

@@ -1,4 +1,5 @@
 ---
+import { t } from "i18next";
 import GetIcon from "@comp/icons/getIcon.astro";
 import { ThemeConfig } from "@src/theme_config";
 import CountScript from "./countScript.astro";
@@ -10,18 +11,18 @@ import CountScript from "./countScript.astro";
       Icon="local:solid.circle-info"
       class="siteinfo-icon aside-card-icon"
     />
-    <div class="siteinfo-title aside-card-title">网站信息</div>
+    <div class="siteinfo-title aside-card-title">{t("words.siteInfo")}</div>
   </div>
   <div class="siteinfo-content aside-card-content">
     {
       ThemeConfig.aside.siteInfo.busuanzi && (
         <Fragment>
           <div class="siteinfo-item">
-            <span class="item-name">本站访客数:</span>
+            <span class="item-name">{t("words.uniqueVisitor")}</span>
             <span class="item-count" id="busuanzi_value_site_uv" />
           </div>
           <div class="siteinfo-item">
-            <span class="item-name">本站访问量</span>
+            <span class="item-name">{t("words.pageView")}</span>
             <span class="item-count" id="busuanzi_value_site_pv" />
           </div>
         </Fragment>
@@ -30,7 +31,7 @@ import CountScript from "./countScript.astro";
     {
       ThemeConfig.aside.siteInfo.totalPostCounts && (
         <div class="siteinfo-item">
-          <span class="item-name">本站文章数</span>
+          <span class="item-name">{t("words.articlCount")}</span>
           <span class="item-count" id="post-counts" />
         </div>
       )
@@ -38,7 +39,7 @@ import CountScript from "./countScript.astro";
     {
       ThemeConfig.aside.siteInfo.totalWordCounts && (
         <div class="siteinfo-item">
-          <span class="item-name">本站总字数</span>
+          <span class="item-name">{t("words.wordCount")}</span>
           <span class="item-count" id="word-counts" />
         </div>
       )

@@ -1,4 +1,5 @@
 ---
+import { t } from "i18next";
 interface Props {
   toc: Array<{
     level: string;
@@ -11,7 +12,7 @@ const { toc } = Astro.props;
 ---
 
 <div class="card-toc aside-card">
-  <header class="card-toc-header">文章内容</header>
+  <header class="card-toc-header">{t("words.TOC")}</header>
   <ol class="toc">
     {
       toc.map((item) => (

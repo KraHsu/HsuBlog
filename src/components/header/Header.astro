@@ -1,11 +1,15 @@
 ---
 import "@style/components/header.scss";
+import { t } from "i18next";
 import { ThemeConfig } from "@src/theme_config";
+import { SiteConfig } from "@src/site_config";
+
+import Languages from "@comp/icons/languages.astro";
 import HeaderItem from "./HeaderItem.astro";
 import HeaderButton from "./HeaderButton.astro";
 import GetIcon from "@comp/icons/getIcon.astro";
 import SearchBar from "@comp/header/searchBar.astro";
-import { SiteConfig } from "@src/site_config";
+import { LanguageSelector } from "astro-i18next/components";
 ---
 
 <header id="site-header">
@@ -22,7 +26,7 @@ import { SiteConfig } from "@src/site_config";
           ThemeConfig.header.functions.headerLogo === "left" ? 2 : 0
         };`}
       >
-        {ThemeConfig.site.title}
+        {t("site.title") || ThemeConfig.site.title}
       </h1>
     </div>
     <div class="nav-center header-nav">
@@ -33,6 +37,16 @@ import { SiteConfig } from "@src/site_config";
     <div class="nav-right header-nav">
       <div class="menu-buttons">
         {SiteConfig.localSearch && <SearchBar />}
+        <div class="lang-selector">
+          <GetIcon Icon={Languages} class="lang-selector-icon" />
+          <label class="lang-selector-wrap">
+            <LanguageSelector languageMapping={{ zh: "简体中文" }} />
+            <GetIcon
+              Icon="local:solid.angle-down"
+              class="lang-selector-expand"
+            />
+          </label>
+        </div>
         <HeaderButton />
       </div>
     </div>

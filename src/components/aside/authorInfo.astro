@@ -1,4 +1,5 @@
 ---
+import { t } from "i18next";
 import { ThemeConfig as TC } from "@src/theme_config";
 import GetIcon from "@comp/icons/getIcon.astro";
 import { utils } from "@src/utils/utils";
@@ -8,11 +9,13 @@ const authorInfo: AuthorInfo = TC.aside.authorInfo;
 <div class="author-info-card aside-card">
   <div class="author-info">
     <img class="author-avatar" src={authorInfo.avatar} alt="author-avatar" />
-    <div class="author-name">{TC.site.author}</div>
+    <div class="author-name">{t("site.author") || TC.site.author}</div>
     <div
       class="author-desc"
       set:html={utils.replaceLink(
-        utils.executeEmbeddedScripts(authorInfo.description),
+        utils.executeEmbeddedScripts(
+          t("aside.authorInfo.description") || authorInfo.description
+        ),
         "aside-card-link"
       )}
     />
@@ -20,15 +23,15 @@ const authorInfo: AuthorInfo = TC.aside.authorInfo;
   <div class="blog-counts">
     <div class="blog-count">
       <div class="count">87</div>
-      <div class="tag">文章</div>
+      <div class="tag">{t("words.articles")}</div>
     </div>
     <a class="blog-count" href="/categories">
       <div class="count">9</div>
-      <div class="tag">分类</div>
+      <div class="tag">{t("words.categories")}</div>
     </a>
     <a class="blog-count" href="/tags">
       <div class="count">10</div>
-      <div class="tag">标签</div>
+      <div class="tag">{t("words.tags")}</div>
     </a>
   </div>
   <div class="social-medias">
