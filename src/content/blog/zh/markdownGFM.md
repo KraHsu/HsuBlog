@@ -1,6 +1,6 @@
 ---
 title: markdownGFM
-description: ''
+description: 'Github扩展Markdown或简称GFM是GitHub上的Markdown方言或变种。'
 pubDate: 2023-07-30T12:17:51.094Z
 updatedDate: 2023-07-30T12:17:51.094Z
 heroColor: ''

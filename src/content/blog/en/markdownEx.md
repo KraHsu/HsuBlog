@@ -1,6 +1,6 @@
 ---
 title: Extended Syntax
-description: ''
+description: 'Some of the extension syntax provided by HsuBlog'
 pubDate: 2023-07-30T14:46:02.783Z
 updatedDate: 2023-07-30T14:46:02.783Z
 heroColor: ''

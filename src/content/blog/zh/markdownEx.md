@@ -1,6 +1,6 @@
 ---
 title: 扩展语法
-description: ''
+description: 'HsuBlog所提供的一些扩展语法'
 pubDate: 2023-07-30T14:46:02.783Z
 updatedDate: 2023-07-30T14:46:02.783Z
 heroColor: ''

@@ -1,15 +1,15 @@
 ---
 title: 本地Fontawesome
-description: ''
+description: 'Fontawesome的独特使用方法'
 pubDate: 2023-07-30T15:34:14.564Z
 updatedDate: 2023-07-30T15:34:14.564Z
 heroColor: ''
 themeColor: ''
 cover: ''
 abbrlink: lkplqhb8
-tags: 
-    - ''
-category: ''
+tags:
+    - '教程'
+category: '快速开始'
 lang: 'zh'
 ---
 

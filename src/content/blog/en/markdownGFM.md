@@ -1,6 +1,6 @@
 ---
 title: markdownGFM
-description: ''
+description: 'The Github extension Markdown or GFM for short is a dialect or variant of Markdown on GitHub.'
 pubDate: 2023-07-30T12:17:51.094Z
 updatedDate: 2023-07-30T12:17:51.094Z
 heroColor: ''

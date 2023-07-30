@@ -1,15 +1,15 @@
 ---
-title: 本地Fontawesome
-description: ''
+title: Local Fontawesome
+description: 'Unique use of Fontawesome'
 pubDate: 2023-07-30T15:34:14.564Z
 updatedDate: 2023-07-30T15:34:14.564Z
 heroColor: ''
 themeColor: ''
 cover: ''
 abbrlink: lkplqhb8
-tags: 
-    - ''
-category: ''
+tags:
+    - 'Tutorial'
+category: 'Quick Start'
 lang: 'en'
 ---
 
