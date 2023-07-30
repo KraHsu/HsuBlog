@@ -322,4 +322,4 @@ PS: 没有特殊需求的情况下请尽量不要直接使用HTML
 
 ---
 
-:color[HsuBlog]{color="gold"} 还支持`markdown gfm`以及一些特有的扩展语法，这部分内容正在更新中
+:color[HsuBlog]{color="gold"} 还支持 [markdown gfm](/blog/lkpepx4m) 以及一些特有的 扩展语法 ，这部分内容正在更新中

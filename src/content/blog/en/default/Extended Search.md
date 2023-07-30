@@ -9,6 +9,7 @@ tags:
     - 'localSearch'
     - 'Extended Search'
 category: 'Default Page'
+lang: 'en'
 ---
 
 ## Extended Search

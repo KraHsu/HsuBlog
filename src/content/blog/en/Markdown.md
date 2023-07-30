@@ -10,6 +10,7 @@ tags:
     - 'Tutorial'
     - 'Markdown'
 category: 'Quick Start'
+lang: 'en'
 ---
 
 :color[HsuBlog]{color="gold"}Mainly uses `.md` files, which are `markdown` format texts, to generate blogs and pages. However, each `Markdown` application implements a slightly different `Markdown` syntax. These variations of `Markdown` are commonly referred to as `flavors`.
@@ -310,4 +311,4 @@ PS: Avoid using HTML directly unless there's a special requirement.
 
 ---
 
-:color[HsuBlog]{color="gold"} also supports `markdown gfm` and some unique extended syntax, content for this part is being updated.
+:color[HsuBlog]{color="gold"} also supports [markdown gfm](/en/blog/lkpepx4m) and some unique extended syntax, content for this part is being updated.
