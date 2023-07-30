@@ -1,7 +1,8 @@
 /.vscode
 node_modules
 /.astro
-/src/content/blog/*.md
+/src/content/blog/**/*.md
+!/src/content/blog/default/
 public/scripts/*.json
 /pages/rss.xml.js
 dist

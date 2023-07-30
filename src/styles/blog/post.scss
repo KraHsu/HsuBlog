@@ -165,6 +165,10 @@
 
     user-select: none;
 
+    max-width: 95%;
+
+    min-width: 80%;
+
     table {
       display: table;
 
@@ -173,6 +177,8 @@
       border-spacing: 0px;
 
       border-collapse: collapse;
+
+      width: 100%;
 
       thead {
         color: var(--font-dark-grey);
