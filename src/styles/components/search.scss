@@ -1,7 +1,7 @@
 #search-bar {
   overflow: hidden;
 
-  width: 28px;
+  max-width: 28px;
 
   margin: 0 10px;
 
@@ -9,11 +9,11 @@
 
   cursor: pointer;
 
-  transition: 0.4s ease;
+  transition: 0.4s ease-in-out;
 
   border-radius: 50px;
   &:hover {
-    width: 130px;
+    max-width: 200px;
     .search-box {
       background: var(--translucent-background);
       .search-hotkey {
@@ -28,9 +28,15 @@
 
     height: 28px;
 
-    padding: 0 0 0 30px;
+    width: fit-content;
+
+    padding: 0 15px 0 30px;
 
     transition: 0.3s ease;
+
+    display: flex;
+
+    align-items: center;
     .search-icon {
       position: absolute;
 
@@ -63,10 +69,6 @@
     }
 
     .search-hotkey {
-      position: absolute;
-
-      top: 2px;
-
       left: 35px;
 
       display: flex;
@@ -75,16 +77,11 @@
 
       transition: 0.3s ease;
 
+      font-size: 20px;
+
       opacity: 0;
 
       color: #969696;
-      kbd {
-        margin: 0 4px;
-
-        margin-top: 2px;
-
-        font-weight: bold;
-      }
     }
   }
 }
