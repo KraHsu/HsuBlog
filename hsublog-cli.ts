@@ -64,10 +64,9 @@ const createMdFile = async (filename: string) => {
   const actualFilename = filenameParts.pop();
 
   // create the full directory path
-  const defaultLanguage = SiteConfig.i18n.default;
   for (const language of SiteConfig.i18n.languages) {
     const dirPath = path.resolve(
-      `./src/content/blog/${language === defaultLanguage ? "" : language}`,
+      `./src/content/blog/${language}`,
       ...filenameParts
     );
     const filePath = path.resolve(dirPath, `${actualFilename}.md`);
