@@ -6,10 +6,11 @@ updatedDate: 2023-07-22T00:45:44.455Z
 heroColor: ''
 abbrlink: lkk0fjvf
 tags: 
-    - 'Tutorial'
-category: 'Default Page'
+    - '教程'
+category: '默认页面'
+lang: 'zh'
 ---
 
 ## Hello World
 
-Welcome to HsuBlog!
+欢迎来到HsuBlog！！

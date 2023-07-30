@@ -31,9 +31,9 @@
       "content": "New theme testing~ Everyone is welcome to [find bugs](https://github.com/KraHsu/HsuBlog/issues)~"
     },
     "customCards": {
-      "推荐文章": {
+      "Custom part": {
         "title": "Customed",
-        "content": "This is the custom content section<br>Anything can be placed here"
+        "content": "This is the custom content section<br>Everything can be placed here"
       }
     }
   },

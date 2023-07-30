@@ -6,12 +6,14 @@ import { utils } from "@utils/utils";
 
 const copyright = utils.replaceLink(
   utils.executeEmbeddedScripts(
-    t("footer.copyright") || ThemeConfig.footer.copyright
+    t("footer.copyright", { returnNull: true }) || ThemeConfig.footer.copyright
   ),
   "footer-link"
 );
 const footerText = utils.replaceLink(
-  utils.executeEmbeddedScripts(t("footer.text") || ThemeConfig.footer.text),
+  utils.executeEmbeddedScripts(
+    t("footer.text", { returnNull: true }) || ThemeConfig.footer.text
+  ),
   "footer-link"
 );
 ---

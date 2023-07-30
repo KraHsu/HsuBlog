@@ -8,7 +8,7 @@ import Searchicon from "@comp/icons/searchicon.astro";
   <div class="search-box">
     <GetIcon Icon={Searchicon} class="search-icon" />
     <div class="search-hotkey">
-      {t("words.search")}
+      {t("words.search", { returnNull: true })}
       <kbd>Alt K</kbd>
     </div>
   </div>

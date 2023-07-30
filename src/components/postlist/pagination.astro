@@ -16,12 +16,12 @@ const { pageSize, activePage, baseurl } = Astro.props;
       class="pagination-link"
       href={`${baseurl}${activePage === 2 ? "" : activePage - 1}`}
     >
-      <span>{t("words.prePage")}</span>
+      <span>{t("words.prePage", { returnNull: true })}</span>
     </a>
   </div>
   <div class:list={["pagination-next", { "disable": activePage === pageSize }]}>
     <a class="pagination-link" href={`${baseurl}${activePage + 1}`}>
-      <span>{t("words.nextPage")}</span>
+      <span>{t("words.nextPage", { returnNull: true })}</span>
     </a>
   </div>
   <ul class="pagination-list">

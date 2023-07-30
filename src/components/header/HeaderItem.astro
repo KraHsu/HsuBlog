@@ -6,6 +6,7 @@ import GetIcon from "@comp/icons/getIcon.astro";
 const items: Array<MenuItem> = ThemeConfig.header.menu;
 const items_t: Record<string, string> = t("header.menu", {
   returnObjects: true,
+  returnNull: true,
 });
 ---
 

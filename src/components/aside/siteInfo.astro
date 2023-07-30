@@ -11,7 +11,9 @@ import CountScript from "./countScript.astro";
       Icon="local:solid.circle-info"
       class="siteinfo-icon aside-card-icon"
     />
-    <div class="siteinfo-title aside-card-title">{t("words.siteInfo")}</div>
+    <div class="siteinfo-title aside-card-title">
+      {t("words.siteInfo", { returnNull: true })}
+    </div>
   </div>
   <div class="siteinfo-content aside-card-content">
     {

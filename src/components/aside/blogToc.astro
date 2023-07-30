@@ -12,7 +12,9 @@ const { toc } = Astro.props;
 ---
 
 <div class="card-toc aside-card">
-  <header class="card-toc-header">{t("words.TOC")}</header>
+  <header class="card-toc-header">
+    {t("words.TOC", { returnNull: true })}
+  </header>
   <ol class="toc">
     {
       toc.map((item) => (

@@ -26,7 +26,13 @@ const script = () => {
 <div class="post-comment">
   <div class="comment-head">
     <GetIcon Icon="local:solid.comment" class="comment-icon" />
-    <span>{t("words.comments")}</span>
+    <span
+      >{
+        t("words.comments", {
+          returnNull: true,
+        })
+      }</span
+    >
   </div>
   <div class="comment-wrap">
     <div id="tcomment"></div>

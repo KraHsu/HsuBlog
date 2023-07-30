@@ -12,7 +12,6 @@ export const utils = {
   },
   executeEmbeddedScripts: function (str: string): string {
     const pattern = /\{\{\s*([\s\S]*?)\s*\}\}/g;
-
     let result = str.replace(pattern, function (_, match) {
       let func;
       try {

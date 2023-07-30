@@ -24,8 +24,10 @@ const { class: className, comps, stickyComps, direct } = Astro.props;
       {ThemeConfig.aside.customCards.map((card) => (
         <CustomCard
           card={
-            t(`aside.customCards.${card.title}`, { returnObjects: true }) ||
-            card
+            t(`aside.customCards.${card.title}`, {
+              returnObjects: true,
+              returnNull: true,
+            }) || card
           }
         />
       ))}

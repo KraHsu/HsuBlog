@@ -13,14 +13,19 @@ const announcement: Announcement = ThemeConfig.aside.announcement;
       class="announcement-icon aside-card-icon"
     />
     <div class="announcement-title aside-card-title">
-      {t("aside.announcement.headline") || announcement.headline}
+      {
+        t("aside.announcement.headline", { returnNull: true }) ||
+          announcement.headline
+      }
     </div>
   </div>
   <div
     class="announcement-content aside-card-content"
     set:html={utils.replaceLink(
       utils.executeEmbeddedScripts(
-        t("aside.announcement.content") || announcement.content
+        t("aside.announcement.content", {
+          returnNull: true,
+        }) || announcement.content
       ),
       "aside-card-link"
     )}

@@ -26,7 +26,7 @@ import { LanguageSelector } from "astro-i18next/components";
           ThemeConfig.header.functions.headerLogo === "left" ? 2 : 0
         };`}
       >
-        {t("site.title") || ThemeConfig.site.title}
+        {t("site.title", { returnNull: true }) || ThemeConfig.site.title}
       </h1>
     </div>
     <div class="nav-center header-nav">
