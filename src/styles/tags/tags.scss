@@ -35,9 +35,8 @@
       font-size: 20px;
 
       @include card-style();
+      &.active,
       &:hover {
-        transform: scale(1.2);
-
         color: white;
 
         background: var(--theme-color);
@@ -62,16 +61,16 @@
 
     &.floating {
       .tag {
-        animation: floating 7s ease-in-out infinite alternate;
+        animation: floating 5s ease-in-out infinite alternate;
 
         &:nth-child(3n + 1) {
-          animation-delay: 0s;
+          animation-delay: -3.334s;
         }
         &:nth-child(3n + 2) {
-          animation-delay: 2.334s;
+          animation-delay: -1.667s;
         }
         &:nth-child(3n + 3) {
-          animation-delay: 4.667s;
+          animation-delay: 0s;
         }
       }
     }

@@ -10,7 +10,10 @@ import { CollectionEntry, getCollection } from "astro:content";
 changeLanguage("zh");
 
 export async function getStaticPaths({ paginate }: any) {
-    const posts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort((a, b) => utils.compareDates(a.data.pubDate, b.data.pubDate));
+    const thePageLanguage = 'zh'; //the language of this page
+    const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
+        .filter((post) => post.data.lang === thePageLanguage)
+        .sort((a, b) => utils.compareDates(a.data.pubDate, b.data.pubDate));
     return paginate(posts, { pageSize: 10 });
 }
 const { page } = Astro.props;

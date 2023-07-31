@@ -6,7 +6,16 @@ import { hideBin } from "yargs/helpers";
 import { promisify } from "util";
 import { glob } from "glob";
 import { SiteConfig } from "./src/site_config.js";
-import { utils } from "./src/utils/utils.js";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const languages: string[] = SiteConfig.i18n.languages;
+const defaultLanguage: string = SiteConfig.i18n.default;
+const nonDefaultLanguages: string[] = languages.filter(
+  (lang) => lang != defaultLanguage
+);
 
 interface Argv {
   _: string[];
@@ -64,8 +73,9 @@ const createMdFile = async (filename: string) => {
   const actualFilename = filenameParts.pop();
 
   // create the full directory path
-  for (const language of SiteConfig.i18n.languages) {
+  for (const language of languages) {
     const dirPath = path.resolve(
+      __dirname,
       `./src/content/blog/${language}`,
       ...filenameParts
     );
@@ -91,10 +101,14 @@ lang: '${language}'
 };
 
 const createMdPage = async (filename: string) => {
-  const dirPath = path.resolve(`./src/pages/${filename}`);
-  const filePath = path.resolve(dirPath, "index.md");
+  for (const lang of languages) {
+    const dirPath = path.resolve(
+      __dirname,
+      `./src/pages/${lang === defaultLanguage ? "" : lang + "/"}${filename}`
+    );
+    const filePath = path.resolve(dirPath, "index.md");
 
-  const content = `---
+    const content = `---
 layout: "../../layouts/DefaultMdLayout.astro"
 title: ${filename}
 description: ""
@@ -103,10 +117,11 @@ themeColor: ''
 useComments: true
 useToc: false
 ---
+  
+  ## ${filename}`;
 
-## ${filename}`;
-
-  await createFile(filePath, dirPath, content);
+    await createFile(filePath, dirPath, content);
+  }
 };
 
 const addAbbrlinkToFile = async (filepath: string) => {
@@ -142,10 +157,42 @@ const addAbbrlinkToFiles = async () => {
   }
 };
 
+const replaceDefaultLang = async (files: string[], lang: string) => {
+  for (const file of files) {
+    const content = await readFileAsync(file, "utf8");
+
+    const regex =
+      /const thePageLanguage = ".*"; \/\/the language of this page/g;
+
+    const updatedContent = content.replace(
+      regex,
+      `const thePageLanguage = '${lang}'; //the language of this page`
+    );
+
+    await writeFileAsync(file, updatedContent, "utf8");
+  }
+};
+
+const updateI18n = async () => {
+  const excludeDirs: string[] = [];
+  for (const lang of nonDefaultLanguages) {
+    const searchPath = `./src/pages/${lang}/**/*.astro`;
+    excludeDirs.push(searchPath);
+    const files = await glob(searchPath);
+    replaceDefaultLang(files, lang);
+  }
+  const searchPath = "./src/pages/**/*.astro";
+  const files = await glob(searchPath, {
+    ignore: excludeDirs,
+  });
+  replaceDefaultLang(files, defaultLanguage);
+};
+
 const argv = yargs(hideBin(process.argv))
   .command("new <filename>", "Create a new post with the title <filename>")
   .command("abbr", "Add a permalink to markdown files")
   .command("newPage <filename>", "Create a new page with the title <filename>")
+  .command("i18n", "Create localized pages")
   .help()
   .alias("help", "h").argv as Argv;
 
@@ -163,4 +210,6 @@ if (argv._[0] === "new") {
   } else {
     console.error('Filename is required for the "newPage" command');
   }
+} else if (argv._[0] === "i18n") {
+  updateI18n();
 }

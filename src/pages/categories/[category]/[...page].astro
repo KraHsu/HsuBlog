@@ -9,7 +9,10 @@ import { utils } from "@src/utils/utils";
 changeLanguage("en");
 
 export async function getStaticPaths({ paginate }: any) {
-    const allPosts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort((a, b) => utils.compareDates(a.data.pubDate, b.data.pubDate));
+    const thePageLanguage = 'en'; //the language of this page
+    const allPosts: CollectionEntry<"blog">[] = (await getCollection("blog"))
+        .filter((post) => post.data.lang === thePageLanguage)
+        .sort((a, b) => utils.compareDates(a.data.pubDate, b.data.pubDate));
     const categories: string[] = [
         ...new Set(allPosts
             .flatMap((post) => [post.data.category || ""])

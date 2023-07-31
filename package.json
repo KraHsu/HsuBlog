@@ -15,7 +15,7 @@
     "abbr": "ts-node ./hsublog-cli.ts abbr",
     "newpage": "ts-node ./hsublog-cli.ts newPage",
     "help": "ts-node ./hsublog-cli.ts help",
-    "i18n": "astro-i18next generate"
+    "i18n": "astro-i18next generate && ts-node ./hsublog-cli.ts i18n"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",
