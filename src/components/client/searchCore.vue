@@ -8,6 +8,19 @@ interface Result {
   url: string;
 }
 
+function search() {
+  let tmp: Fuse.FuseResult<Result>[] = fuse.search(keywords.value);
+  result.value = [];
+
+  for (let i = 0; i < tmp.length; i += 10) {
+    result.value.push(tmp.slice(i, i + 10));
+  }
+
+  pageNumber.value = 1;
+
+  pageSize.value = result.value.length;
+}
+
 const { lang: language } = defineProps(["lang"]);
 
 const fuseOptions = {
@@ -34,18 +47,6 @@ const pageSize: Ref<number> = ref(0);
 
 const list = await hsu.getJson(`/scripts/searchData-${language}.json`);
 const fuse = new Fuse(list, fuseOptions);
-const search = () => {
-  let tmp: Fuse.FuseResult<Result>[] = fuse.search(keywords.value);
-  result.value = [];
-
-  for (let i = 0; i < tmp.length; i += 10) {
-    result.value.push(tmp.slice(i, i + 10));
-  }
-
-  pageNumber.value = 1;
-
-  pageSize.value = result.value.length;
-};
 </script>
 
 <template>

@@ -32,6 +32,7 @@
     },
     "customCards": {
       "推荐文章": {
+        "icon": "local:solid.star",
         "title": "推荐文章",
         "content": "这里是自定义内容部分<br>啥都可以放"
       }
@@ -64,6 +65,7 @@
     "uniqueVisitor": "网站访客量",
     "pageView": "网站浏览量",
     "articlCount": "文章数",
-    "wordCount": "字数"
+    "wordCount": "字数",
+    "relatedPost": "相关文章"
   }
 }

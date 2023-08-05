@@ -146,7 +146,6 @@ export const ThemeConfig: Configs = {
     heroShoot: "/heroimg.jpg",
     heroTitle: "KraHsu's Blog",
     heroDescription: "A beautiful, customized, personal blog theme for Astro",
-    defaultCover: "/heroimg.jpg",
     paginationSize: 10,
     aside: {
       comps: ["AuthorInfo"],
@@ -155,10 +154,12 @@ export const ThemeConfig: Configs = {
     },
   },
   postPage: {
+    defaultCover: "/heroimg.jpg",
     aside: {
       comps: ["AuthorInfo"],
       stickyComps: [],
     },
+    relatedPosts: true,
   },
   tagsPage: {
     floating: true,

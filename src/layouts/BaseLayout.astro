@@ -20,9 +20,10 @@ interface Props {
 
 const { class: pageClass, description, themeColor } = Astro.props;
 
-const globalStyle = `:root{--theme-color:${
-  themeColor || ThemeConfig.site.themeColor
-};}`;
+const globalStyle = `:root{
+  --theme-color:${themeColor || ThemeConfig.site.themeColor};
+  --heading-font-family: var(--heading-font-family-${i18next.language});
+}`;
 ---
 
 <!DOCTYPE html>

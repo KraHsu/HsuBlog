@@ -1,13 +1,13 @@
 .post-header {
   user-select: none;
 
-  font-family: var(--heading-font-family-zh);
+  font-family: var(--heading-font-family);
 
   .post-info {
     .post-title {
-      text-align: center;
-
       transition: 0.3s ease;
+
+      text-align: center;
 
       color: var(--font-white-black);
 
@@ -27,6 +27,10 @@
         margin: 0.3rem 0;
 
         .meta-icon {
+          display: flex;
+
+          align-items: center;
+
           margin: 0 0.3rem;
 
           transition: 0.3s ease;
@@ -35,13 +39,11 @@
 
           font-size: 18px;
 
-          display: flex;
-
-          align-items: center;
-
           svg {
             width: 18px;
+
             height: 18px;
+
             margin: 0 2px;
           }
         }
@@ -64,9 +66,9 @@
   .post-main {
     order: 2;
 
-    max-width: 1100px;
-
     width: 100%;
+
+    max-width: 1100px;
 
     margin: 1rem 1rem;
 
@@ -91,14 +93,18 @@
 
     align-items: center;
 
-    font-family: var(--heading-font-family-zh);
+    font-family: var(--heading-font-family);
 
     font-size: 30px;
 
-    .comment-icon {
-      margin-top: 4px;
+    font-weight: bold;
 
-      margin-right: 5px;
+    .comment-icon {
+      width: 30px;
+
+      height: 30px;
+
+      margin-right: 10px;
     }
   }
 
