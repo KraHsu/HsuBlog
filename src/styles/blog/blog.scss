@@ -63,14 +63,14 @@
 
   margin-top: 2rem;
 
+  gap: 1rem;
+
   .post-main {
     order: 2;
 
     width: 100%;
 
     max-width: 1100px;
-
-    margin: 1rem 1rem;
 
     padding: 1rem 2rem;
 
@@ -123,12 +123,7 @@
 
 @media screen and (width <= 1400px) {
   .post-container {
-    .post-main {
-      margin: 0.5rem;
-    }
-    .post-aside {
-      margin: 0.5rem;
-    }
+    padding: 0 0.5rem;
   }
 }
 @media screen and (width <= 900px) {

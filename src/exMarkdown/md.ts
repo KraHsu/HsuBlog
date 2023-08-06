@@ -32,6 +32,10 @@ export function markdownDirectives() {
             processDir.dirTimeline(node, index, parent);
           else if (node.name === "gallery")
             processDir.dirGallery(node, index, parent);
+          else if (node.name === "note")
+            processDir.dirNoteC(node, index, parent);
+          else if (node.name === "tabs") processDir.dirTabs(node);
+          else if (node.name === "tab") processDir.dirTab(node);
           break;
       }
     });

@@ -1,5 +1,6 @@
 @import "../mixin.scss";
 .post-main {
+  gap: 1rem;
   .dir-link {
     display: inline-flex;
 
@@ -9,7 +10,7 @@
 
     height: 90px;
 
-    margin: 1rem auto;
+    margin: 0 auto;
 
     padding: 5px;
 
@@ -102,7 +103,7 @@
 
       flex-wrap: wrap;
 
-      margin: 1rem auto;
+      margin: 0 auto;
 
       .dir-link {
         width: 300px;
@@ -135,7 +136,7 @@
 
   align-items: center;
 
-  margin: 1rem 0;
+  margin: 1rem 0 0;
 
   padding: 1rem;
 
@@ -193,6 +194,22 @@
     border-left-color: #888;
 
     background: #e2e3e5;
+  }
+}
+
+.dir-note-wrap.container {
+  flex-direction: column;
+
+  gap: 0.5rem;
+  .dir-note-head {
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+  }
+  .dir-note-content {
+    width: 100%;
   }
 }
 
@@ -395,13 +412,97 @@
 
 .dir-youtube,
 .dir-bilibili {
-  width: 90%;
+  width: 100%;
 
   height: 600px;
 
   margin: 15px auto 0;
 
   border-radius: 10px;
+}
+
+.dir-tabs {
+  margin-top: 1rem;
+
+  border-radius: 5px;
+
+  .dir-tabs-nav {
+    display: flex;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+    border-radius: 5px 5px 0 0;
+
+    border-right: solid 2px var(--tab-nav-bg);
+
+    border-left: solid 2px var(--tab-nav-bg);
+
+    background-color: var(--tab-nav-bg);
+
+    font-family: var(--heading-font-family);
+
+    .dir-tab {
+      &:first-child {
+        button {
+          border-radius: 5px 0 0 0;
+        }
+      }
+      &:not(.active) {
+        button {
+          cursor: pointer;
+          &:hover {
+            background-color: rgba(0 0 0 / 10%);
+          }
+        }
+      }
+      &.active {
+        button {
+          border-top-color: var(--theme-color);
+
+          background: var(--card-background);
+        }
+      }
+      button {
+        padding: 8px 10px 10px 10px;
+
+        transition: 0.3s ease;
+
+        color: var(--font-black-white);
+
+        border: none;
+
+        border-top-width: 2px;
+
+        border-top-style: solid;
+
+        border-top-color: transparent;
+
+        outline: none;
+
+        background: transparent;
+
+        font-size: 18px;
+      }
+    }
+  }
+  .dir-tabs-content {
+    .dir-tab-content {
+      padding: 10px;
+
+      border: 2px solid var(--tab-nav-bg);
+
+      border-top: none;
+
+      border-radius: 0 0 5px 5px;
+    }
+    .dir-tab-content:not(.active) {
+      display: none;
+    }
+  }
 }
 
 .only-hover:not(:hover) {

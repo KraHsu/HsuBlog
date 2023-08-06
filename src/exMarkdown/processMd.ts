@@ -33,6 +33,13 @@ const highlightBackgroundColor = {
   dark: darkThemeData.colors["editor.lineHighlightBackground"] || "",
   light: lightThemeData.colors["editor.lineHighlightBackground"] || "",
 };
+const defaultIcons: Record<string, string> = {
+  info: "local:solid.circle-info",
+  warn: "local:solid.circle-exclamation",
+  error: "local:solid.circle-xmark",
+  tips: "local:solid.circle-plus",
+  success: "local:solid.circle-check",
+};
 
 export const processRehype = {
   processBlockquote: function (node: any) {
@@ -205,16 +212,9 @@ export const processDir = {
       `background:${node.attributes.bg || ""};`;
   },
   dirNoteL: function (node: any, index: number | null, parent: any) {
-    const className = node.attributes.class as string;
-    const icons: Record<string, string> = {
-      info: "local:solid.circle-info",
-      warn: "local:solid.circle-exclamation",
-      error: "local:solid.circle-xmark",
-      tips: "local:solid.circle-plus",
-      success: "local:solid.circle-check",
-    };
-    if (className in icons) {
-      node.attributes.icon = icons[className];
+    const className = (node.attributes.class as string) || "";
+    if (className in defaultIcons) {
+      node.attributes.icon = defaultIcons[className];
     }
     parent.children.splice(
       index,
@@ -236,6 +236,39 @@ export const processDir = {
           })
         ),
         Object.assign(node, hh("span.dir-note", node.children))
+      )
+    );
+  },
+  dirNoteC: function (node: any, index: number | null, parent: any) {
+    const className = (node.attributes.class as string) || "";
+    if (className in defaultIcons) {
+      node.attributes.icon = defaultIcons[className];
+    }
+    const { title, content } = getTitleAndContent(node);
+    parent.children.splice(
+      index,
+      1,
+      hh(
+        "div.dir-note-wrap.container",
+        {
+          style: `background: ${node.attributes.bg || ""};color: ${
+            node.attributes.color || ""
+          };border-left-color: ${node.attributes.color || ""}`,
+          class: node.attributes.class,
+          id: node.attributes.id,
+        },
+        h(
+          "div.dir-note-head",
+          h(
+            "div.dir-note-icon",
+            raw({
+              type: "raw",
+              value: getLocalIcons(node.attributes.icon || ""),
+            })
+          ),
+          h("span.dir-note", title.children[0].value)
+        ),
+        h("div.dir-note-content", ...content)
       )
     );
   },
@@ -364,14 +397,50 @@ export const processDir = {
       allowFullScreen: true,
     };
   },
+  dirTabs: function (node: any) {
+    const tabsNav: any[] = [];
+    let index = 0;
+    visit(node, (node) => {
+      if (node.name !== "tab") return;
+      const { title: tabName, content: tabContent } = getTitleAndContent(node);
+      node.children = tabContent;
+      tabsNav.push(
+        h(
+          "li.dir-tab",
+          {
+            "data-index": index++,
+          },
+          h(
+            "button",
+            {
+              onclick: "hsu.changeTabs(this)",
+            },
+            tabName.children[0] ? tabName.children[0].value : "Tab"
+          )
+        )
+      );
+    });
+    const { title: _, content } = getTitleAndContent(node);
+    const activeIndex = Math.min(node.attributes.active || 0, tabsNav.length);
+    tabsNav[activeIndex].properties.className.push("active");
+    (content as any[])[activeIndex].attributes.class = "active";
+    node.children = [
+      hh("ul.dir-tabs-nav", ...tabsNav),
+      hh("div.dir-tabs-content", ...(content as any)),
+    ];
+    simpleConvert(node, "div.dir-tabs");
+  },
+  dirTab: function (node: any) {
+    simpleConvert(node, "div.dir-tab-content");
+  },
 };
 
 function getTitleAndContent(node: any) {
   let title: any = {},
     content: Child[] = [];
   if (node.children[0].data?.directiveLabel === true) {
-    title = node.children[0];
-    content = node.children.splice(1);
+    title = node.children.splice(0, 1)[0];
+    content = node.children.splice(0);
   } else {
     content = node.children.splice(0);
   }
