@@ -12,4 +12,3 @@ dist
 *.log
 .tree
 .treec
-.gitignore
