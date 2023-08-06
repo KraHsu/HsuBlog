@@ -95,7 +95,7 @@ export const ThemeConfig: Configs = {
       description: "一个前端开发者，退役OIer，Robomaster菜鸟",
       socialMedias: [
         {
-          link: "https://github.com/charles-hsuz",
+          link: "https://github.com/KraHsu",
           customClass: "github",
           icon: "local:brands.github",
           title: "github",
@@ -150,7 +150,6 @@ export const ThemeConfig: Configs = {
     heroShoot: "/heroimg.webp",
     heroTitle: "KraHsu's Blog",
     heroDescription: "A beautiful, customized, personal blog theme for Astro",
-    defaultCover: "/decover.jpg",
     paginationSize: 10,
     aside: {
       comps: ["AuthorInfo"],
@@ -159,10 +158,12 @@ export const ThemeConfig: Configs = {
     },
   },
   postPage: {
+    defaultCover: "https://lipsum.app/id/2/1600x1200",
     aside: {
       comps: ["AuthorInfo"],
       stickyComps: [],
     },
+    relatedPosts: true,
   },
   tagsPage: {
     floating: true,

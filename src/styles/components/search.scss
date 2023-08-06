@@ -12,31 +12,35 @@
   transition: 0.4s ease-in-out;
 
   border-radius: 50px;
-  &:hover {
-    max-width: 200px;
-    .search-box {
-      background: var(--translucent-background);
-      .search-hotkey {
-        transition-delay: 0.2s;
 
-        opacity: 1;
+  @media (any-hover: hover) {
+    &:hover {
+      max-width: 200px;
+      .search-box {
+        background: var(--translucent-background);
+        .search-hotkey {
+          transition-delay: 0.2s;
+
+          opacity: 1;
+        }
       }
     }
   }
   .search-box {
     position: relative;
 
-    height: 28px;
+    display: flex;
+
+    align-items: center;
 
     width: fit-content;
+
+    height: 28px;
 
     padding: 0 15px 0 30px;
 
     transition: 0.3s ease;
 
-    display: flex;
-
-    align-items: center;
     .search-icon {
       position: absolute;
 
@@ -63,6 +67,7 @@
       border: none;
 
       background: transparent;
+
       &:focus {
         outline: none;
       }
@@ -77,11 +82,11 @@
 
       transition: 0.3s ease;
 
-      font-size: 20px;
-
       opacity: 0;
 
       color: #969696;
+
+      font-size: 20px;
     }
   }
 }
@@ -126,6 +131,7 @@
   height: 100vh;
 
   animation: appear_blur 1s ease;
+
   .search-wrap {
     z-index: 120;
 
@@ -152,8 +158,11 @@
     border-radius: 15px;
 
     background: var(--card-background);
-    &:hover {
-      border: 1px solid var(--theme-color);
+
+    @media (any-hover: hover) {
+      &:hover {
+        border: 1px solid var(--theme-color);
+      }
     }
     .search-header {
       display: flex;
@@ -165,6 +174,7 @@
       order: 0;
 
       margin-bottom: 1rem;
+
       .search-title {
         color: var(--theme-color);
 
@@ -173,13 +183,13 @@
         font-weight: bold;
       }
       .search-close {
-        cursor: pointer;
-
-        color: var(--font-light-grey);
-
         width: 20px;
 
         height: 20px;
+
+        cursor: pointer;
+
+        color: var(--font-light-grey);
       }
     }
     .search-input {
@@ -202,19 +212,30 @@
       background: rgba(0 0 0 / 2%);
 
       font-size: 18px;
-      &:focus,
-      &:hover {
+
+      &:focus {
         border: 1px solid var(--theme-color);
 
         outline: none;
 
         background: rgba(0 0 0 / 5%);
       }
+
+      @media (any-hover: hover) {
+        &:hover {
+          border: 1px solid var(--theme-color);
+
+          outline: none;
+
+          background: rgba(0 0 0 / 5%);
+        }
+      }
     }
     .search-hits {
       display: flex;
 
       order: 2;
+
       .search-hit {
         margin-right: 10px;
 
@@ -231,12 +252,15 @@
         border: 1px solid var(--border-light-grey);
 
         border-radius: 10px;
-        &:hover {
-          color: white;
 
-          border: 1px solid var(--theme-color);
+        @media (any-hover: hover) {
+          &:hover {
+            color: white;
 
-          background: var(--theme-color);
+            border: 1px solid var(--theme-color);
+
+            background: var(--theme-color);
+          }
         }
       }
     }
@@ -246,6 +270,7 @@
       margin: 0.6rem 0 0 0.6rem;
 
       font-weight: bold;
+
       .search-result {
         display: block;
 
@@ -256,8 +281,11 @@
         text-decoration: none;
 
         color: var(--font-black-white);
-        &:hover {
-          color: var(--theme-color);
+
+        @media (any-hover: hover) {
+          &:hover {
+            color: var(--theme-color);
+          }
         }
       }
     }
@@ -271,6 +299,7 @@
       order: 4;
 
       margin-bottom: 0.6rem;
+
       .search-pagenumber {
         display: flex;
 
@@ -293,11 +322,18 @@
         border-radius: 5px;
 
         font-size: 18px;
-        &:hover,
+
         &.active {
           color: white;
 
           background: var(--theme-color);
+        }
+        @media (any-hover: hover) {
+          &:hover {
+            color: white;
+
+            background: var(--theme-color);
+          }
         }
       }
     }
@@ -309,6 +345,7 @@
       padding: 0 0.2rem;
 
       color: var(--font-mid-grey);
+
       a {
         text-decoration: none;
 
@@ -331,13 +368,21 @@
 
 @media screen and (width <= 700px) {
   #search-bar {
-    &:hover {
-      width: 28px;
+    @media (any-hover: hover) {
+      &:hover {
+        width: 28px;
+      }
     }
   }
   #search {
     .search-wrap {
       width: 90%;
     }
+  }
+}
+
+@media screen and (width <= 400px) {
+  #search-bar {
+    margin-right: 0;
   }
 }

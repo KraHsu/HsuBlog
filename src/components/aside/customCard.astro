@@ -6,6 +6,7 @@ interface Props {
   card: CustomCard;
 }
 const { card } = Astro.props;
+card.customClass = card.customClass || "";
 ---
 
 <div class={`aside-card ${card.customClass}`}>

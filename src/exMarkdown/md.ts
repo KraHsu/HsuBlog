@@ -17,16 +17,25 @@ export function markdownDirectives() {
         case "textDirective":
           if (node.name === "i")
             processDir.dirIcon(node, index as number, parent);
-          if (node.name === "color") processDir.dirColor(node);
+          else if (node.name === "color") processDir.dirColor(node);
           break;
         case "leafDirective":
           if (node.name === "link") processDir.dirLink(node, parent);
-          if (node.name === "note") processDir.dirNoteL(node, index, parent);
+          else if (node.name === "note")
+            processDir.dirNoteL(node, index, parent);
+          else if (node.name === "bili") processDir.dirBilibili(node, file);
+          else if (node.name === "youtube") processDir.dirYoutube(node, file);
           break;
         case "containerDirective":
           if (node.name === "links") processDir.dirLinks(node);
           else if (node.name === "timeline")
             processDir.dirTimeline(node, index, parent);
+          else if (node.name === "gallery")
+            processDir.dirGallery(node, index, parent);
+          else if (node.name === "note")
+            processDir.dirNoteC(node, index, parent);
+          else if (node.name === "tabs") processDir.dirTabs(node);
+          else if (node.name === "tab") processDir.dirTab(node);
           break;
       }
     });

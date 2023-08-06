@@ -26,45 +26,43 @@ HsuBlog遵循最佳实践，📜✅并确保开箱可用。它原生支持浅色
 - [x] 对搜索引擎友好 🕷️🔗
 - [x] 遵循最佳实践 ✅🥇
 - [x] 支持markdown gfm, KaTex/Mathjax 以及一些其他独特的扩展语法（正在进行中）📝🔧
+- [x] 支持i18n
+- [x] 响应式 (移动设备 ~ 笔记本 ~ 带鱼屏)
 
 PS：关于性能，这取决于你如何使用它。在我的测试中，灯塔的性能分数平均超过85。如果不使用大尺寸的图片，甚至可以达到97分。为什么不试试看 😁。
 
 ## 项目结构 🤐📂
 
 ```bash
-根目录
- ├─公共
- │  └─脚本
- └─源码
-    ├─组件
-    │  ├─动画
-    │  ├─侧边栏
-    │  ├─客户端
-    │  ├─页脚
-    │  ├─页头
-    │  ├─图标
-    │  ├─加载中
-    │  └─帖子列表
-    ├─内容
-    │  └─博客
-    │      └─默认
-    ├─布局
-    ├─页面
-    │  ├─关于
-    │  ├─博客
-    │  ├─分类
-    │  │  └─[分类]
-    │  ├─朋友
-    │  └─标签
-    │      └─[标签]
-    ├─样式
-    │  ├─博客
-    │  │  └─发布
-    │  ├─组件
-    │  │  └─发布
-    │  ├─发布
-    │  └─标签
-    └─实用程序
+├── public # 存放在这里的文件会被原封不动地复制到网站根目录
+│  ├── locales # 存放翻译字段 主题默认带中文和英文
+│  │  ├── en
+│  │  │  └── translation.json
+│  │  └── zh
+│  │     └── translation.json
+│  ├── robots.txt
+│  └── scripts # 存放需要使用的 js 和 json 文件
+└── src
+   ├── components # 存放主题所使用的组件 普通使用无需更改
+   ├── layouts # 存放主题布局文件 普通使用无需修改
+   ├── utils # 存放一些 ts 函数 普通使用无需修改
+   ├── styles # 存放主题样式文件 .scss
+   │  └── custom.scss # 自定义样式可以写在这里
+   ├── pages # 存放页面
+   ├── content # 存放博客文件 .md，所有博客内容都存放在这里
+   │  ├── blog
+   │  │  ├── en
+   │  │  │  └── default # 存放默认示例英文博客
+   │  │  └── zh
+   │  │     └── default # 存放默认示例中文博客
+   │  └── config.ts
+   ├── env.d.ts # 类型定义 普通使用无需修改
+   ├── exMarkdown # 存放 Markdown 编译处理相关函数
+   │  └── markdownThemes
+   │     ├── darkTheme.json # 代码块夜间模式样式 VsCode 格式
+   │     └── lightTheme.json # 代码块日间模式样式 VsCode 格式
+   ├── theme_config.ts # HsuBlog 主题配置文件
+   └── site_config.ts # HsuBlog 站点配置文件
 ```
 
 Astro将`src/pages/`目录中的`.astro`或`.md`文件转换为网站路由，使用它们的文件路径。
@@ -87,7 +85,8 @@ Astro将`src/pages/`目录中的`.astro`或`.md`文件转换为网站路由，�
 **类型** : [TypeScript](https://www.typescriptlang.org/)  
 **样式** : [Scss](https://www.sass.hk/)  
 **搜索** : [FuseJS](https://fusejs.io/)  
-**图标** : [FontAwesome](https://fontawesome.com/) & [IconPark](https://iconpark.oceanengine.com/home)
+**图标** : [FontAwesome](https://fontawesome.com/) & [IconPark](https://iconpark.oceanengine.com/home)  
+**国际化** : [astro-i18next](https://github.com/yassinedoghri/astro-i18next)
 
 ## 如何开始 🚀 🏁
 
@@ -152,13 +151,13 @@ pnpm build
 | `yarn run new <title>`     | 创建一个新的帖子，标题为                                                                         |
 | `yarn run newpage <title>` | 创建一个新的页面，标题为                                                                         |
 | `yarn run abbr`            | 在markdown文件的标题中添加永久链接                                                               |
+| `yarn run i18n`            | 创建基本的国际化页面(不包括已创建的Markdown文件)                                                 |
 
 使用 `yarn run -h` 获取帮助
 
 ## 待办事项
 
-- [ ] 响应式 (移动设备 ~ 笔记本 ~ 带鱼屏)
-- [ ] 国际化
+...
 
 ## 贡献 💡💬
 

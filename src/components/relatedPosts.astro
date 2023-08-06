@@ -1,0 +1,29 @@
+---
+import "@style/components/related-posts.scss";
+import { t } from "i18next";
+import { ThemeConfig } from "@src/theme_config";
+import RelatedPostsCore from "./client/relatedPostsCore.vue";
+import GetIcon from "./icons/getIcon.astro";
+
+interface Props {
+  lang: string;
+  title: string;
+}
+
+const { lang, title } = Astro.props;
+---
+
+<div class="related-posts">
+  <div class="related-posts-head">
+    <GetIcon class="related-posts-icon" Icon="local:solid.tags" />
+    <span>{t("words.relatedPost")}</span>
+  </div>
+  <div class="related-post-wrap">
+    <RelatedPostsCore
+      client:only
+      lang={lang}
+      title={title}
+      cover={ThemeConfig.postPage.defaultCover}
+    />
+  </div>
+</div>

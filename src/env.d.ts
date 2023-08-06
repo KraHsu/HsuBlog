@@ -16,6 +16,8 @@ interface Configs {
 
 interface PostPageConfig {
   aside: AsideConfig;
+  relatedPosts: boolean;
+  defaultCover: string;
 }
 
 interface ButtonItem {
@@ -40,7 +42,6 @@ interface HomePageConfig {
   heroShoot: string | false;
   heroTitle: string;
   heroDescription: string;
-  defaultCover: string;
   paginationSize: number;
   aside: AsideConfig;
 }

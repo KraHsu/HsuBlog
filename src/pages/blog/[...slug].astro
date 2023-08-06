@@ -10,7 +10,8 @@ import { utils } from "@src/utils/utils";
 changeLanguage("en");
 
 export async function getStaticPaths() {
-    const posts = (await getCollection("blog")).filter((post) => post.data.lang === i18next.language);
+    const thePageLanguage = 'en'; //the language of this page
+    const posts = (await getCollection("blog")).filter((post) => post.data.lang === thePageLanguage);
     return posts.map((post) => ({
         params: { slug: post.data.abbrlink || post.slug },
         props: post,

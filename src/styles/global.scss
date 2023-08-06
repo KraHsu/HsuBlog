@@ -88,6 +88,8 @@ body {
 
   --translucent-background: rgba(0, 0, 0, 0.05);
 
+  --tab-nav-bg: #f0f0f0;
+
   &[data-theme="dark"] {
     --highlight-index-color: #666;
 
@@ -122,6 +124,8 @@ body {
     --border-light-grey: #696969;
 
     --translucent-background: rgba(255, 255, 255, 0.1);
+
+    --tab-nav-bg: #ccc;
   }
 }
 

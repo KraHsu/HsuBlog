@@ -4,7 +4,7 @@
 
   color: var(--font-black-white);
 
-  font-family: var(--heading-font-family-zh);
+  font-family: var(--heading-font-family);
 
   .main-card {
     width: 100%;
@@ -60,13 +60,14 @@
         object-fit: cover;
       }
     }
+    @media (any-hover: hover) {
+      &:hover {
+        .post-card-cover {
+          filter: brightness(0.8);
 
-    &:hover {
-      .post-card-cover {
-        filter: brightness(0.8);
-
-        img {
-          transform: scale(1.1);
+          img {
+            transform: scale(1.1);
+          }
         }
       }
     }
@@ -96,10 +97,11 @@
 
           color: var(--font-black-white);
 
-          &:hover {
-            color: var(--theme-color);
+          @media (any-hover: hover) {
+            &:hover {
+              color: var(--theme-color);
+            }
           }
-
           &::before {
             margin-top: 2px;
 
@@ -131,8 +133,10 @@
 
         font-weight: 600;
 
-        &:hover {
-          color: var(--theme-color);
+        @media (any-hover: hover) {
+          &:hover {
+            color: var(--theme-color);
+          }
         }
       }
 
@@ -192,9 +196,10 @@
                 font-weight: 900;
               }
             }
-
-            &:hover a {
-              color: var(--theme-color);
+            @media (any-hover: hover) {
+              &:hover a {
+                color: var(--theme-color);
+              }
             }
           }
         }
@@ -205,9 +210,10 @@
 
             color: var(--font-black-white);
           }
-
-          &:hover a {
-            color: var(--theme-color);
+          @media (any-hover: hover) {
+            &:hover a {
+              color: var(--theme-color);
+            }
           }
         }
       }
@@ -240,12 +246,14 @@
       flex-direction: column;
 
       height: fit-content;
+
       .post-card-cover {
         width: 100%;
 
         height: fit-content;
 
         border-radius: 15px 15px 0 0;
+
         img {
           width: 100%;
 

@@ -12,6 +12,7 @@ interface SearchData {
   title: string;
   content: string;
   url: string;
+  cover: string;
 }
 
 const searchDatas: Record<string, SearchData[]> = {};
@@ -19,13 +20,17 @@ const searchDatas: Record<string, SearchData[]> = {};
 export function generateSearchData() {
   return (node: any, file: any) => {
     if (file.history[0].includes(`content\\blog`)) {
+      const frontmatter = file.data.astro.frontmatter;
       const content = utils.cleanContent(file.value as string);
-      const lang = file.data.astro.frontmatter.lang || SiteConfig.i18n.default;
+      const lang = frontmatter.lang || SiteConfig.i18n.default;
       if (!(lang in searchDatas)) searchDatas[lang] = [];
       searchDatas[lang].push({
-        title: file.data.astro.frontmatter.title,
+        title: frontmatter.title,
         content: content,
-        url: `${lang}/blog/${file.data.astro.frontmatter.abbrlink}`,
+        url: `/${lang === SiteConfig.i18n.default ? "" : lang + "/"}blog/${
+          frontmatter.abbrlink
+        }`,
+        cover: frontmatter.cover,
       });
 
       const filePath = path.resolve(

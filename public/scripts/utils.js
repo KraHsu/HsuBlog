@@ -197,6 +197,26 @@ const hsu = {
                 }
             }, 100);
         });
+    },
+    siblings: function (element, selector) {
+        return [...element.parentNode.children].filter((child) => {
+            if (selector) {
+                return child !== element && child.matches(selector)
+            }
+            return child !== element
+        })
+    },
+    changeTabs: function (element) {
+        const tab = element.parentNode;
+        const tabContents = tab.parentNode.nextElementSibling
+
+        if (!tab.classList.contains('active')) {
+            const oldTab = this.siblings(tab, '.active')[0]
+            oldTab && oldTab.classList.remove('active')
+            tab.classList.add('active')
+            tabContents.children[oldTab.getAttribute("data-index")].classList.remove("active")
+            tabContents.children[tab.getAttribute("data-index")].classList.add("active")
+        }
     }
 }
 

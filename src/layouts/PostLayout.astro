@@ -1,20 +1,28 @@
 ---
 import "@style/blog/index.scss";
+import i18next from "i18next";
 import BaseLayout from "@layout/BaseLayout.astro";
 import BlogToc from "@comp/aside/blogToc.astro";
 import Aside from "@comp/aside/aside.astro";
+import RelatedPosts from "@comp/relatedPosts.astro";
 import PostComment from "@comp/postComment.astro";
 import type { CollectionEntry } from "astro:content";
 import { ThemeConfig } from "@src/theme_config";
-
 interface Props {
   postData?: CollectionEntry<"blog">["data"];
   frontmatter: any;
   useComments?: boolean;
+  useRelatedPosts?: boolean;
   desc?: string;
 }
 
-const { frontmatter, useComments = true, postData, desc } = Astro.props;
+const {
+  frontmatter,
+  useComments = true,
+  useRelatedPosts = true,
+  postData,
+  desc,
+} = Astro.props;
 ---
 
 <BaseLayout
@@ -37,6 +45,12 @@ const { frontmatter, useComments = true, postData, desc } = Astro.props;
   <article class="post-container">
     <main class="post-main">
       <slot />
+      {
+        ThemeConfig.postPage.relatedPosts && useRelatedPosts && (
+          <RelatedPosts lang={i18next.language} title={frontmatter.title} />
+        )
+      }
+
       {useComments && <PostComment />}
     </main>
     <Aside

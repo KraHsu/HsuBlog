@@ -15,6 +15,7 @@ interface FrontMatter {
   }[];
   file: string;
   url: string;
+  relatedPosts: boolean;
 }
 
 interface Props {
@@ -22,12 +23,14 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
+frontmatter.relatedPosts = frontmatter.relatedPosts || false;
 ---
 
 <PostLayout
   useComments={frontmatter.useComments && ThemeConfig.comments.type !== false}
   frontmatter={frontmatter}
   desc={frontmatter.description}
+  useRelatedPosts={frontmatter.relatedPosts}
 >
   <HeroWave
     class="post-header"

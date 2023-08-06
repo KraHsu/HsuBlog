@@ -1,5 +1,6 @@
 import type { Child } from "hastscript";
 import type { Element } from "hastscript/lib/core";
+import { visit } from "unist-util-visit";
 import { h } from "hastscript";
 import { raw } from "hast-util-raw";
 import type * as shiki from "shiki";
@@ -31,6 +32,13 @@ const options = {
 const highlightBackgroundColor = {
   dark: darkThemeData.colors["editor.lineHighlightBackground"] || "",
   light: lightThemeData.colors["editor.lineHighlightBackground"] || "",
+};
+const defaultIcons: Record<string, string> = {
+  info: "local:solid.circle-info",
+  warn: "local:solid.circle-exclamation",
+  error: "local:solid.circle-xmark",
+  tips: "local:solid.circle-plus",
+  success: "local:solid.circle-check",
 };
 
 export const processRehype = {
@@ -96,12 +104,13 @@ export const processRehype = {
       fancybox = h(
         "a.img-wrap",
         {
-          "data-fancybox": "",
+          "data-fancybox": node.properties.gallery || "",
           "data-caption": node.properties.alt,
           href: node.properties.src,
         },
         node
       );
+      delete node.properties.gallery;
     }
 
     parent.children.splice(index, 1, fancybox);
@@ -109,8 +118,10 @@ export const processRehype = {
     if (
       index &&
       parent.children.length > index + 1 &&
-      parent.children[index + 1].type === "text"
+      parent.children[index + 1].type === "text" &&
+      parent.children[index + 1].value.replaceAll("\n", "")
     ) {
+      console.log(parent.children[index + 1]);
       const comment = h("span.img-comment", parent.children[index + 1]);
       parent.children.splice(index + 1, 1, comment);
     }
@@ -201,16 +212,9 @@ export const processDir = {
       `background:${node.attributes.bg || ""};`;
   },
   dirNoteL: function (node: any, index: number | null, parent: any) {
-    const className = node.attributes.class as string;
-    const icons: Record<string, string> = {
-      info: "local:solid.circle-info",
-      warn: "local:solid.circle-exclamation",
-      error: "local:solid.circle-xmark",
-      tips: "local:solid.circle-plus",
-      success: "local:solid.circle-check",
-    };
-    if (className in icons) {
-      node.attributes.icon = icons[className];
+    const className = (node.attributes.class as string) || "";
+    if (className in defaultIcons) {
+      node.attributes.icon = defaultIcons[className];
     }
     parent.children.splice(
       index,
@@ -232,6 +236,39 @@ export const processDir = {
           })
         ),
         Object.assign(node, hh("span.dir-note", node.children))
+      )
+    );
+  },
+  dirNoteC: function (node: any, index: number | null, parent: any) {
+    const className = (node.attributes.class as string) || "";
+    if (className in defaultIcons) {
+      node.attributes.icon = defaultIcons[className];
+    }
+    const { title, content } = getTitleAndContent(node);
+    parent.children.splice(
+      index,
+      1,
+      hh(
+        "div.dir-note-wrap.container",
+        {
+          style: `background: ${node.attributes.bg || ""};color: ${
+            node.attributes.color || ""
+          };border-left-color: ${node.attributes.color || ""}`,
+          class: node.attributes.class,
+          id: node.attributes.id,
+        },
+        h(
+          "div.dir-note-head",
+          h(
+            "div.dir-note-icon",
+            raw({
+              type: "raw",
+              value: getLocalIcons(node.attributes.icon || ""),
+            })
+          ),
+          h("span.dir-note", title.children[0].value)
+        ),
+        h("div.dir-note-content", ...content)
       )
     );
   },
@@ -314,14 +351,96 @@ export const processDir = {
       )
     );
   },
+  dirGallery: function (node: any, index: number | null, parent: any) {
+    if (index === null) return;
+    const { title, content } = getTitleAndContent(node);
+    simpleConvert(title, "span.gallery-name");
+    node.children = [...content, title];
+    simpleConvert(node, "div.dir-gallery");
+    visit(node, "image", (node, index, parent) => {
+      node.data = {
+        hProperties: { gallery: title.children ? title.children[0].value : "" },
+      };
+    });
+  },
+  dirBilibili: function (node: any, file: any) {
+    const data = node.data || (node.data = {});
+    const attributes = node.attributes || {};
+    const id =
+      attributes.id.slice(0, 2) === "BV" ? attributes.id : "BV" + attributes.id;
+    if (!id) file.fail("Missing video id");
+    data.hName = "iframe";
+    data.hProperties = {
+      src:
+        "//player.bilibili.com/player.html?high_quality=1&autoplay=0&bvid=" +
+        id,
+      class: "dir-bilibili",
+      scrolling: "no",
+      frameBorder: 0,
+      framespacing: 0,
+      allowfullscreen: true,
+      sandbox:
+        "allow-top-navigation allow-same-origin allow-forms allow-scripts",
+    };
+  },
+  dirYoutube: function (node: any, file: any) {
+    const data = node.data || (node.data = {});
+    const attributes = node.attributes || {};
+    const id = attributes.id;
+    if (!id) file.fail("Missing video id");
+    data.hName = "iframe";
+    data.hProperties = {
+      src: "https://www.youtube.com/embed/" + id,
+      class: "dir-youtube",
+      frameBorder: 0,
+      allow: "picture-in-picture",
+      allowFullScreen: true,
+    };
+  },
+  dirTabs: function (node: any) {
+    const tabsNav: any[] = [];
+    let index = 0;
+    visit(node, (node) => {
+      if (node.name !== "tab") return;
+      const { title: tabName, content: tabContent } = getTitleAndContent(node);
+      node.children = tabContent;
+      tabsNav.push(
+        h(
+          "li.dir-tab",
+          {
+            "data-index": index++,
+          },
+          h(
+            "button",
+            {
+              onclick: "hsu.changeTabs(this)",
+            },
+            tabName.children[0] ? tabName.children[0].value : "Tab"
+          )
+        )
+      );
+    });
+    const { title: _, content } = getTitleAndContent(node);
+    const activeIndex = Math.min(node.attributes.active || 0, tabsNav.length);
+    tabsNav[activeIndex].properties.className.push("active");
+    (content as any[])[activeIndex].attributes.class = "active";
+    node.children = [
+      hh("ul.dir-tabs-nav", ...tabsNav),
+      hh("div.dir-tabs-content", ...(content as any)),
+    ];
+    simpleConvert(node, "div.dir-tabs");
+  },
+  dirTab: function (node: any) {
+    simpleConvert(node, "div.dir-tab-content");
+  },
 };
 
 function getTitleAndContent(node: any) {
   let title: any = {},
     content: Child[] = [];
   if (node.children[0].data?.directiveLabel === true) {
-    title = node.children[0];
-    content = node.children.splice(1);
+    title = node.children.splice(0, 1)[0];
+    content = node.children.splice(0);
   } else {
     content = node.children.splice(0);
   }
@@ -337,13 +456,14 @@ function simpleConvert(node: any, tagName: string, properties?: object) {
     hh(
       tagName,
       {
-        class: node.attributes.class,
-        id: node.attributes.id,
+        class: node.attributes?.class || "",
+        id: node.attributes?.id || "",
         ...properties,
       },
       node.children
     )
   );
+  return node;
 }
 
 function convertToRemarkFormat(hastNode: any): any {

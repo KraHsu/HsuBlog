@@ -29,45 +29,43 @@ This theme inherently followes best practices and assures accessibility as a fun
 - [x] SEO-friendly 🕷️🔗
 - [x] followed best practices ✅🥇
 - [x] markdown gfm, KaTex/Mathjax and some other unique extension syntax (in progress) 📝🔧
+- [x] i18n supported
+- [x] responsive (mobile ~ desktops)
 
 PS: About the performance, It depends on how you use it. In my tests, lighthouses' performance scores averaged over 85. It can even reach 97 points without using large size pictures. Why not give it a try 😁.
 
 ## Project Structure 🤐📂
 
 ```bash
-root
- ├─public
- │  └─scripts
- └─src
-    ├─components
-    │  ├─animation
-    │  ├─aside
-    │  ├─client
-    │  ├─footer
-    │  ├─header
-    │  ├─icons
-    │  ├─loading
-    │  └─postlist
-    ├─content
-    │  └─blog
-    │      └─default
-    ├─layouts
-    ├─pages
-    │  ├─about
-    │  ├─blog
-    │  ├─categories
-    │  │  └─[category]
-    │  ├─friends
-    │  └─tags
-    │      └─[tag]
-    ├─styles
-    │  ├─blog
-    │  │  └─dist
-    │  ├─components
-    │  │  └─dist
-    │  ├─dist
-    │  └─tags
-    └─utils
+├── public # Files placed here will be copied to the website root directory as-is.
+│  ├── locales # Contains translation fields; theme comes with Chinese and English by default.
+│  │  ├── en
+│  │  │  └── translation.json
+│  │  └── zh
+│  │     └── translation.json
+│  ├── robots.txt
+│  └── scripts # Contains required js and json files.
+└── src
+   ├── components # Theme components; typically unmodified.
+   ├── layouts # Theme layout files; typically unmodified.
+   ├── utils # Contains ts functions; typically unmodified.
+   ├── styles # Contains theme style files in .scss format.
+   │  └── custom.scss # Custom styles can be written here.
+   ├── pages # Contains pages.
+   ├── content # Contains blog files in .md format; all blog content is stored here.
+   │  ├── blog
+   │  │  ├── en
+   │  │  │  └── default # Contains the default sample English blog.
+   │  │  └── zh
+   │  │     └── default # Contains the default sample Chinese blog.
+   │  └── config.ts
+   ├── env.d.ts # Type definitions; typically unmodified.
+   ├── exMarkdown # Contains functions related to Markdown compilation.
+   │  └── markdownThemes
+   │     ├── darkTheme.json # Code block night mode style in VsCode format.
+   │     └── lightTheme.json # Code block daytime mode style in VsCode format.
+   ├── theme_config.ts # HsuBlog theme configuration file.
+   └── site_config.ts # HsuBlog site configuration file.
 ```
 
 Astro turns `.astro` or `.md` files in the `src/pages/` directory into website routes, using their file path.
@@ -90,7 +88,8 @@ I will complete the documentation as soon as possible
 **Type** : [TypeScript](https://www.typescriptlang.org/)  
 **Styling** : [Scss](https://www.sass.hk/)  
 **Search** : [FuseJS](https://fusejs.io/)  
-**Icons** : [FontAwesome](https://fontawesome.com/) & [IconPark](https://iconpark.oceanengine.com/home)
+**Icons** : [FontAwesome](https://fontawesome.com/) & [IconPark](https://iconpark.oceanengine.com/home)  
+**I18n** : [astro-i18next](https://github.com/yassinedoghri/astro-i18next)
 
 ## Getting Started🚀🏁
 
@@ -155,13 +154,13 @@ All commands are run from the root of the project, from a terminal:
 | `yarn run new <title>`     | Create a new post with the title                                                                           |
 | `yarn run newpage <title>` | Create a new page with the title                                                                           |
 | `yarn run abbr`            | Add a permalink to markdown files title                                                                    |
+| `yarn run i18n`            | Create basic internationalized pages (excluding already created Markdown files)                            |
 
 use `yarn run -h` for help
 
 ## To Do
 
-- [ ] responsive (mobile ~ desktops)
-- [ ] i18n
+...
 
 ## Contribution 💡💬
 

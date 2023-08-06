@@ -8,21 +8,21 @@ interface Props {
 }
 
 const { pageSize, activePage, baseurl } = Astro.props;
+
+const localurl = baseurl[baseurl.length - 1] === "/" ? baseurl : baseurl + "/";
 ---
 
 <nav class="pagination">
   <div class:list={["pagination-pre", { "disable": activePage === 1 }]}>
     <a
       class="pagination-link"
-      href={`${baseurl[baseurl.length - 1] === "/" ? baseurl : baseurl + "/"}${
-        activePage === 2 ? "" : activePage - 1
-      }`}
+      href={`${localurl}${activePage === 2 ? "" : activePage - 1}`}
     >
       <span>{t("words.prePage", { returnNull: true })}</span>
     </a>
   </div>
   <div class:list={["pagination-next", { "disable": activePage === pageSize }]}>
-    <a class="pagination-link" href={`${baseurl}${activePage + 1}`}>
+    <a class="pagination-link" href={`${localurl}${activePage + 1}`}>
       <span>{t("words.nextPage", { returnNull: true })}</span>
     </a>
   </div>
@@ -31,9 +31,7 @@ const { pageSize, activePage, baseurl } = Astro.props;
       Array.from({ length: pageSize }, (_, i) => i + 1).map((num) => (
         <li>
           <a
-            href={`${
-              baseurl[baseurl.length - 1] === "/" ? baseurl : baseurl + "/"
-            }${num === 1 ? "" : num}`}
+            href={`${localurl}${num === 1 ? "" : num}`}
             class:list={[{ "active": num === activePage }, "pagination-number"]}
           >
             <span>{num}</span>

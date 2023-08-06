@@ -1,12 +1,13 @@
 ---
-title: 扩展搜索
-description: "使用Fuse.js实现的HsuBlog的扩展搜索语法"
-pubDate: 2023-07-23T00:45:44.455Z
-updatedDate: 2023-07-23T00:45:44.455Z
+title: Extended Search
+description: '关于HsuBlog所使用的fusejs的扩展搜索语法'
+pubDate: Jul 27 2023
+updatedDate: Jul 27 2023
 heroColor: ''
 abbrlink: lkk0v40t
 tags: 
     - '本地搜索'
+    - '模糊搜索'
     - '扩展搜索'
 category: '默认页面'
 lang: 'zh'
@@ -27,4 +28,7 @@ lang: 'zh'
 | `!^earlang` | 反向前缀精确匹配 | 不以 `earlang` 开头的项目   |
 | `.js$`      | 后缀精确匹配     | 以 `.js` 结尾的项目         |
 | `!.go$`     | 反向后缀精确匹配 | 不以 `.go` 结尾的项目       |
+
+
+
 

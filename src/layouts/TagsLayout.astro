@@ -20,7 +20,10 @@ const { tags, baseurl, activeTag, page } = Astro.props;
       <div class:list={["tags", { "floating": ThemeConfig.tagsPage.floating }]}>
         {
           tags.map((tag) => (
-            <a class="tag" href={localizePath(baseurl + tag)}>
+            <a
+              class:list={{ "tag": true, "active": tag === activeTag }}
+              href={localizePath(baseurl + tag)}
+            >
               <span class="tag-text">{tag}</span>
             </a>
           ))

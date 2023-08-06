@@ -4,7 +4,7 @@
 
   color: var(--font-black-white);
 
-  font-family: var(--heading-font-family-zh);
+  font-family: var(--heading-font-family);
 
   .sticky-container {
     position: sticky;
@@ -26,10 +26,13 @@
     @include card-style();
 
     .aside-card-link {
-      color: var(--aside-link-color);
-      text-decoration: none;
-      margin-left: 2px;
       margin-right: 2px;
+
+      margin-left: 2px;
+
+      text-decoration: none;
+
+      color: var(--aside-link-color);
     }
   }
 }
@@ -127,9 +130,10 @@
 
           border-radius: 5px;
         }
-
-        &:hover .social-icon {
-          animation: var(--shak-hard-animation);
+        @media (any-hover: hover) {
+          &:hover .social-icon {
+            animation: var(--shak-hard-animation);
+          }
         }
       }
     }
@@ -164,8 +168,10 @@
 }
 
 .announcement-headline {
-  &:hover .announcement-icon {
-    animation: var(--shak-hard-animation);
+  @media (any-hover: hover) {
+    &:hover .announcement-icon {
+      animation: var(--shak-hard-animation);
+    }
   }
 }
 

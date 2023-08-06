@@ -1,6 +1,7 @@
 #site-footer {
-  z-index: 210;
   position: relative;
+
+  z-index: 210;
 
   bottom: 0;
 
@@ -19,7 +20,6 @@
   user-select: none;
 
   background: var(--background-white);
-
   .footer-container {
     display: flex;
 
@@ -38,16 +38,18 @@
     justify-items: center;
 
     .footer-link {
+      transition: 0.3s ease;
+
       text-decoration: none;
 
       color: var(--font-black-white);
 
       font-weight: 600;
 
-      transition: 0.3s ease;
-
-      &:hover {
-        color: var(--theme-color);
+      @media (any-hover: hover) {
+        &:hover {
+          color: var(--theme-color);
+        }
       }
     }
   }
@@ -56,8 +58,9 @@
 @media screen and (width <= 1100px) {
   #site-footer {
     .footer-container {
-      flex-direction: column;
       align-items: center;
+
+      flex-direction: column;
       & > * {
         margin: 0.2rem auto;
       }

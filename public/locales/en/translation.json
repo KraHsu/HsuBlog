@@ -31,7 +31,8 @@
       "content": "New theme testing~ Everyone is welcome to [contribute](https://github.com/KraHsu/HsuBlog/issues)~"
     },
     "customCards": {
-      "Custom part": {
+      "推荐文章": {
+        "icon": "local:solid.star",
         "title": "Customed",
         "content": "This is the custom content section<br>Everything can be placed here"
       }
@@ -59,11 +60,12 @@
     "articles": "Arts.",
     "categories": "Cats.",
     "tags": "Tags",
-    "TOC": "Table of Contents",
+    "TOC": "TOC",
     "siteInfo": "SiteInfo",
     "uniqueVisitor": "Unique Visitors",
     "pageView": "Page Views",
     "articlCount": "Article Count",
-    "wordCount": "Word Count"
+    "wordCount": "Word Count",
+    "relatedPost": "Related Post"
   }
 }
