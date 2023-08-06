@@ -1,4 +1,5 @@
 .related-posts {
+  margin-top: 10px;
   .related-posts-head {
     display: flex;
 
@@ -23,9 +24,9 @@
 
     flex-wrap: wrap;
 
-    justify-content: space-between;
-
     margin-top: 15px;
+
+    gap: 5px;
 
     .related-post {
       display: flex;
@@ -37,8 +38,6 @@
       width: calc(33.33% - 5px);
 
       height: 200px;
-
-      margin-bottom: 5px;
 
       transition: 0.3s ease;
 

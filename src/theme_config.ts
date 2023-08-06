@@ -154,7 +154,7 @@ export const ThemeConfig: Configs = {
     },
   },
   postPage: {
-    defaultCover: "/heroimg.jpg",
+    defaultCover: "https://lipsum.app/id/2/1600x1200",
     aside: {
       comps: ["AuthorInfo"],
       stickyComps: [],

@@ -34,7 +34,6 @@ const fuseOptions = {
 const list = await hsu.getJson(`/scripts/searchData-${language}.json`);
 const fuse = new Fuse(list, fuseOptions);
 const results = fuse.search(title).slice(1, 7) as Fuse.FuseResult<Result>[];
-console.log(results);
 </script>
 
 <template>

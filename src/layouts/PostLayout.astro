@@ -12,10 +12,17 @@ interface Props {
   postData?: CollectionEntry<"blog">["data"];
   frontmatter: any;
   useComments?: boolean;
+  useRelatedPosts?: boolean;
   desc?: string;
 }
 
-const { frontmatter, useComments = true, postData, desc } = Astro.props;
+const {
+  frontmatter,
+  useComments = true,
+  useRelatedPosts = true,
+  postData,
+  desc,
+} = Astro.props;
 ---
 
 <BaseLayout
@@ -39,7 +46,7 @@ const { frontmatter, useComments = true, postData, desc } = Astro.props;
     <main class="post-main">
       <slot />
       {
-        ThemeConfig.postPage.relatedPosts && (
+        ThemeConfig.postPage.relatedPosts && useRelatedPosts && (
           <RelatedPosts lang={i18next.language} title={frontmatter.title} />
         )
       }

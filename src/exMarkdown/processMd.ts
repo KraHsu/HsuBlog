@@ -1,5 +1,6 @@
 import type { Child } from "hastscript";
 import type { Element } from "hastscript/lib/core";
+import { visit } from "unist-util-visit";
 import { h } from "hastscript";
 import { raw } from "hast-util-raw";
 import type * as shiki from "shiki";
@@ -96,12 +97,13 @@ export const processRehype = {
       fancybox = h(
         "a.img-wrap",
         {
-          "data-fancybox": "",
+          "data-fancybox": node.properties.gallery || "",
           "data-caption": node.properties.alt,
           href: node.properties.src,
         },
         node
       );
+      delete node.properties.gallery;
     }
 
     parent.children.splice(index, 1, fancybox);
@@ -109,8 +111,10 @@ export const processRehype = {
     if (
       index &&
       parent.children.length > index + 1 &&
-      parent.children[index + 1].type === "text"
+      parent.children[index + 1].type === "text" &&
+      parent.children[index + 1].value.replaceAll("\n", "")
     ) {
+      console.log(parent.children[index + 1]);
       const comment = h("span.img-comment", parent.children[index + 1]);
       parent.children.splice(index + 1, 1, comment);
     }
@@ -314,6 +318,52 @@ export const processDir = {
       )
     );
   },
+  dirGallery: function (node: any, index: number | null, parent: any) {
+    if (index === null) return;
+    const { title, content } = getTitleAndContent(node);
+    simpleConvert(title, "span.gallery-name");
+    node.children = [...content, title];
+    simpleConvert(node, "div.dir-gallery");
+    visit(node, "image", (node, index, parent) => {
+      node.data = {
+        hProperties: { gallery: title.children ? title.children[0].value : "" },
+      };
+    });
+  },
+  dirBilibili: function (node: any, file: any) {
+    const data = node.data || (node.data = {});
+    const attributes = node.attributes || {};
+    const id =
+      attributes.id.slice(0, 2) === "BV" ? attributes.id : "BV" + attributes.id;
+    if (!id) file.fail("Missing video id");
+    data.hName = "iframe";
+    data.hProperties = {
+      src:
+        "//player.bilibili.com/player.html?high_quality=1&autoplay=0&bvid=" +
+        id,
+      class: "dir-bilibili",
+      scrolling: "no",
+      frameBorder: 0,
+      framespacing: 0,
+      allowfullscreen: true,
+      sandbox:
+        "allow-top-navigation allow-same-origin allow-forms allow-scripts",
+    };
+  },
+  dirYoutube: function (node: any, file: any) {
+    const data = node.data || (node.data = {});
+    const attributes = node.attributes || {};
+    const id = attributes.id;
+    if (!id) file.fail("Missing video id");
+    data.hName = "iframe";
+    data.hProperties = {
+      src: "https://www.youtube.com/embed/" + id,
+      class: "dir-youtube",
+      frameBorder: 0,
+      allow: "picture-in-picture",
+      allowFullScreen: true,
+    };
+  },
 };
 
 function getTitleAndContent(node: any) {
@@ -337,13 +387,14 @@ function simpleConvert(node: any, tagName: string, properties?: object) {
     hh(
       tagName,
       {
-        class: node.attributes.class,
-        id: node.attributes.id,
+        class: node.attributes?.class || "",
+        id: node.attributes?.id || "",
         ...properties,
       },
       node.children
     )
   );
+  return node;
 }
 
 function convertToRemarkFormat(hastNode: any): any {
