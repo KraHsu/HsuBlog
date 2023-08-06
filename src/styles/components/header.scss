@@ -114,34 +114,36 @@
 
     @include nav-flex();
 
-    &:hover {
-      padding: 4px 14px;
+    @media (any-hover: hover) {
+      &:hover {
+        padding: 4px 14px;
 
-      background: var(--theme-color);
+        background: var(--theme-color);
 
-      box-shadow: var(--card-tiny-shadow);
+        box-shadow: var(--card-tiny-shadow);
 
-      .menu-item-icon,
-      .menu-item-name {
-        color: var(--background-white);
-      }
+        .menu-item-icon,
+        .menu-item-name {
+          color: var(--background-white);
+        }
 
-      .menu-children {
-        display: flex;
+        .menu-children {
+          display: flex;
 
-        animation: 0.3s ease 0.1s 1 normal both running come-up;
-      }
+          animation: 0.3s ease 0.1s 1 normal both running come-up;
+        }
 
-      &.has-child::before {
-        position: absolute;
+        &.has-child::before {
+          position: absolute;
 
-        bottom: -40px;
+          bottom: -40px;
 
-        width: 300px;
+          width: 300px;
 
-        height: 40px;
+          height: 40px;
 
-        content: "";
+          content: "";
+        }
       }
     }
 
@@ -218,8 +220,10 @@
 
     box-shadow: var(--card-shadow);
 
-    &:hover {
-      border-color: var(--theme-color);
+    @media (any-hover: hover) {
+      &:hover {
+        border-color: var(--theme-color);
+      }
     }
 
     .menu-child {
@@ -235,14 +239,16 @@
 
       border-radius: 100px;
 
-      &:hover {
-        padding: 5px 15px;
+      @media (any-hover: hover) {
+        &:hover {
+          padding: 5px 15px;
 
-        background: var(--theme-color);
+          background: var(--theme-color);
 
-        .menu-child-icon,
-        .menu-child-name {
-          color: var(--button-background-white);
+          .menu-child-icon,
+          .menu-child-name {
+            color: var(--button-background-white);
+          }
         }
       }
     }
@@ -263,12 +269,14 @@
 
     border-radius: 5px;
 
-    &:hover {
-      background: var(--theme-color);
+    @media (any-hover: hover) {
+      &:hover {
+        background: var(--theme-color);
 
-      .menu-button-link {
-        .menu-button-icon {
-          color: var(--button-background-white);
+        .menu-button-link {
+          .menu-button-icon {
+            color: var(--button-background-white);
+          }
         }
       }
     }
@@ -396,16 +404,17 @@
         color: var(--font-black-white);
       }
     }
+    @media (any-hover: hover) {
+      &:hover {
+        background: var(--translucent-background);
 
-    &:hover {
-      background: var(--translucent-background);
+        .lang-selector-wrap {
+          max-width: 120px;
 
-      .lang-selector-wrap {
-        max-width: 120px;
+          transition: max-width 0.4s ease-in-out, opacity 0.3s 0.3s ease;
 
-        transition: max-width 0.4s ease-in-out, opacity 0.3s 0.3s ease;
-
-        opacity: 0.8;
+          opacity: 0.8;
+        }
       }
     }
   }
@@ -447,21 +456,23 @@
       display: none;
     }
   }
+  @media (any-hover: hover) {
+    &:not(.tobottom, :hover) {
+      #percent {
+        animation: var(--appear-animation);
+      }
 
-  &:not(.tobottom, :hover) {
-    #percent {
-      animation: var(--appear-animation);
-    }
-
-    #totop {
-      display: none;
+      #totop {
+        display: none;
+      }
     }
   }
+  @media (any-hover: hover) {
+    &:hover {
+      transform: scale(1.3);
 
-  &:hover {
-    transform: scale(1.3);
-
-    background: var(--theme-color);
+      background: var(--theme-color);
+    }
   }
 }
 
@@ -470,10 +481,12 @@
     font-weight: bold;
   }
   .menu-items {
-    .menu-item:hover {
-      .menu-item-name,
-      .menu-item-icon {
-        color: var(--font-black-white);
+    @media (any-hover: hover) {
+      .menu-item:hover {
+        .menu-item-name,
+        .menu-item-icon {
+          color: var(--font-black-white);
+        }
       }
     }
   }
@@ -507,14 +520,39 @@
 
           .menu-items {
             .menu-item {
-              &:hover {
-                padding: 8px;
+              @media (any-hover: hover) {
+                &:hover {
+                  padding: 8px;
+                }
               }
               .menu-item-link {
                 .menu-item-name {
                   display: none;
                 }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (width <= 400px) {
+  #site-header {
+    .header-menu {
+      .header-nav {
+        &.nav-center {
+          .menu-items {
+            .menu-item {
+              padding: 0;
+            }
+          }
+        }
+        &.nav-right {
+          .menu-buttons {
+            .menu-button {
+              padding: 0;
             }
           }
         }

@@ -91,7 +91,7 @@ export const ThemeConfig: Configs = {
       description: "一个前端开发者，退役OIer，Robomaster菜鸟",
       socialMedias: [
         {
-          link: "https://github.com/charles-hsuz",
+          link: "https://github.com/KraHsu",
           customClass: "github",
           icon: "local:brands.github",
           title: "github",

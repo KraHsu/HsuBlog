@@ -43,8 +43,10 @@
 
       filter: brightness(0.8);
 
-      &:hover {
-        filter: brightness(1);
+      @media (any-hover: hover) {
+        &:hover {
+          filter: brightness(1);
+        }
       }
 
       .related-post-title {
