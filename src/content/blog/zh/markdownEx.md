@@ -96,22 +96,33 @@ lang: 'zh'
 其中`icon`只支持使用`local:...`语法，详见[local Fontawesome](/blog/lkplqhb8)
 
 ```markdown
-::note[Info]{class="info"}
-::note[Warn]{class="warn"}
-::note[Error]{class="error"}
-::note[Success]{class="success"}
-::note[Tips]{class="tips"}
+::note[信息]{class="info"}
+::note[注意！]{class="warn"}
+::note[错误！]{class="error"}
+::note[成功]{class="success"}
+::note[提示]{class="tips"}
 
-::note[Star]{color="red" bg="green" icon="local:solid.star"}
+::note[小星星]{color="red" bg="green" icon="local:solid.star"}
 ```
 
-::note[Info]{class="info"}
-::note[Warn]{class="warn"}
-::note[Error]{class="error"}
-::note[Success]{class="success"}
-::note[Tips]{class="tips"}
+::note[信息]{class="info"}
+::note[注意！]{class="warn"}
+::note[错误！]{class="error"}
+::note[成功]{class="success"}
+::note[提示]{class="tips"}
 
-::note[Star]{color="red" bg="green" icon="local:solid.star"}
+::note[小星星]{color="red" bg="green" icon="local:solid.star"}
+
+如果要在标签中包含更多内容，请使用三个及以上 `:`
+
+```markdown
+:::note[示例]{class="info"}
+就像这样
+:::
+```
+:::note[示例]{class="info"}
+就像这样
+:::
 
 ## 时间线 TimeLine
 
@@ -134,63 +145,63 @@ lang: 'zh'
 
 示例：
 ```markdown
-::::timeline[TimeLine]{linecolor="red" color="gold"}
-:::time[Jul 7 2023]{color="blue" timecolor="green" bg="pink"}
-content
+::::timeline[时间线]{linecolor="red" color="gold"}
+:::time[二〇二三六月七]{color="blue" timecolor="green" bg="pink"}
+内容
 :::
 ::::
 ```
 
-::::timeline[TimeLine]{linecolor="red" color="gold"}
-:::time[Jul 7 2023]{color="blue" timecolor="green" bg="pink"}
-content
+::::timeline[时间线]{linecolor="red" color="gold"}
+:::time[二〇二三七月七]{color="blue" timecolor="green" bg="pink"}
+内容
 :::
 ::::
 
 你也可以使用默认样式：
 ```markdown
-::::timeline[TimeLine]
-:::time[Jul 22 2023]
-**hello world**  
-hello world
+::::timeline[时间线]
+:::time[二〇二三七月七]
+**你好，HsuBlog**  
+你好，HsuBlog
 :::
-:::time[Jul 23 2023]
-**Extended Search**  
-HsuBlog's Extended Search Syntax Using Fuse.js
+:::time[二〇二三七月二十三]
+**扩展搜索**  
+关于HsuBlog所使用的fusejs的扩展搜索语法
 :::
-:::time[Jul 27 2023]
-**Quick Start**  
-HsuBlog's Extended Search Syntax Using Fuse.js
+:::time[二〇二三七月二十七]
+**快速开始**  
+通过本指南快速开始使用HsuBlog。
 :::
-:::time[Jul 28 2023]
+:::time[二〇二三七月二十八]
 **Markdown**  
-Introduction to the Markdown format used by HsuBlog
+介绍HsuBlog所使用的Markdown格式
 :::
 ::::
 ```
-::::timeline[TimeLine]
-:::time[Jul 22 2023]
-**hello world**  
-hello world
+::::timeline[时间线]
+:::time[二〇二三七月七]
+**你好，HsuBlog**  
+你好，HsuBlog
 :::
-:::time[Jul 23 2023]
-**Extended Search**  
-HsuBlog's Extended Search Syntax Using Fuse.js
+:::time[二〇二三七月二十三]
+**扩展搜索**  
+关于HsuBlog所使用的fusejs的扩展搜索语法
 :::
-:::time[Jul 27 2023]
-**Quick Start**  
-HsuBlog's Extended Search Syntax Using Fuse.js
+:::time[二〇二三七月二十七]
+**快速开始**  
+通过本指南快速开始使用HsuBlog。
 :::
-:::time[Jul 28 2023]
+:::time[二〇二三七月二十八]
 **Markdown**  
-Introduction to the Markdown format used by HsuBlog
+介绍HsuBlog所使用的Markdown格式
 :::
 ::::
 
 ## 图标 Icon
 
 语法：`:i{i="local:family.name"}`
-其中local语法详见[local Fontawesome](/blog/lkplqhb8)
+其中local语法详见[local Fontawesome](/zh/blog/lkplqhb8)
 
 示例：
 ```markdown
@@ -200,3 +211,148 @@ Introduction to the Markdown format used by HsuBlog
 
 :i{i="local:solid.dog"}和:i{i="local:solid.cat"}是最好的朋友。一天，他们在:i{i="local:solid.tree"}里发现了一张藏宝图:i{i="local:solid.map"}。决定寻宝，他们跨过:i{i="local:solid.water"}，越过:i{i="local:solid.mountain"}，克服了许多困难。  
 终于，他们发现了宝藏:i{i="local:solid.gem"}。他们欢呼庆祝，他们之间的友谊更加深厚:i{i="local:solid.heart-pulse"}。
+
+## 选项卡 Tabs
+
+语法：
+
+```markdown
+::::tabs[name] 
+
+:::tab[title1]
+content1
+:::
+
+::::
+```
+
+比如，
+
+```markdown
+::::tabs[name] 
+:::tab[title1]
+content1
+:::
+:::tab[title2]
+content2
+:::
+::::
+```
+
+::::tabs[name] 
+:::tab[title1]
+content1
+:::
+:::tab[title2]
+content2
+:::
+::::
+
+## 相册 Gallery
+
+语法：
+```markdown
+:::gallery[name]
+![...](...)
+:::
+```
+
+比如，
+
+```markdown
+:::gallery[gallery1]
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+![test6](https://lipsum.app/id/6/1600x1200)
+![test7](https://lipsum.app/id/7/1600x1200)
+:::
+```
+
+:::gallery[gallery1]
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+![test6](https://lipsum.app/id/6/1600x1200)
+![test7](https://lipsum.app/id/7/1600x1200)
+:::
+
+你也可以使用 `.only-preview` 限制只显示预览，
+
+```markdown
+:::gallery[gallery2]{.only-preview}
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+![test6](https://lipsum.app/id/6/1600x1200)
+![test7](https://lipsum.app/id/7/1600x1200)
+:::
+```
+
+:::gallery[gallery2]{.only-preview}
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+![test6](https://lipsum.app/id/6/1600x1200)
+![test7](https://lipsum.app/id/7/1600x1200)
+:::
+
+需要注意的是，`name` 是用来区分相册的，而相册中的段落用来区分组:
+
+```markdown
+:::gallery[gallery3]{.only-preview}
+![test1](https://lipsum.app/id/1/1600x1200)
+:::
+
+:::gallery[gallery3]{.only-preview}
+![test2](https://lipsum.app/id/2/1600x1200)
+:::
+```
+:::gallery[gallery3]{.only-preview}
+![test1](https://lipsum.app/id/1/1600x1200)
+:::
+
+:::gallery[gallery3]{.only-preview}
+![test2](https://lipsum.app/id/2/1600x1200)
+:::
+
+```markdown
+:::gallery[gallery4]
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+:::
+```
+:::gallery[gallery4]
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+:::
+
+## 哔站和油管 Bilibili & YouTube
+
+语法：`::bili[标题]{#BV号}` & `::youtube[标题]{#视频ID}`
+
+比如：
+
+`::bili[改革春风吹满地]{#1bW411n7fY}`:
+
+::bili[改革春风吹满地]{#1bW411n7fY}
+
+`::youtube[Baby Cats]{#E9iP8jdtYZ0}`:
+
+::youtube[Baby Cats]{#E9iP8jdtYZ0}

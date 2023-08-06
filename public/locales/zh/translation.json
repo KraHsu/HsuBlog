@@ -31,9 +31,9 @@
       "content": "新主题试验中~ 欢迎各位[找茬](https://github.com/KraHsu/HsuBlog/issues)~"
     },
     "customCards": {
-      "推荐文章": {
+      "Custom part": {
         "icon": "local:solid.star",
-        "title": "推荐文章",
+        "title": "自定义部分",
         "content": "这里是自定义内容部分<br>啥都可以放"
       }
     }

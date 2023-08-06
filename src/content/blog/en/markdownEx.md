@@ -75,7 +75,7 @@ It can be used in paragraphs:
 Syntax: `::note[content]{class="" color="" bg="" icon="" id=""}`  
 HsuBlog provides some pre-defined `class` to use, styles for `class` not in this range can be customized with css
 
-`icon` only supports using `local:...` syntax, see [local Fontawesome](/en/blog/lkplqhb8)
+`icon` only supports using `local:...` syntax, see [local Fontawesome](/blog/lkplqhb8)
 
 ```markdown
 ::note[Info]{class="info"}
@@ -86,6 +86,17 @@ HsuBlog provides some pre-defined `class` to use, styles for `class` not in this
 
 ::note[Star]{color="red" bg="green" icon="local:solid.star"}
 ```
+
+If you want to include more content within a note, use three or more `:`
+
+```markdown
+:::note[Example]{class="info"}
+Just like this.
+:::
+```
+:::note[Example]{class="info"}
+Just like this.
+:::
 
 ## Timeline
 
@@ -159,7 +170,7 @@ Introduction to the Markdown format used by HsuBlog
 ## Icon
 
 Syntax: `:i{i="local:family.name"}`
-For the local syntax, see [local Fontawesome](/en/blog/lkplqhb8)
+For the local syntax, see [local Fontawesome](/blog/lkplqhb8)
 
 Example:
 ```markdown
@@ -169,3 +180,148 @@ Finally, they found the treasure :i{i="local:solid.gem"}. They cheered in celebr
 
 :i{i="local:solid.dog"} and :i{i="local:solid.cat"} are best friends. One day, they found a treasure map :i{i="local:solid.map"} in the :i{i="local:solid.tree"}. Deciding to hunt for treasure, they crossed :i{i="local:solid.water"}, bypassed :i{i="local:solid.mountain"}, overcoming many difficulties.  
 Finally, they found the treasure :i{i="local:solid.gem"}. They cheered in celebration, their friendship deepened even more :i{i="local:solid.heart-pulse"}.
+
+## Tabs
+
+Syntax:
+
+```markdown
+::::tabs[name] 
+
+:::tab[title1]
+content1
+:::
+
+::::
+```
+
+For example,
+
+```markdown
+::::tabs[name] 
+:::tab[title1]
+content1
+:::
+:::tab[title2]
+content2
+:::
+::::
+```
+
+::::tabs[name] 
+:::tab[title1]
+content1
+:::
+:::tab[title2]
+content2
+:::
+::::
+
+## Gallery
+
+Syntax:
+```markdown
+:::gallery[name]
+![...](...)
+:::
+```
+
+For example,
+
+```markdown
+:::gallery[gallery1]
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+![test6](https://lipsum.app/id/6/1600x1200)
+![test7](https://lipsum.app/id/7/1600x1200)
+:::
+```
+
+:::gallery[gallery1]
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+![test6](https://lipsum.app/id/6/1600x1200)
+![test7](https://lipsum.app/id/7/1600x1200)
+:::
+
+You can also use `.only-preview` to restrict it to only show the preview,
+
+```markdown
+:::gallery[gallery2]{.only-preview}
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+![test6](https://lipsum.app/id/6/1600x1200)
+![test7](https://lipsum.app/id/7/1600x1200)
+:::
+```
+
+:::gallery[gallery2]{.only-preview}
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+![test6](https://lipsum.app/id/6/1600x1200)
+![test7](https://lipsum.app/id/7/1600x1200)
+:::
+
+Note that the `name` is used to differentiate galleries, and paragraphs within the gallery are used to differentiate groups:
+
+```markdown
+:::gallery[gallery3]{.only-preview}
+![test1](https://lipsum.app/id/1/1600x1200)
+:::
+
+:::gallery[gallery3]{.only-preview}
+![test2](https://lipsum.app/id/2/1600x1200)
+:::
+```
+:::gallery[gallery3]{.only-preview}
+![test1](https://lipsum.app/id/1/1600x1200)
+:::
+
+:::gallery[gallery3]{.only-preview}
+![test2](https://lipsum.app/id/2/1600x1200)
+:::
+
+```markdown
+:::gallery[gallery4]
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+:::
+```
+:::gallery[gallery4]
+![test1](https://lipsum.app/id/1/1600x1200)
+![test2](https://lipsum.app/id/2/1600x1200)
+
+![test3](https://lipsum.app/id/3/1600x1200)
+![test4](https://lipsum.app/id/4/1600x1200)
+![test5](https://lipsum.app/id/5/1600x1200)
+:::
+
+## Bilibili & YouTube
+
+Syntax: `::bili[title]{#BV number}` & `::youtube[title]{#video ID}`
+
+For example:
+
+`::bili[改革春风吹满地]{#1bW411n7fY}`:
+
+::bili[改革春风吹满地]{#1bW411n7fY}
+
+`::youtube[Baby Cats]{#E9iP8jdtYZ0}`:
+
+::youtube[Baby Cats]{#E9iP8jdtYZ0}

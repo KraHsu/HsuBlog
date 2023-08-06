@@ -19,7 +19,8 @@
       "标签": "Tags",
       "我的": "Mine",
       "友链": "Friends",
-      "分类": "Cats."
+      "分类": "Cats.",
+      "更新日志": "ChangeLog"
     }
   },
   "aside": {
@@ -31,9 +32,9 @@
       "content": "New theme testing~ Everyone is welcome to [contribute](https://github.com/KraHsu/HsuBlog/issues)~"
     },
     "customCards": {
-      "推荐文章": {
+      "Custom part": {
         "icon": "local:solid.star",
-        "title": "Customed",
+        "title": "Custom Card",
         "content": "This is the custom content section<br>Everything can be placed here"
       }
     }

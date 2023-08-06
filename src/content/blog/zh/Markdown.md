@@ -16,7 +16,7 @@ lang: 'zh'
 
 :color[HsuBlog]{color="gold"}主要使用`.md`文件也就是`markdown`格式的文本生成博客和页面，但实际上每个 `Markdown` 应用程序都实现了稍有不同的 `Markdown` 语法。`Markdown` 的这些变体通常被称为 `flavors`（方言）。
 
-:color[HsuBlog]{color="gold"}就提供了许多 **扩展语法**
+:color[HsuBlog]{color="gold"}就提供了许多 [扩展语法](/zh/blog/lkpk0hzz)
 
 ## Markdown
 
@@ -288,13 +288,16 @@ ___
 
 ### 图片
 
-图片就是链接加一个叹号`![图片](https://fakeimg.pl/250x100/)`：
+图片就是链接加一个叹号，图片后紧跟的文本会被认为是图片注释，比如,
 
-![preview](https://hsublog.pages.dev/preview.png)
+`![preview](https://fakeimg.pl/250x100/)HsuBlog`：
 
-你还可以为图片添加链接`[![preview](https://hsublog.pages.dev/preview.png)](https://hsublog.pages.dev)`：
+![preview](https://hsublog.pages.dev/preview.png)HsuBlog
 
-[![preview](https://hsublog.pages.dev/preview.png)](https://hsublog.pages.dev)
+你还可以将图片作为链接的“文本”，  
+`[![preview](https://hsublog.pages.dev/preview.png)HsuBlog](https://hsublog.pages.dev)`：
+
+[![preview](https://hsublog.pages.dev/preview.png)HsuBlog](https://hsublog.pages.dev)
 
 ### html
 
@@ -322,4 +325,4 @@ PS: 没有特殊需求的情况下请尽量不要直接使用HTML
 
 ---
 
-:color[HsuBlog]{color="gold"} 还支持 [markdown gfm](/blog/lkpepx4m) 以及一些特有的 扩展语法 ，这部分内容正在更新中
+:color[HsuBlog]{color="gold"} 还支持 [markdown gfm](/blog/lkpepx4m) 以及一些 [扩展语法](/zh/blog/lkpk0hzz)

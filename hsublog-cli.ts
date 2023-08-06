@@ -127,7 +127,7 @@ const createMdPage = async (filename: string) => {
     const filePath = path.resolve(dirPath, "index.md");
 
     const content = `---
-layout: "../../layouts/DefaultMdLayout.astro"
+layout: "@layout/DefaultMdLayout.astro"
 title: ${filename}
 description: ""
 heroColor: "#007aff"
@@ -136,7 +136,7 @@ useComments: true
 useToc: false
 ---
   
-  ## ${filename}`;
+## ${filename}`;
 
     await createFile(filePath, dirPath, content);
   }

@@ -149,12 +149,16 @@ body {
     "Fira Sans", "Droid Sans", "Helvetica Neue", stheiti, "Microsoft YaHei",
     simsun, sans-serif;
 
-  --heading-font-family-zh: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";
+  --heading-font-family-zh: "CustomKaiTi", var(--heading-font-family-en);
 
   --code-font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei",
     sans-serif;
 
-  --default-font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei";
+  --default-font-family-zh: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+
+  --default-font-family-en: Söhne, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, Helvetica Neue,
+    Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
 :root {

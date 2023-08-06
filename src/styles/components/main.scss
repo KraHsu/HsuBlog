@@ -141,19 +141,29 @@
       }
 
       .post-card-desc {
+        display: -webkit-box;
+
         overflow: hidden;
 
         flex: 2;
 
+        -webkit-box-orient: vertical;
+
         max-height: 50px;
 
         padding-right: 2rem;
+
+        white-space: pre-wrap;
 
         word-break: break-all;
 
         color: var(--font-black-white);
 
         font-size: 18px;
+
+        line-height: 25px;
+
+        -webkit-line-clamp: 2;
       }
 
       .post-card-footer {

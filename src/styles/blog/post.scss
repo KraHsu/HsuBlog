@@ -155,6 +155,8 @@
   }
 
   ul {
+    margin: 0;
+
     padding-left: 20px;
 
     list-style-type: disc;
@@ -167,13 +169,15 @@
   .table-wrap {
     overflow: hidden;
 
-    min-width: 80%;
-
-    max-width: 95%;
+    width: 100%;
 
     margin: 0 auto;
 
     user-select: none;
+
+    border: 0.3px solid var(--font-light-grey);
+
+    border-radius: 10px;
 
     table {
       display: table;
@@ -184,7 +188,7 @@
 
       border-spacing: 0px;
 
-      border-collapse: collapse;
+      border-collapse: unset;
 
       thead {
         color: var(--font-dark-grey);
@@ -198,7 +202,16 @@
 
         vertical-align: middle;
 
-        border: 1px solid var(--font-light-grey);
+        border: 0.3px solid var(--font-light-grey);
+      }
+
+      tr:last-child {
+        td:first-child {
+          border-bottom-left-radius: 10px;
+        }
+        td:last-child {
+          border-bottom-right-radius: 10px;
+        }
       }
     }
   }

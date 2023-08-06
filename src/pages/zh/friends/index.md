@@ -1,6 +1,6 @@
 ---
 layout: "@layout/DefaultMdLayout.astro"
-title: Link exchange
+title: 友链
 description: ""
 heroColor: "#007aff"
 themeColor: ''
@@ -8,9 +8,8 @@ useComments: true
 useToc: false
 ---
 
-## Link exchange
-
-:::links[The Autor of HsuBlog]
+## 友链
+:::links[HsuBlog 的作者]
 
 ::link[枢衡KraHsu]{logo="/avatar.avif" desc="我期待着，有流星划过" link="https://blog.krahsu.top"}
 
