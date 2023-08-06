@@ -79,6 +79,8 @@ export const utils = {
       .replace(/[*#\-_]+/g, " ")
       .replace(/[\n\t]/g, "")
       .replace(/\s+/g, " ")
+      .replace(/:+(.*?)(\[.*?\]|"")(""|\{.*?\})/g, " ")
+      .replace(/:+/g, " ")
       .trim();
 
     return content;
