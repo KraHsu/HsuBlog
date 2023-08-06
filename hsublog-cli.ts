@@ -192,7 +192,7 @@ const argv = yargs(hideBin(process.argv))
   .command("new <filename>", "Create a new post with the title <filename>")
   .command("abbr", "Add a permalink to markdown files")
   .command("newPage <filename>", "Create a new page with the title <filename>")
-  .command("i18n", "Create localized pages")
+  .command("i18n", "Create basic internationalized pages")
   .help()
   .alias("help", "h").argv as Argv;
 
