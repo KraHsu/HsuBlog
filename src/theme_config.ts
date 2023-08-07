@@ -15,7 +15,6 @@ export const ThemeConfig: Configs = {
     logo: "/favicon.png",
     author: "枢衡KraHsu",
     localSearch: {
-      enable: true,
       comment:
         "You can use a Unix-like format：[Extended search](/blog/lkk0v40t/)",
       hits: [

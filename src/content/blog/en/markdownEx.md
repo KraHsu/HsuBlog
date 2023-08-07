@@ -16,6 +16,28 @@ lang: 'en'
 
 HsuBlog provides many extended syntax features for web pages, supporting the [Generic Directives Proposal](https://talk.commonmark.org/t/generic-directives-plugins-syntax/444). Specific syntax parsing rules can be seen at [micromark](https://github.com/micromark/micromark-extension-directive#syntax).
 
+## Math
+
+To use the math support, you need to enable math support in the **site configuration**.
+
+Syntax: Inline `$...$` and Block `$$...$$`, where `...` is the corresponding `LATEX` formula.
+
+Examples:
+|            Formula            |       Rendered Result       |
+| :---------------------------: | :-------------------------: |
+|          `$\LaTeX$`           |          $\LaTeX$           |
+|           `$a + b$`           |           $a + b$           |
+|        `$\frac{a}{b}$`        |        $\frac{a}{b}$        |
+|   `$\alpha, \beta, \gamma$`   |   $\alpha, \beta, \gamma$   |
+|         `$a^b, a_b$`          |         $a^b, a_b$          |
+|        `$\sqrt[n]{a}$`        |        $\sqrt[n]{a}$        |
+|         `$\log_b a$`          |         $\log_b a$          |
+| `$\sin(a), \cos(a), \tan(a)$` | $\sin(a), \cos(a), \tan(a)$ |
+|    `$\sum_{i=1}^{n} a_i$`     |    $\sum_{i=1}^{n} a_i$     |
+|    `$\int_a^b f(x) \, dx$`    |    $\int_a^b f(x) \, dx$    |
+
+Due to the vast and varied content in this section, no further explanation will be given. For more details, you can visit [oi-wiki](https://oi-wiki.org/tools/latex/) or [Overleaf](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes).
+
 ## Link
 
 Syntax: `:link[title]{logo="url/of/logo" desc="description" link="link" color="background/of/link"}`

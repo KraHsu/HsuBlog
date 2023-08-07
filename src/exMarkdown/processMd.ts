@@ -136,7 +136,7 @@ export const processRemark = {
   processCode: function (node: any, parent: any, index: any) {
     const match = node.lang.match(/([-\w#文言]+)(?:\[(.*?)\])?/);
     const lang = match[1] || "plaintext";
-    const highlightLines = match[2] || [];
+    const highlightLines = getHighlightLines(match[2] || "");
     const newNode = {
       type: "html",
       value: `<div class='code-block'><div class='code-head'><div class="code-expand" onclick="hsu.toggleCollapse(this)"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path fill="currentColor" d=\"M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z\"/></svg></div><div class='code-lang'>${lang}</div></div>

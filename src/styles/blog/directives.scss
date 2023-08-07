@@ -506,6 +506,10 @@
   }
   .dir-tabs-content {
     .dir-tab-content {
+      display: flex;
+
+      flex-direction: column;
+
       padding: 10px;
 
       border: 2px solid var(--tab-nav-bg);
@@ -513,6 +517,8 @@
       border-top: none;
 
       border-radius: 0 0 5px 5px;
+
+      gap: 1rem;
     }
     .dir-tab-content:not(.active) {
       display: none;

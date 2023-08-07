@@ -16,6 +16,28 @@ lang: 'zh'
 
 :color[HsuBlog]{color="gold"}提供许多为网页提供的扩展语法，这些语法支持[通用指令提案](https://talk.commonmark.org/t/generic-directives-plugins-syntax/444)，具体的语法解析规则可见[micromark](https://github.com/micromark/micromark-extension-directive#syntax)
 
+## 数学 Math
+
+使用数学支持需要在**站点配置**中开启数学支持
+
+语法: 行内 `$...$` 行间 `$$...$$` 其中 `...` 即为对应 `LATEX` 公式
+
+示例:
+|             公式              |          渲染效果           |
+| :---------------------------: | :-------------------------: |
+|          `$\LaTeX$`           |          $\LaTeX$           |
+|           `$a + b$`           |           $a + b$           |
+|        `$\frac{a}{b}$`        |        $\frac{a}{b}$        |
+|   `$\alpha, \beta, \gamma$`   |   $\alpha, \beta, \gamma$   |
+|         `$a^b, a_b$`          |         $a^b, a_b$          |
+|        `$\sqrt[n]{a}$`        |        $\sqrt[n]{a}$        |
+|         `$\log_b a$`          |         $\log_b a$          |
+| `$\sin(a), \cos(a), \tan(a)$` | $\sin(a), \cos(a), \tan(a)$ |
+|    `$\sum_{i=1}^{n} a_i$`     |    $\sum_{i=1}^{n} a_i$     |
+|    `$\int_a^b f(x) \, dx$`    |    $\int_a^b f(x) \, dx$    |
+
+由于 $\LaTeX$ 内容极多且杂，故不做进一步介绍，各位可以到[oi-wiki](https://oi-wiki.org/tools/latex/)或[Overleaf](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)等了解更多内容
+
 ## 链接 Link
 
 语法：`:link[title]{logo="url/of/logo" desc="description" link="link" color="background/of/link"}`

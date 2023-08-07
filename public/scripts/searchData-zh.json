@@ -1,13 +1,19 @@
 [
   {
+    "title": "HsuBlog使用教程合集",
+    "content": "Hello World ! 创建内容 配置博客 专心写作",
+    "url": "/zh/blog/ll0t7xm2",
+    "cover": ""
+  },
+  {
     "title": "Extended Search",
     "content": "扩展搜索 本站使用提供本地搜索服务，允许您使用扩展搜索——一种可以微调搜索结果的搜索格式，类似于  空格代表逻辑与，管道符|代表逻辑或，如要转义空格请使用双引号 | 令牌 | 匹配类型 | 描述 | | | | | | | 模糊匹配 | 与 模糊匹配的项目 | | | 精确匹配 | 是 的项目 | | | 包含匹配 | 包含 的项目 | | | 反向精确匹配 | 不包含 的项目 | | | 前缀精确匹配 | 以 开头的项目 | | | 反向前缀精确匹配 | 不以 开头的项目 | | | 后缀精确匹配 | 以 结尾的项目 | | | 反向后缀精确匹配 | 不以 结尾的项目 |",
     "url": "/zh/blog/lkk0v40t"
   },
   {
-    "title": "Markdown",
-    "content": "主要使用文件也就是格式的文本生成博客和页面，但实际上每个 应用程序都实现了稍有不同的 语法。 的这些变体通常被称为 （方言）。  的渲染效果可能略显奇怪： > Veni, vidi, vici > >> Caesar PS： 为引用提供扩展的署名语法，需要在最后一个段落的开头写两个 > Veni, vidi, vici > >  提供扩展的高亮行语法，你可以在代码语言的后面用方括号提供需要高亮的行 html[3,5 6] <span class=\"line\"><span style=\"color  5C6166\">1</span></span> <span class=\"line\"><span style=\"color  5C6166\">2</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">3</span></span> <span class=\"line\"><span style=\"color  5C6166\">4</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">5</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">6</span></span> ` 分割线 一个只包含三个及以上，或的段落： 链接     <https //hsublog.pages.dev/> & <charles040318@gmail.com> 你也可以为链接添加格式：       或者对于大量重复的链接，你可以创建引用链接： [link1][1] [link2][1] [1]  https //foo.com 图片 图片就是链接加一个叹号，图片后紧跟的文本会被认为是图片注释，比如, ： !HsuBlog 你还可以将图片作为链接的“文本”， ： HsuBlog](https //hsublog.pages.dev) html markdown 允许你直接添加元素    Bold means the text is <strong>bolded</strong> <p> <code> Bold means the text is &lt;strong&gt;bolded&lt;/strong&gt; </code>   Bold means the text is <strong>bolded</strong> </p> PS  没有特殊需求的情况下请尽量不要直接使用HTML  color 以及一些",
-    "url": "/zh/blog/lkoy4onq",
+    "title": "扩展语法",
+    "content": "$ || | $\\log b a$ || | $\\sin(a), \\cos(a), \\tan(a)$ || | $\\sum {i=1}^{n} a i$ || | $\\int a^b f(x) \\, dx$ |由于 $\\LaTeX$ 内容极多且杂，故不做进一步介绍，各位可以到或等了解更多内容 链接 Link语法：示例：  链接组 Links语法： 示例：        可以在段落中使用：  提供许多为网页提供的 ... 标签 Note语法： 其中 预置了一些以供使用，不在此范围内的可以使用css自定义样式其中只支持使用语法，详见      如果要在标签中包含更多内容，请使用三个及以上  就像这样  内容 !!!!!!! ! !",
+    "url": "/zh/blog/lkpk0hzz",
     "cover": ""
   },
   {
@@ -16,15 +22,9 @@
     "url": "/zh/blog/lkk0fjvf"
   },
   {
-    "title": "扩展语法",
-    "content": "链接组 Links语法： 示例：        可以在段落中使用：  提供许多为网页提供的 ... 标签 Note语法： 其中 预置了一些以供使用，不在此范围内的可以使用css自定义样式其中只支持使用语法，详见      如果要在标签中包含更多内容，请使用三个及以上  就像这样  内容 !!!!!!! ! !",
-    "url": "/zh/blog/lkpk0hzz",
-    "cover": ""
-  },
-  {
-    "title": "markdownGFM",
-    "content": "Github扩展Markdown (GFM)本文只作简要介绍（且只包含 color。或简称是上的Markdown方言或变种。它在标准Markdown语法的基础上增加了一些扩展功能，使得Markdown更加适合于网页显示和代码相关的内容展示。 任务列表您可以创建任务列表，用后跟和来代表未完成和已完成的任务。 [x] 已完成任务 [ ] 未完成任务 代码高亮在标准的Markdown中，我们可以创建代码块。但在GFM中，我们还可以为代码块指定语言，从而实现代码高亮。 表格GFM允许您创建表格，用来分隔列，并使用来创建表头，同时您可以通过在标题行中的连字符的左侧，右侧或两侧添加冒号（ ），将列中的文本对齐到左侧，右侧或中心。| 表头左 | 表头中 | 表头右 ||   |     |   || 内容左 | 内容中 | 内容右 || 内容左 | 内容中 | 内容右 |PS  为了更快的创建表格，可以使用 自动链接GFM会自动将URL转化为链接：  https //github.com 删除线使用两个包裹文字可以创建删除线。这是一个~~删除线~~示例。 表情符号GFM支持使用表情符号的简写。例如：  😀更多表情可查看",
-    "url": "/zh/blog/lkpepx4m",
+    "title": "Markdown",
+    "content": "主要使用文件也就是格式的文本生成博客和页面，但实际上每个 应用程序都实现了稍有不同的 语法。 的这些变体通常被称为 （方言）。  的渲染效果可能略显奇怪： > Veni, vidi, vici > >> Caesar PS： 为引用提供扩展的署名语法，需要在最后一个段落的开头写两个 > Veni, vidi, vici > >  提供扩展的高亮行语法，你可以在代码语言的后面用方括号提供需要高亮的行 html[3,5 6] <span class=\"line\"><span style=\"color  5C6166\">1</span></span> <span class=\"line\"><span style=\"color  5C6166\">2</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">3</span></span> <span class=\"line\"><span style=\"color  5C6166\">4</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">5</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">6</span></span> ` 分割线 一个只包含三个及以上，或的段落： 链接     <https //hsublog.pages.dev/> & <charles040318@gmail.com> 你也可以为链接添加格式：       或者对于大量重复的链接，你可以创建引用链接： [link1][1] [link2][1] [1]  https //foo.com 图片 图片就是链接加一个叹号，图片后紧跟的文本会被认为是图片注释，比如, ： !HsuBlog 你还可以将图片作为链接的“文本”， ： HsuBlog](https //hsublog.pages.dev) html markdown 允许你直接添加元素    Bold means the text is <strong>bolded</strong> <p> <code> Bold means the text is &lt;strong&gt;bolded&lt;/strong&gt; </code>   Bold means the text is <strong>bolded</strong> </p> PS  没有特殊需求的情况下请尽量不要直接使用HTML  color 以及一些",
+    "url": "/zh/blog/lkoy4onq",
     "cover": ""
   },
   {
@@ -33,14 +33,26 @@
     "url": "/zh/blog/lkkeyusn"
   },
   {
+    "title": "快速开始",
+    "content": "快速开始 安装这部分，你可以直接参考。以下是简化步骤：现在，打开 你可以看到在本地运行的网站。 升级理论上，下面的步骤应该可以正常工作，但如果你在使用过程中对主题进行了修改或者即使你只是正常使用，也请记得备份你的更改。下一篇文章：",
+    "url": "/zh/blog/lkkee4o9"
+  },
+  {
+    "title": "markdownGFM",
+    "content": "Github扩展Markdown (GFM)本文只作简要介绍（且只包含 color。或简称是上的Markdown方言或变种。它在标准Markdown语法的基础上增加了一些扩展功能，使得Markdown更加适合于网页显示和代码相关的内容展示。 任务列表您可以创建任务列表，用后跟和来代表未完成和已完成的任务。 [x] 已完成任务 [ ] 未完成任务 代码高亮在标准的Markdown中，我们可以创建代码块。但在GFM中，我们还可以为代码块指定语言，从而实现代码高亮。 表格GFM允许您创建表格，用来分隔列，并使用来创建表头，同时您可以通过在标题行中的连字符的左侧，右侧或两侧添加冒号（ ），将列中的文本对齐到左侧，右侧或中心。| 表头左 | 表头中 | 表头右 ||   |     |   || 内容左 | 内容中 | 内容右 || 内容左 | 内容中 | 内容右 |PS  为了更快的创建表格，可以使用 自动链接GFM会自动将URL转化为链接：  https //github.com 删除线使用两个包裹文字可以创建删除线。这是一个~~删除线~~示例。 表情符号GFM支持使用表情符号的简写。例如：  😀更多表情可查看",
+    "url": "/zh/blog/lkpepx4m",
+    "cover": ""
+  },
+  {
     "title": "本地Fontawesome",
     "content": "本地Fontawesome的意思是将Fontawesome原本通过css引入的图标转换成直接插入的svg元素： => 使用语法： 示例：1. 主题配置文件2.",
     "url": "/zh/blog/lkplqhb8",
     "cover": ""
   },
   {
-    "title": "快速开始",
-    "content": "快速开始 安装这部分，你可以直接参考。以下是简化步骤：现在，打开 你可以看到在本地运行的网站。 升级理论上，下面的步骤应该可以正常工作，但如果你在使用过程中对主题进行了修改或者即使你只是正常使用，也请记得备份你的更改。下一篇文章：",
-    "url": "/zh/blog/lkkee4o9"
+    "title": "配置文件",
+    "content": "文件结构首先找到 和 ，他们对应的就是站点配置文件和主题配置文件除此以外，还有 和 ，分别是 和 的配置文件，普通使用时不用管这两个文件 站点配置站点配置非常简单，： 示例比如，Demo 站所用的站点配置为： 主题配置： 编译期动态字段因为通过ts导出配置，想要生成动态字段就正常使用ts语法即可，比如生成当前年份：也可以使用 包裹的函数体，返回值即为所需字段 [ ] 预计是做成运行期动态字段的，但是目前还没实现，所以也是编译期生成 Site [ ] 这部分内容与 有大量重叠，属于历史遗留问题，后续版本会修正 head & body在 和 中插入的内容比如： Icon主题配置文件中有许多处用到了 ，支持以下格式：直接引入 或 组件： 或 元素： 或图片类型文件路径： 类：PS：如果使用的图标是免费图标，则应尽量使用 ： header 示例Demo 站的header配置为： footerfooter 目前客制化选项不是很多，主要是还没想出一个可塑性比较强的方案，后续版本会更新 asidePS  目前统计总字数和总文章数在模式下显示值错误 示例 homePage 示例 postPage 示例 tagsPage comments 评论目前支持  tabs[comments] tab[twikoo] 是一个简洁、安全、免费的静态网站评论系统。具体配置请参照 ，只需要按照格式填写 和 就可以了(目前不支持国际化) tab[valine]参照去配置你的 应用。然后填写配置即可。 tab[Waline]基本相当于带后端的 ，参照 。  i18n 生成基本文件配置好 项后，在终端运行 后自动生成 ， 等文件夹，关于页面和内容的创建和书写请见 创建翻译文件默认情况下， 期望翻译被组织在 中 翻译文件内容基本与主题配置文件一一对应： tabs[i18n] tab[zh] tab[en]",
+    "url": "/zh/blog/ll08puki",
+    "cover": ""
   }
 ]

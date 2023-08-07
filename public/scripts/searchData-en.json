@@ -1,11 +1,5 @@
 [
   {
-    "title": "Markdown",
-    "content": "Primarily, files, or format texts, are used to generate blogs and pages. However, it's worth noting that each application might implement a slightly different syntax. These variations of are often referred to as .   might look a bit unusual  offers an extended syntax for quote attributions. To use it, start the last paragraph with two colons  provides an extended syntax for highlighting lines. You can specify the lines to be highlighted after the programming language in square brackets  html[3,5 6] <span class=\"line\"><span style=\"color  5C6166\">1</span></span> <span class=\"line\"><span style=\"color  5C6166\">2</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">3</span></span> <span class=\"line\"><span style=\"color  5C6166\">4</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">5</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">6</span></span> ` Horizontal Lines A line containing three or more , , or symbols is treated as a horizontal line  Links     <https //hsublog.pages.dev/> & <charles040318@gmail.com> You can also add formatting to links        Or, for links that are used frequently, you can create reference links  [link1][1] [link2][1] [1]  https //foo.com Images Images are just links with a preceding exclamation mark. Text following an image is considered its caption, such as,   !HsuBlog You can also make images function as \"text\" for links,   HsuBlog](https //hsublog.pages.dev) HTML Markdown allows you to directly add elements    Bold means the text is <strong>bolded</strong> or <p> <code> Bold means the text is &lt;strong&gt;bolded&lt;/strong&gt; </code>   Bold means the text is <strong>bolded</strong> </p> PS  Unless there's a specific need, it's generally best not to use HTML directly.  color and some .",
-    "url": "/blog/lkoy4onq",
-    "cover": ""
-  },
-  {
     "title": "Extended Search",
     "content": "Extended Search This site uses to provide local search services, allowing you to use extended search a search format that can fine tune search results, similar to  Space represents logical , pipe symbol | represents logical , and to escape spaces, use double quotes . | Token | Match type | Description | | | | | | | fuzzy match | Items that fuzzy match | | | exact match | Items that are | | | include match | Items that include | | | inverse exact match | Items that do not include | | | prefix exact match | Items that start with | | | inverse prefix exact match | Items that do not start with | | | suffix exact match | Items that end with | | | inverse suffix exact match | Items that do not end with |",
     "url": "/blog/lkk0v40t"
@@ -16,8 +10,20 @@
     "url": "/blog/lkk0fjvf"
   },
   {
+    "title": "HsuBlog Tutorial Collection",
+    "content": "Hello World ! Creating Content Configuring the Blog Focus on Writing",
+    "url": "/blog/ll0t7xm2",
+    "cover": ""
+  },
+  {
+    "title": "Markdown",
+    "content": "Primarily, files, or format texts, are used to generate blogs and pages. However, it's worth noting that each application might implement a slightly different syntax. These variations of are often referred to as .   might look a bit unusual  offers an extended syntax for quote attributions. To use it, start the last paragraph with two colons  provides an extended syntax for highlighting lines. You can specify the lines to be highlighted after the programming language in square brackets  html[3,5 6] <span class=\"line\"><span style=\"color  5C6166\">1</span></span> <span class=\"line\"><span style=\"color  5C6166\">2</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">3</span></span> <span class=\"line\"><span style=\"color  5C6166\">4</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">5</span></span> <span class=\"line highlight\"><span style=\"color  5C6166\">6</span></span> ` Horizontal Lines A line containing three or more , , or symbols is treated as a horizontal line  Links     <https //hsublog.pages.dev/> & <charles040318@gmail.com> You can also add formatting to links        Or, for links that are used frequently, you can create reference links  [link1][1] [link2][1] [1]  https //foo.com Images Images are just links with a preceding exclamation mark. Text following an image is considered its caption, such as,   !HsuBlog You can also make images function as \"text\" for links,   HsuBlog](https //hsublog.pages.dev) HTML Markdown allows you to directly add elements    Bold means the text is <strong>bolded</strong> or <p> <code> Bold means the text is &lt;strong&gt;bolded&lt;/strong&gt; </code>   Bold means the text is <strong>bolded</strong> </p> PS  Unless there's a specific need, it's generally best not to use HTML directly.  color and some .",
+    "url": "/blog/lkoy4onq",
+    "cover": ""
+  },
+  {
     "title": "Extended Syntax",
-    "content": "HsuBlog provides many extended syntax features for web pages, supporting the . Specific syntax parsing rules can be seen at . LinkSyntax  Links GroupSyntax It can be used in paragraphs  provides many  features for web pages... NoteSyntax Just like this. !!!!!!! ! !",
+    "content": "HsuBlog provides many extended syntax features for web pages, supporting the . Specific syntax parsing rules can be seen at . MathTo use the math support, you need to enable math support in the site configuration .Syntax $ || | $\\log b a$ || | $\\sin(a), \\cos(a), \\tan(a)$ || | $\\sum {i=1}^{n} a i$ || | $\\int a^b f(x) \\, dx$ |Due to the vast and varied content in this section, no further explanation will be given. For more details, you can visit or . LinkSyntax  Links GroupSyntax It can be used in paragraphs  provides many  features for web pages... NoteSyntax Just like this. !!!!!!! ! !",
     "url": "/blog/lkpk0hzz",
     "cover": ""
   },
@@ -41,6 +47,12 @@
     "title": "Local Fontawesome",
     "content": "\"Local Fontawesome\" means to convert Fontawesome icons, which were originally introduced through CSS, into directly inserted SVG elements  => UsageSyntax  Example  1. Theme configuration file2.",
     "url": "/blog/lkplqhb8",
+    "cover": ""
+  },
+  {
+    "title": "Configuration",
+    "content": "File StructureFirst, locate and , which correspond to the site configuration file and the theme configuration file, respectively.In addition, there are and , which are the configuration files for and . You typically don't need to worry about these two files for general use. Site ConfigurationThe site configuration is straightforward,   ExampleFor instance, the configuration used by the Demo site is  Theme Configuration  Compile time Dynamic FieldsSince the configuration is exported through TS, to generate dynamic fields, you can simply use the standard TS syntax. For example, to generate the current year You can also use a function body wrapped with , where the return value is the desired field  [ ] The plan was to make it a runtime dynamic field, but it's not yet implemented, so it's currently generated at compile time. Site [ ] This part of the content overlaps significantly with , and is a historical legacy issue that will be fixed in subsequent versions. head & bodyContent inserted in and For example  IconThere are many instances of in the theme configuration file, supporting the following formats Directly import or components  or elements  or image type file paths  class PS  If the icons being used are free, it's preferable to use   header ExampleThe header configuration for the Demo site is  footerThe customization options for the footer are currently limited, mainly because a more flexible solution has not yet been conceived. Subsequent versions will be updated. asidePS  Currently, the total word count and total post count are displayed incorrectly in mode. Example homePage Example postPage Example tagsPage comments CommentingCurrently supports , ,  tabs[comments] tab[twikoo] is a simple, secure, and free static website commenting system.For specific configuration, please refer to the . You only need to fill in the and according to the format (currently does not support internationalization). tab[valine]Refer to the to configure your application. Then, fill in the configuration. tab[Waline]Basically equivalent to with a backend, refer to the .  i18n Generating Basic FilesAfter configuring the item, run in the terminal to automatically generate , folders, etc. For information on creating and writing pages and content, please see . Creating Translation FilesBy default, expects translations to be organized in  The content of the translation file basically corresponds to the theme configuration file one by one tabs[i18n] tab[en] tab[zh]",
+    "url": "/blog/ll08puki",
     "cover": ""
   }
 ]

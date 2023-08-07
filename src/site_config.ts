@@ -3,7 +3,7 @@ export const SiteConfig: SiteConfig = {
   title: "HsuBlog",
   description: "HsuBlog Demo 页面",
   localSearch: true,
-  markdownMath: false,
+  markdownMath: "Katex",
   i18n: {
     default: "en",
     languages: ["zh", "en"],
