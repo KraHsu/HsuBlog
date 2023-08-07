@@ -15,7 +15,6 @@ export const ThemeConfig: Configs = {
     logo: "/favicon.png",
     author: "枢衡KraHsu",
     localSearch: {
-      enable: true,
       comment: "你可以使用类似 unix 的格式：[扩展搜索](/blog/lkk0v40t/)",
       hits: ["[扩展搜索](/blog/lkk0v40t/)", "[HelloWorld](/blog/lkk0fjvf/)"],
     },

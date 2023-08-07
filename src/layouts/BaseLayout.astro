@@ -23,6 +23,7 @@ const { class: pageClass, description, themeColor } = Astro.props;
 const globalStyle = `:root{
   --theme-color:${themeColor || ThemeConfig.site.themeColor};
   --heading-font-family: var(--heading-font-family-${i18next.language});
+  --default-font-family: var(--default-font-family-${i18next.language});
 }`;
 ---
 

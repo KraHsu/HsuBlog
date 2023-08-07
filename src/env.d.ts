@@ -94,7 +94,6 @@ interface Site {
   logo: string;
   author: string;
   localSearch: {
-    enable: boolean;
     comment: string;
     hits: string[];
   };

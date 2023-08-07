@@ -19,3 +19,15 @@
 .wl-editor {
   transition: height 0s, background 0.25s ease !important;
 }
+
+@font-face {
+  font-family: "CustomKaiTi";
+  src: local(STKaiti);
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2EBEF;
+}
+
+@font-face {
+  font-family: "CustomSTSong";
+  src: local(STSong);
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2EBEF;
+}
