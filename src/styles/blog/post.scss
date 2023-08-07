@@ -155,6 +155,8 @@
   }
 
   ul {
+    margin: 0;
+
     padding-left: 20px;
 
     list-style-type: disc;
@@ -167,13 +169,15 @@
   .table-wrap {
     overflow: hidden;
 
-    min-width: 80%;
-
-    max-width: 95%;
+    width: 100%;
 
     margin: 0 auto;
 
     user-select: none;
+
+    border: 0.3px solid var(--font-light-grey);
+
+    border-radius: 10px;
 
     table {
       display: table;
@@ -184,7 +188,7 @@
 
       border-spacing: 0px;
 
-      border-collapse: collapse;
+      border-collapse: unset;
 
       thead {
         color: var(--font-dark-grey);
@@ -198,7 +202,16 @@
 
         vertical-align: middle;
 
-        border: 1px solid var(--font-light-grey);
+        border: 0.3px solid var(--font-light-grey);
+      }
+
+      tr:last-child {
+        td:first-child {
+          border-bottom-left-radius: 10px;
+        }
+        td:last-child {
+          border-bottom-right-radius: 10px;
+        }
       }
     }
   }
@@ -386,7 +399,7 @@
 
   overflow: hidden;
 
-  max-height: 100vh;
+  max-height: calc(80vh + var(--code-lang-height));
 
   transition: 0.4s ease-in-out;
 
@@ -436,8 +449,6 @@
     // padding: 0 0 0 2.4rem;
     transition: 0.4s ease-in-out;
 
-    transform: translateZ(0);
-
     background: var(--astro-code-color-background);
 
     font-size: var(--font-code-size);
@@ -447,11 +458,11 @@
 
       flex-direction: column;
 
-      max-height: 100vh;
+      max-height: 80vh;
 
       margin: 0;
 
-      padding: 0.5rem 0 0.5rem 3.4rem;
+      padding: 0.5rem 0;
 
       transition: 0.3s ease;
 
@@ -461,6 +472,8 @@
         top: 0;
 
         bottom: 0;
+
+        left: 3.4rem;
 
         width: 1px;
 
@@ -490,18 +503,24 @@
 
       height: 24px;
 
-      padding: 0 1rem;
+      padding: 0 1rem 0 3.9rem;
 
       counter-increment: line;
 
       font-family: var(--code-font-family);
 
       &::before {
-        position: absolute;
+        position: relative;
 
-        left: 0.5rem;
+        left: -3.8rem;
 
-        width: 2.4rem;
+        display: inline-block;
+
+        width: 3.4rem;
+
+        height: 24px;
+
+        margin-right: -3.4rem;
 
         content: counter(line);
 
