@@ -1,7 +1,7 @@
 {
   "name": "hsu-blog",
   "description": "A beautiful, customized, personal blog theme for Astro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/KraHsu/HsuBlog#readme",
   "private": false,
   "type": "module",

@@ -14,4 +14,4 @@ dist
 *.log
 .tree
 .treec
-yarn.lock
+/yarn.lock
