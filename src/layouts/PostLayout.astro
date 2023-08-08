@@ -8,6 +8,7 @@ import RelatedPosts from "@comp/relatedPosts.astro";
 import PostComment from "@comp/postComment.astro";
 import type { CollectionEntry } from "astro:content";
 import { ThemeConfig } from "@src/theme_config";
+import { SiteConfig } from "@src/site_config";
 interface Props {
   postData?: CollectionEntry<"blog">["data"];
   frontmatter: any;
@@ -40,6 +41,14 @@ const {
       rel="stylesheet"
       href="https://cdn.staticfile.org/fancyapps-ui/5.0.20/fancybox/fancybox.min.css"
     />
+    {
+      SiteConfig.markdownMath === "Katex" && (
+        <link
+          rel="stylesheet"
+          href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css"
+        />
+      )
+    }
   </Fragment>
   <slot name="post-hero" />
   <article class="post-container">
