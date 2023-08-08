@@ -22,7 +22,11 @@ const { tags, baseurl, activeTag, page } = Astro.props;
           tags.map((tag) => (
             <a
               class:list={{ "tag": true, "active": tag === activeTag }}
-              href={localizePath(baseurl + tag)}
+              href={localizePath(
+                baseurl[baseurl.length - 1] === "/"
+                  ? baseurl
+                  : baseurl + "/" + tag
+              )}
             >
               <span class="tag-text">{tag}</span>
             </a>

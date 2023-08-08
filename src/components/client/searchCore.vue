@@ -34,7 +34,7 @@ const fuseOptions = {
   // distance: 100,
   // ignoreLocation: false,
   threshold: 0.6,
-  useExtendedSearch: false,
+  useExtendedSearch: true,
   ignoreFieldNorm: false,
   fieldNormWeight: 1,
   keys: ["title", "content"],
