@@ -527,7 +527,7 @@ function getHighlightHtml(
 }
 
 function getHighlightLines(str: string) {
-  let items = str.slice(1, -1).split(",");
+  let items = str.split(",");
 
   let output: number[] = [];
   items.forEach((item) => {
